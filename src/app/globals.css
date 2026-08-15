@@ -1,0 +1,92 @@
+@import "tailwindcss";
+
+/*
+  Career Hub theme — dark by default.
+  Deep zinc/slate ground, neon-green primary accent, gold for "gem" signals.
+  The accent is remapped per game version by `data-version` below, so switching
+  titles visibly changes the app's colour identity.
+*/
+@theme {
+  --color-ground: #09090b;
+  --color-surface: #111114;
+  --color-surface-2: #17171c;
+  --color-line: #26262d;
+
+  --color-accent: #a3e635;
+  --color-accent-soft: #d9f99d;
+  --color-gold: #fbbf24;
+
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace;
+}
+
+:root[data-version="fc27"] {
+  --color-accent: #a3e635;
+  --color-accent-soft: #d9f99d;
+}
+:root[data-version="fc26"] {
+  --color-accent: #fbbf24;
+  --color-accent-soft: #fde68a;
+}
+:root[data-version="fc25"] {
+  --color-accent: #22d3ee;
+  --color-accent-soft: #a5f3fc;
+}
+
+html {
+  color-scheme: dark;
+  scrollbar-gutter: stable;
+}
+
+body {
+  background:
+    radial-gradient(1100px 600px at 12% -10%, color-mix(in oklab, var(--color-accent) 9%, transparent), transparent),
+    radial-gradient(900px 500px at 100% 0%, rgba(56, 189, 248, 0.06), transparent),
+    var(--color-ground);
+  color: #e4e4e7;
+  min-height: 100dvh;
+  -webkit-font-smoothing: antialiased;
+}
+
+@layer components {
+  .panel {
+    @apply rounded-xl border border-line bg-surface/80 backdrop-blur-sm;
+  }
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-xs font-medium whitespace-nowrap;
+  }
+  .field-label {
+    @apply text-[11px] font-semibold uppercase tracking-widest text-zinc-500;
+  }
+  .focus-ring {
+    @apply outline-none focus-visible:ring-2 focus-visible:ring-accent/70 focus-visible:ring-offset-2 focus-visible:ring-offset-ground;
+  }
+}
+
+/* Range inputs and scrollbars, themed to match the panels. */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #2a2a32;
+  border-radius: 9999px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3a3a45;
+  background-clip: content-box;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

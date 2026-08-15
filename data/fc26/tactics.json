@@ -1,0 +1,202 @@
+[
+  {
+    "id": "fc26-ancelotti-433",
+    "name": "Champagne 4-3-3",
+    "manager": "Carlo Ancelotti",
+    "club": "Real Madrid",
+    "era": "2021/22",
+    "formation": "4-3-3 Attack",
+    "shareCode": "An3&Ll%0tKm",
+    "summary": "Minimal structure, maximum individual freedom. A veteran midfield three controls tempo, the full-backs stay disciplined, and the front three are given licence to do whatever they want in the final third.",
+    "difficulty": "Plug & Play",
+    "tags": ["Balanced", "Free Roles", "Midfield Control", "Counter-Attacking"],
+    "offensive": { "buildUpStyle": "Balanced", "width": 58, "playersInBox": 4, "corners": 3, "freeKicks": 3 },
+    "defensive": { "approach": "Balanced", "width": 48, "depth": 50 },
+    "positions": [
+      { "id": "gk", "label": "GK", "x": 50, "y": 92, "role": "Sweeper Keeper", "focus": "Balanced" },
+      { "id": "lb", "label": "LB", "x": 12, "y": 72, "role": "Fullback", "focus": "Balanced" },
+      { "id": "lcb", "label": "CB", "x": 36, "y": 78, "role": "Ball-Playing Defender", "focus": "Balanced" },
+      { "id": "rcb", "label": "CB", "x": 64, "y": 78, "role": "Defender", "focus": "Defend" },
+      { "id": "rb", "label": "RB", "x": 88, "y": 72, "role": "Attacking Wingback", "focus": "Attack" },
+      { "id": "lcm", "label": "CM", "x": 32, "y": 54, "role": "Holding", "focus": "Defend" },
+      { "id": "rcm", "label": "CM", "x": 68, "y": 54, "role": "Box-To-Box", "focus": "Balanced" },
+      { "id": "cam", "label": "CAM", "x": 50, "y": 42, "role": "Playmaker", "focus": "Roaming" },
+      { "id": "lw", "label": "LW", "x": 14, "y": 22, "role": "Inside Forward", "focus": "Attack" },
+      { "id": "st", "label": "ST", "x": 50, "y": 14, "role": "Advanced Forward", "focus": "Attack" },
+      { "id": "rw", "label": "RW", "x": 86, "y": 22, "role": "Winger", "focus": "Attack" }
+    ],
+    "keyInstructions": [
+      "One full-back attacks, one holds. Never send both — the counter-attack cover depends on it.",
+      "Holding midfielder on Defend anchors the shape while the Roaming playmaker floats.",
+      "Balanced everything: this system wins on player quality, not instructions.",
+      "Ideal for a save where your squad is stronger than your tactical patience."
+    ],
+    "strengths": ["Very low micromanagement", "Elite in transition", "Works with any front three"],
+    "weaknesses": ["Cedes midfield to a 3-2-4-1", "Weak press", "Needs individually excellent attackers"],
+    "recommendedProfiles": [
+      { "slot": "Roaming Playmaker", "note": "85+ passing and dribbling. Arda Güler's profile is the archetype." },
+      { "slot": "Holding CM", "note": "78+ defending and 80+ physical — he covers for the attacking full-back alone." },
+      { "slot": "Front three", "note": "This is the slot to spend the transfer budget on. The system asks nothing of them defensively." }
+    ]
+  },
+  {
+    "id": "fc26-pep-inverted",
+    "name": "Inverted 3-2-4-1",
+    "manager": "Pep Guardiola",
+    "club": "Manchester City",
+    "era": "2022/23",
+    "formation": "3-2-4-1",
+    "shareCode": "Gp2%zW&8qLr",
+    "summary": "The treble blueprint ported to the FC 26 role system. Back three plus a double pivot as permanent rest defence, four attackers holding width and half-spaces, one false nine dropping into the vacated space.",
+    "difficulty": "Advanced",
+    "tags": ["Possession", "Positional Play", "Rest Defence", "High Line"],
+    "offensive": { "buildUpStyle": "Short Passing", "width": 60, "playersInBox": 4, "corners": 2, "freeKicks": 2 },
+    "defensive": { "approach": "High", "width": 46, "depth": 66 },
+    "positions": [
+      { "id": "gk", "label": "GK", "x": 50, "y": 92, "role": "Sweeper Keeper", "focus": "Build-Up" },
+      { "id": "lcb", "label": "CB", "x": 26, "y": 78, "role": "Ball-Playing Defender", "focus": "Balanced" },
+      { "id": "cb", "label": "CB", "x": 50, "y": 80, "role": "Defender", "focus": "Defend" },
+      { "id": "rcb", "label": "CB", "x": 74, "y": 78, "role": "Ball-Playing Defender", "focus": "Balanced" },
+      { "id": "ldm", "label": "CDM", "x": 36, "y": 60, "role": "Deep-Lying Playmaker", "focus": "Balanced" },
+      { "id": "rdm", "label": "CDM", "x": 64, "y": 60, "role": "Holding", "focus": "Defend" },
+      { "id": "lm", "label": "LM", "x": 12, "y": 38, "role": "Winger", "focus": "Attack" },
+      { "id": "lcam", "label": "CAM", "x": 38, "y": 36, "role": "Shadow Striker", "focus": "Attack" },
+      { "id": "rcam", "label": "CAM", "x": 62, "y": 36, "role": "Playmaker", "focus": "Roaming" },
+      { "id": "rm", "label": "RM", "x": 88, "y": 38, "role": "Inside Forward", "focus": "Attack" },
+      { "id": "st", "label": "ST", "x": 50, "y": 16, "role": "False 9", "focus": "Balanced" }
+    ],
+    "keyInstructions": [
+      "Sweeper keeper on Build-Up — he is the spare man against a two-striker press.",
+      "Wide attackers hug the touchline; only the CAMs come inside.",
+      "Narrow defensive width (46) with a high line: the back three defends the middle, the wide players recover.",
+      "Never let both pivots join the attack. Four in the box, no more."
+    ],
+    "strengths": ["Possession dominance", "Immune to counters", "Half-space overloads"],
+    "weaknesses": ["Long-ball sides bypass the press", "Demands 80+ passing across the back three", "Punished by 90+ pace strikers"],
+    "recommendedProfiles": [
+      { "slot": "Wide CBs", "note": "78+ pace and passing. Pau Cubarsí and Jorrel Hato are the two best fits in FC 26." },
+      { "slot": "Deep-Lying Playmaker", "note": "85+ passing with Pinged Pass. Christian Eriksen on a free is the budget answer." },
+      { "slot": "False 9", "note": "Dribbling and passing over finishing — a converted CAM beats a natural poacher here." }
+    ]
+  },
+  {
+    "id": "fc26-alonso-3421",
+    "name": "Leverkusen 3-4-2-1",
+    "manager": "Xabi Alonso",
+    "club": "Bayer Leverkusen",
+    "era": "2023/24",
+    "formation": "3-4-2-1",
+    "shareCode": "Lv%4kX&aM7t",
+    "summary": "The unbeaten-season shape. Patient back three, wing-backs providing all the width, two free eights attacking the space either side of a target striker on every turnover.",
+    "difficulty": "Plug & Play",
+    "tags": ["Balanced", "Wing-Backs", "Transition", "Back Three"],
+    "offensive": { "buildUpStyle": "Balanced", "width": 70, "playersInBox": 4, "corners": 3, "freeKicks": 4 },
+    "defensive": { "approach": "Balanced", "width": 50, "depth": 54 },
+    "positions": [
+      { "id": "gk", "label": "GK", "x": 50, "y": 92, "role": "Sweeper Keeper", "focus": "Balanced" },
+      { "id": "lcb", "label": "CB", "x": 26, "y": 78, "role": "Ball-Playing Defender", "focus": "Balanced" },
+      { "id": "cb", "label": "CB", "x": 50, "y": 80, "role": "Stopper", "focus": "Defend" },
+      { "id": "rcb", "label": "CB", "x": 74, "y": 78, "role": "Ball-Playing Defender", "focus": "Balanced" },
+      { "id": "lm", "label": "LM", "x": 10, "y": 52, "role": "Wingback", "focus": "Attack" },
+      { "id": "lcm", "label": "CM", "x": 38, "y": 56, "role": "Holding", "focus": "Defend" },
+      { "id": "rcm", "label": "CM", "x": 62, "y": 56, "role": "Deep-Lying Playmaker", "focus": "Balanced" },
+      { "id": "rm", "label": "RM", "x": 90, "y": 52, "role": "Wingback", "focus": "Attack" },
+      { "id": "lcam", "label": "CAM", "x": 36, "y": 32, "role": "Shadow Striker", "focus": "Attack" },
+      { "id": "rcam", "label": "CAM", "x": 64, "y": 32, "role": "Shadow Striker", "focus": "Attack" },
+      { "id": "st", "label": "ST", "x": 50, "y": 14, "role": "Target Forward", "focus": "Balanced" }
+    ],
+    "keyInstructions": [
+      "Attacking width 70 — the wing-backs are the only source of width in the system.",
+      "One Holding and one Deep-Lying Playmaker. Two of the same role breaks the shape.",
+      "Both CAMs on Shadow Striker so they attack beyond the target man in transition.",
+      "Balanced approach at depth 54: this system counters, it does not press."
+    ],
+    "strengths": ["Best transition shape in the game", "Few instructions to manage", "Set-piece height from the back three"],
+    "weaknesses": ["Wing-backs isolated 2v1", "Requires a genuine aerial striker", "Loses the ball battle against a possession side"],
+    "recommendedProfiles": [
+      { "slot": "Wing-Backs", "note": "85+ pace and stamina. The single most physically demanding slot in any system." },
+      { "slot": "Shadow Strikers", "note": "Kenan Yıldız and Ethan Nwaneri — dribbling plus real finishing." },
+      { "slot": "Target Forward", "note": "185cm+ with Aerial or Power Header. Chido Obi grows directly into this role." }
+    ]
+  },
+  {
+    "id": "fc26-conte-352",
+    "name": "Nerazzurri 3-5-2",
+    "manager": "Antonio Conte",
+    "club": "Inter",
+    "era": "2020/21",
+    "formation": "3-5-2",
+    "shareCode": "Cn7&tE%2wBs",
+    "summary": "Scudetto-winning verticality. Five across the middle to win every second ball, wing-backs stretching the pitch on both flanks, and two strikers who only ever attack in a pair.",
+    "difficulty": "Intermediate",
+    "tags": ["Direct", "Wing-Backs", "Two Strikers", "Compact Middle"],
+    "offensive": { "buildUpStyle": "Counter", "width": 74, "playersInBox": 5, "corners": 4, "freeKicks": 3 },
+    "defensive": { "approach": "Balanced", "width": 44, "depth": 48 },
+    "positions": [
+      { "id": "gk", "label": "GK", "x": 50, "y": 92, "role": "Goalkeeper", "focus": "Balanced" },
+      { "id": "lcb", "label": "CB", "x": 26, "y": 78, "role": "Ball-Playing Defender", "focus": "Balanced" },
+      { "id": "cb", "label": "CB", "x": 50, "y": 80, "role": "Defender", "focus": "Defend" },
+      { "id": "rcb", "label": "CB", "x": 74, "y": 78, "role": "Stopper", "focus": "Defend" },
+      { "id": "lwb", "label": "LWB", "x": 10, "y": 56, "role": "Wingback", "focus": "Attack" },
+      { "id": "lcm", "label": "CM", "x": 32, "y": 54, "role": "Box-To-Box", "focus": "Balanced" },
+      { "id": "cdm", "label": "CDM", "x": 50, "y": 62, "role": "Deep-Lying Playmaker", "focus": "Defend" },
+      { "id": "rcm", "label": "CM", "x": 68, "y": 54, "role": "Box-To-Box", "focus": "Attack" },
+      { "id": "rwb", "label": "RWB", "x": 90, "y": 56, "role": "Wingback", "focus": "Attack" },
+      { "id": "lst", "label": "ST", "x": 38, "y": 18, "role": "Target Forward", "focus": "Balanced" },
+      { "id": "rst", "label": "ST", "x": 62, "y": 18, "role": "Advanced Forward", "focus": "Attack" }
+    ],
+    "keyInstructions": [
+      "Attacking width 74 with defensive width 44 — wide in possession, narrow the instant you lose it.",
+      "The two strikers must be a pair, not two of the same: one drops, one runs in behind.",
+      "Counter build-up. The playmaking CDM hits the channel the moment the ball is won.",
+      "Five in the box on crosses — the wing-backs deliver, the eights arrive late."
+    ],
+    "strengths": ["Wins the second-ball battle", "Overloads a back four with five attackers", "Excellent from wide set pieces"],
+    "weaknesses": ["Wing-back stamina is the whole system", "Empty flanks when they push on", "Struggles against a back three that matches it"],
+    "recommendedProfiles": [
+      { "slot": "Wing-Backs", "note": "88+ stamina non-negotiable. Rotate two per flank across a 50-game season." },
+      { "slot": "CDM", "note": "80+ passing and 78+ defending — Ayyoub Bouaddi's exact profile." },
+      { "slot": "Strike pair", "note": "One target man, one runner. Two poachers make this system stall." }
+    ]
+  },
+  {
+    "id": "fc26-mourinho-4231",
+    "name": "Treble Counter 4-2-3-1",
+    "manager": "José Mourinho",
+    "club": "Inter",
+    "era": "2009/10",
+    "formation": "4-2-3-1",
+    "shareCode": "Mo9%rH&5nQd",
+    "summary": "Mid-block discipline and lethal transitions. Two screening midfielders in front of the back four, wide players tracking full-backs all the way home, and a direct release to the striker the moment possession turns.",
+    "difficulty": "Intermediate",
+    "tags": ["Mid Block", "Counter-Attacking", "Double Pivot", "Defensive Wingers"],
+    "offensive": { "buildUpStyle": "Counter", "width": 54, "playersInBox": 4, "corners": 3, "freeKicks": 3 },
+    "defensive": { "approach": "Deep", "width": 42, "depth": 38 },
+    "positions": [
+      { "id": "gk", "label": "GK", "x": 50, "y": 92, "role": "Goalkeeper", "focus": "Defend" },
+      { "id": "lb", "label": "LB", "x": 12, "y": 74, "role": "Fullback", "focus": "Defend" },
+      { "id": "lcb", "label": "CB", "x": 36, "y": 78, "role": "Defender", "focus": "Defend" },
+      { "id": "rcb", "label": "CB", "x": 64, "y": 78, "role": "Stopper", "focus": "Defend" },
+      { "id": "rb", "label": "RB", "x": 88, "y": 74, "role": "Fullback", "focus": "Balanced" },
+      { "id": "ldm", "label": "CDM", "x": 36, "y": 62, "role": "Holding", "focus": "Defend" },
+      { "id": "rdm", "label": "CDM", "x": 64, "y": 62, "role": "Deep-Lying Playmaker", "focus": "Balanced" },
+      { "id": "lm", "label": "LM", "x": 16, "y": 40, "role": "Wide Midfielder", "focus": "Defend" },
+      { "id": "cam", "label": "CAM", "x": 50, "y": 36, "role": "Shadow Striker", "focus": "Attack" },
+      { "id": "rm", "label": "RM", "x": 84, "y": 40, "role": "Inside Forward", "focus": "Attack" },
+      { "id": "st", "label": "ST", "x": 50, "y": 16, "role": "Advanced Forward", "focus": "Attack" }
+    ],
+    "keyInstructions": [
+      "Deep approach at depth 38 — invite pressure, then release in three passes.",
+      "Left midfielder on Defend focus doubles up on the opposition's best winger.",
+      "Only three players commit forward on the counter: CAM, right-sided attacker, striker.",
+      "The pivot never both press. One steps, one covers, every single time."
+    ],
+    "strengths": ["Shuts down superior opponents", "Very low xG conceded", "Ideal for an underdog first season"],
+    "weaknesses": ["Passive against a low block", "Needs a 90-pace striker to matter", "Wingers must defend, which limits who you can sign"],
+    "recommendedProfiles": [
+      { "slot": "Striker", "note": "Pace over finishing. Mathys Tel and Endrick both fit at a fraction of an elite forward's price." },
+      { "slot": "Holding CDM", "note": "Intercept / Anticipate PlayStyles and 78+ defending." },
+      { "slot": "Left Midfielder", "note": "The most thankless slot in the game — 85+ stamina and 70+ defending, dribbling is optional." }
+    ]
+  }
+]

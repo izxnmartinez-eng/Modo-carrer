@@ -1,0 +1,202 @@
+[
+  {
+    "id": "fc25-zidane-diamond",
+    "name": "BBC Diamond",
+    "manager": "Zinedine Zidane",
+    "club": "Real Madrid",
+    "era": "2016/17",
+    "formation": "4-3-1-2",
+    "shareCode": "Zd5%rM&1cPu",
+    "summary": "The back-to-back Champions League shape. A narrow diamond that gives up the flanks deliberately, floods the middle, and lets two forwards plus two overlapping full-backs finish what the diamond creates.",
+    "difficulty": "Intermediate",
+    "tags": ["Narrow", "Possession", "Overlapping Full-Backs", "Two Strikers"],
+    "offensive": { "buildUpStyle": "Balanced", "width": 36, "playersInBox": 5, "corners": 3, "freeKicks": 3 },
+    "defensive": { "approach": "Balanced", "width": 40, "depth": 50 },
+    "positions": [
+      { "id": "gk", "label": "GK", "x": 50, "y": 92, "role": "Sweeper Keeper", "focus": "Balanced" },
+      { "id": "lb", "label": "LB", "x": 14, "y": 74, "role": "Wingback", "focus": "Attack" },
+      { "id": "lcb", "label": "CB", "x": 36, "y": 78, "role": "Defender", "focus": "Defend" },
+      { "id": "rcb", "label": "CB", "x": 64, "y": 78, "role": "Ball-Playing Defender", "focus": "Balanced" },
+      { "id": "rb", "label": "RB", "x": 86, "y": 74, "role": "Wingback", "focus": "Attack" },
+      { "id": "cdm", "label": "CDM", "x": 50, "y": 62, "role": "Holding", "focus": "Defend" },
+      { "id": "lcm", "label": "CM", "x": 30, "y": 50, "role": "Box-To-Box", "focus": "Balanced" },
+      { "id": "rcm", "label": "CM", "x": 70, "y": 50, "role": "Box-To-Box", "focus": "Balanced" },
+      { "id": "cam", "label": "CAM", "x": 50, "y": 36, "role": "Playmaker", "focus": "Roaming" },
+      { "id": "lst", "label": "ST", "x": 38, "y": 18, "role": "Advanced Forward", "focus": "Attack" },
+      { "id": "rst", "label": "ST", "x": 62, "y": 18, "role": "Poacher", "focus": "Attack" }
+    ],
+    "keyInstructions": [
+      "Both full-backs on Wingback (Attack) — they supply all of the system's width.",
+      "The Holding CDM stays behind the ball at all times.",
+      "Roaming playmaker at the tip drifts into whichever half-space the strikers vacate.",
+      "Balanced build-up so the diamond keeps the direct pass to the front two available."
+    ],
+    "strengths": ["Central overloads", "Second balls", "Two-striker link play"],
+    "weaknesses": ["Exposed in wide areas", "Needs elite full-back stamina", "Struggles against a five-man defence"],
+    "recommendedProfiles": [
+      { "slot": "LB / RB", "note": "78+ pace, 80+ stamina — the cheapest slot to fill with youth prospects." },
+      { "slot": "CDM", "note": "80+ defending with 78+ passing." },
+      { "slot": "CAM", "note": "4★ skills and 85+ dribbling. Arda Güler grows directly into this role." }
+    ]
+  },
+  {
+    "id": "fc25-klopp-gegenpress",
+    "name": "Heavy Metal 4-3-3",
+    "manager": "Jürgen Klopp",
+    "club": "Liverpool",
+    "era": "2019/20",
+    "formation": "4-3-3 Holding",
+    "shareCode": "Hm8&vJ%3rTx",
+    "summary": "Gegenpressing as a first principle. Win it back within six seconds, attack the outside of the full-backs, and let two inverted wingers finish from the half-spaces.",
+    "difficulty": "Intermediate",
+    "tags": ["Gegenpress", "High Line", "Inverted Wingers", "Full-Back Crosses"],
+    "offensive": { "buildUpStyle": "Counter", "width": 64, "playersInBox": 5, "corners": 3, "freeKicks": 3 },
+    "defensive": { "approach": "Aggressive Press", "width": 54, "depth": 72 },
+    "positions": [
+      { "id": "gk", "label": "GK", "x": 50, "y": 92, "role": "Sweeper Keeper", "focus": "Balanced" },
+      { "id": "lb", "label": "LB", "x": 12, "y": 72, "role": "Falseback", "focus": "Attack" },
+      { "id": "lcb", "label": "CB", "x": 36, "y": 78, "role": "Ball-Playing Defender", "focus": "Balanced" },
+      { "id": "rcb", "label": "CB", "x": 64, "y": 78, "role": "Defender", "focus": "Defend" },
+      { "id": "rb", "label": "RB", "x": 88, "y": 72, "role": "Attacking Wingback", "focus": "Attack" },
+      { "id": "cdm", "label": "CDM", "x": 50, "y": 60, "role": "Holding", "focus": "Defend" },
+      { "id": "lcm", "label": "CM", "x": 30, "y": 46, "role": "Box-To-Box", "focus": "Balanced" },
+      { "id": "rcm", "label": "CM", "x": 70, "y": 46, "role": "Box-To-Box", "focus": "Balanced" },
+      { "id": "lw", "label": "LW", "x": 14, "y": 22, "role": "Inside Forward", "focus": "Attack" },
+      { "id": "st", "label": "ST", "x": 50, "y": 14, "role": "Pressing Forward", "focus": "Attack" },
+      { "id": "rw", "label": "RW", "x": 86, "y": 22, "role": "Inside Forward", "focus": "Attack" }
+    ],
+    "keyInstructions": [
+      "Aggressive Press at depth 72 — a sub-75 pace centre-back pairing will lose you matches on its own.",
+      "Pressing Forward striker triggers every trap.",
+      "Width comes from the full-backs, goals come from the inverted wingers.",
+      "Counter build-up: score inside eight seconds of the turnover or reset."
+    ],
+    "strengths": ["Turnovers in the final third", "Dominant opening 20 minutes", "Simple to coach"],
+    "weaknesses": ["Stamina collapse after 70'", "Long-ball releases beat the press", "Requires deep squad rotation"],
+    "recommendedProfiles": [
+      { "slot": "Centre-Backs", "note": "80+ pace is mandatory, not preferred." },
+      { "slot": "Wingers", "note": "Antonio Nusa's 90 pace, opposite-footed to the flank." },
+      { "slot": "CM x2", "note": "Press Proven / Relentless with 85+ stamina, rotated every third match." }
+    ]
+  },
+  {
+    "id": "fc25-sarri-433",
+    "name": "Sarriball 4-3-3",
+    "manager": "Maurizio Sarri",
+    "club": "SSC Napoli",
+    "era": "2017/18",
+    "formation": "4-3-3 Holding",
+    "shareCode": "Sr2%bN&6yWk",
+    "summary": "Choreographed short passing at maximum tempo. A deep-lying playmaker sets every rhythm, the two eights rotate around him, and the front three attack in fixed, rehearsed patterns.",
+    "difficulty": "Advanced",
+    "tags": ["Possession", "Short Passing", "High Tempo", "Positional Rotations"],
+    "offensive": { "buildUpStyle": "Short Passing", "width": 56, "playersInBox": 4, "corners": 2, "freeKicks": 2 },
+    "defensive": { "approach": "High", "width": 44, "depth": 64 },
+    "positions": [
+      { "id": "gk", "label": "GK", "x": 50, "y": 92, "role": "Sweeper Keeper", "focus": "Build-Up" },
+      { "id": "lb", "label": "LB", "x": 12, "y": 70, "role": "Attacking Wingback", "focus": "Attack" },
+      { "id": "lcb", "label": "CB", "x": 36, "y": 78, "role": "Ball-Playing Defender", "focus": "Balanced" },
+      { "id": "rcb", "label": "CB", "x": 64, "y": 78, "role": "Ball-Playing Defender", "focus": "Balanced" },
+      { "id": "rb", "label": "RB", "x": 88, "y": 70, "role": "Fullback", "focus": "Balanced" },
+      { "id": "cdm", "label": "CDM", "x": 50, "y": 60, "role": "Deep-Lying Playmaker", "focus": "Balanced" },
+      { "id": "lcm", "label": "CM", "x": 30, "y": 48, "role": "Playmaker", "focus": "Balanced" },
+      { "id": "rcm", "label": "CM", "x": 70, "y": 48, "role": "Box-To-Box", "focus": "Attack" },
+      { "id": "lw", "label": "LW", "x": 14, "y": 24, "role": "Inside Forward", "focus": "Attack" },
+      { "id": "st", "label": "ST", "x": 50, "y": 14, "role": "False 9", "focus": "Balanced" },
+      { "id": "rw", "label": "RW", "x": 86, "y": 24, "role": "Winger", "focus": "Attack" }
+    ],
+    "keyInstructions": [
+      "Short Passing with a Build-Up keeper — every attack starts from the goalkeeper's feet.",
+      "The Deep-Lying Playmaker must be your highest passing player, full stop.",
+      "Both centre-backs Ball-Playing: the first line has to break the press by itself.",
+      "High line at 64 keeps the pitch compressed so the short passing network stays connected."
+    ],
+    "strengths": ["Highest possession share of any system here", "Breaks down low blocks", "Very low turnover rate"],
+    "weaknesses": ["Punished by direct counters", "Demands 80+ passing through the spine", "Little threat from set pieces"],
+    "recommendedProfiles": [
+      { "slot": "Deep-Lying Playmaker", "note": "85+ passing with Pinged Pass or Tiki Taka. Non-negotiable." },
+      { "slot": "Centre-Backs", "note": "75+ passing. Pau Cubarsí and Jorrel Hato are the two best fits in FC 25." },
+      { "slot": "False 9", "note": "Dribbling and passing over shooting — a converted attacking midfielder works best." }
+    ]
+  },
+  {
+    "id": "fc25-alonso-3421",
+    "name": "Leverkusen 3-4-2-1",
+    "manager": "Xabi Alonso",
+    "club": "Bayer Leverkusen",
+    "era": "2023/24",
+    "formation": "3-4-2-1",
+    "shareCode": "Al6&qF%8zDv",
+    "summary": "The unbeaten Bundesliga season. Back three baits the press, wing-backs hold maximum width, two free eights attack the space either side of a target striker on every turnover.",
+    "difficulty": "Plug & Play",
+    "tags": ["Balanced", "Wing-Backs", "Transition", "Back Three"],
+    "offensive": { "buildUpStyle": "Balanced", "width": 70, "playersInBox": 4, "corners": 3, "freeKicks": 4 },
+    "defensive": { "approach": "Balanced", "width": 50, "depth": 54 },
+    "positions": [
+      { "id": "gk", "label": "GK", "x": 50, "y": 92, "role": "Sweeper Keeper", "focus": "Balanced" },
+      { "id": "lcb", "label": "CB", "x": 26, "y": 78, "role": "Ball-Playing Defender", "focus": "Balanced" },
+      { "id": "cb", "label": "CB", "x": 50, "y": 80, "role": "Stopper", "focus": "Defend" },
+      { "id": "rcb", "label": "CB", "x": 74, "y": 78, "role": "Ball-Playing Defender", "focus": "Balanced" },
+      { "id": "lm", "label": "LM", "x": 10, "y": 52, "role": "Wingback", "focus": "Attack" },
+      { "id": "lcm", "label": "CM", "x": 38, "y": 56, "role": "Holding", "focus": "Defend" },
+      { "id": "rcm", "label": "CM", "x": 62, "y": 56, "role": "Deep-Lying Playmaker", "focus": "Balanced" },
+      { "id": "rm", "label": "RM", "x": 90, "y": 52, "role": "Wingback", "focus": "Attack" },
+      { "id": "lcam", "label": "CAM", "x": 36, "y": 32, "role": "Shadow Striker", "focus": "Attack" },
+      { "id": "rcam", "label": "CAM", "x": 64, "y": 32, "role": "Shadow Striker", "focus": "Attack" },
+      { "id": "st", "label": "ST", "x": 50, "y": 14, "role": "Target Forward", "focus": "Balanced" }
+    ],
+    "keyInstructions": [
+      "Attacking width 70 — wing-backs are the only width in the system.",
+      "One Holding and one Deep-Lying Playmaker in the pivot, never two of the same.",
+      "Both CAMs on Shadow Striker to attack past the target man.",
+      "Balanced at depth 54: counter, don't press."
+    ],
+    "strengths": ["Elite transitions", "Low instruction overhead", "Aerial threat from set pieces"],
+    "weaknesses": ["Wing-backs isolated 2v1", "Needs an aerial striker", "Cedes possession to a control side"],
+    "recommendedProfiles": [
+      { "slot": "Wing-Backs", "note": "85+ pace and stamina, both flanks." },
+      { "slot": "Shadow Strikers", "note": "Kenan Yıldız's profile — dribbling with genuine finishing." },
+      { "slot": "Target Forward", "note": "185cm+ with Aerial or Power Header." }
+    ]
+  },
+  {
+    "id": "fc25-simeone-4442",
+    "name": "Cholismo 4-4-2",
+    "manager": "Diego Simeone",
+    "club": "Atlético Madrid",
+    "era": "2013/14",
+    "formation": "4-4-2",
+    "shareCode": "Sm4%dG&7pRn",
+    "summary": "Two banks of four twenty metres apart, moving as a single unit. Concede the ball, deny the middle, win the match from a set piece or one ball into the channel.",
+    "difficulty": "Plug & Play",
+    "tags": ["Low Block", "Compact", "Direct", "Set Pieces"],
+    "offensive": { "buildUpStyle": "Long Ball", "width": 46, "playersInBox": 4, "corners": 4, "freeKicks": 4 },
+    "defensive": { "approach": "Deep", "width": 36, "depth": 30 },
+    "positions": [
+      { "id": "gk", "label": "GK", "x": 50, "y": 92, "role": "Goalkeeper", "focus": "Defend" },
+      { "id": "lb", "label": "LB", "x": 12, "y": 74, "role": "Fullback", "focus": "Defend" },
+      { "id": "lcb", "label": "CB", "x": 36, "y": 78, "role": "Stopper", "focus": "Defend" },
+      { "id": "rcb", "label": "CB", "x": 64, "y": 78, "role": "Defender", "focus": "Defend" },
+      { "id": "rb", "label": "RB", "x": 88, "y": 74, "role": "Fullback", "focus": "Balanced" },
+      { "id": "lm", "label": "LM", "x": 14, "y": 52, "role": "Wide Midfielder", "focus": "Defend" },
+      { "id": "lcm", "label": "CM", "x": 38, "y": 54, "role": "Holding", "focus": "Defend" },
+      { "id": "rcm", "label": "CM", "x": 62, "y": 54, "role": "Box-To-Box", "focus": "Balanced" },
+      { "id": "rm", "label": "RM", "x": 86, "y": 52, "role": "Wide Midfielder", "focus": "Balanced" },
+      { "id": "lst", "label": "ST", "x": 38, "y": 20, "role": "Target Forward", "focus": "Balanced" },
+      { "id": "rst", "label": "ST", "x": 62, "y": 20, "role": "Advanced Forward", "focus": "Attack" }
+    ],
+    "keyInstructions": [
+      "Defensive width 36, depth 30 — the two banks stay close enough to touch.",
+      "Wide midfielders on Defend: they are auxiliary full-backs.",
+      "Long Ball into the target man, second ball to the box-to-box eight.",
+      "Corners and free kicks at 4 — this is where the goals come from."
+    ],
+    "strengths": ["Cheapest system to staff", "Punishes high lines", "Wins with an inferior squad"],
+    "weaknesses": ["Low possession", "Needs a genuine aerial striker", "Poor at chasing a deficit"],
+    "recommendedProfiles": [
+      { "slot": "Centre-Backs", "note": "Aerial and Bruiser over pace — Giovanni Leoni is built for this." },
+      { "slot": "Wide Midfielders", "note": "85+ stamina and 70+ defending ahead of dribbling." },
+      { "slot": "Target Forward", "note": "185cm+ with Power Header. Everything routes through him." }
+    ]
+  }
+]
