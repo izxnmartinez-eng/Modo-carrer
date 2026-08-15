@@ -6,9 +6,10 @@ import { GrowthChart } from "@/components/charts/growth-chart";
 import { RadarChart } from "@/components/charts/radar-chart";
 import { Rating } from "@/components/ui/primitives";
 import { PlayerBadges } from "./player-badges";
+import { useI18n } from "@/i18n/use-i18n";
 import { radarStats } from "@/lib/derive";
-import { cn, contractEnd, growthTone, money, monthsLabel, signed, wage } from "@/lib/format";
-import { GROWTH_TYPE_NOTE, nextSeasonOverall, projectGrowth } from "@/lib/growth";
+import { cn, growthTone, signed } from "@/lib/format";
+import { nextSeasonOverall, projectGrowth } from "@/lib/growth";
 import { copyWithToast } from "@/store/toast";
 import type { DerivedPlayer, GameVersionId } from "@/lib/types";
 
@@ -38,6 +39,7 @@ export function PlayerDrawer({
   inSquad: boolean;
   inCompare: boolean;
 }) {
+  const { d, f, fmt } = useI18n();
   const open = player !== null;
 
   return (
@@ -51,11 +53,11 @@ export function PlayerDrawer({
                 <div className="min-w-0">
                   <Dialog.Title className="truncate text-lg font-bold text-zinc-50">{player.name}</Dialog.Title>
                   <Dialog.Description className="truncate text-xs text-zinc-500">
-                    {player.club ?? "Free agent"}
+                    {player.club ?? d.common.freeAgent}
                     {player.league ? ` · ${player.league}` : ""} · {player.nation}
                   </Dialog.Description>
                 </div>
-                <Dialog.Close className="focus-ring rounded-lg p-1.5 text-zinc-500 hover:text-zinc-200" aria-label="Close">
+                <Dialog.Close className="focus-ring rounded-lg p-1.5 text-zinc-500 hover:text-zinc-200" aria-label={d.common.close}>
                   <X className="size-5" aria-hidden />
                 </Dialog.Close>
               </div>
@@ -67,22 +69,26 @@ export function PlayerDrawer({
                     {pos}
                   </span>
                 ))}
-                <span className="chip border-line bg-surface-2 text-zinc-400">{player.age} years</span>
-                <span className="chip border-line bg-surface-2 text-zinc-400">{player.foot} footed</span>
+                <span className="chip border-line bg-surface-2 text-zinc-400">
+                  {fmt(d.common.years, { count: player.age })}
+                </span>
+                <span className="chip border-line bg-surface-2 text-zinc-400">
+                  {fmt(d.common.footed, { foot: d.common.foot[player.foot] })}
+                </span>
               </div>
 
               <div className="flex items-center gap-3">
                 <div className="text-center">
-                  <p className="field-label">Overall</p>
+                  <p className="field-label">{d.drawer.overall}</p>
                   <Rating value={player.overall} className="mt-1 text-base" />
                 </div>
                 <span className="text-zinc-700">→</span>
                 <div className="text-center">
-                  <p className="field-label">Potential</p>
+                  <p className="field-label">{d.drawer.potential}</p>
                   <Rating value={player.potential} className="mt-1 text-base" />
                 </div>
                 <div className="ml-auto text-right">
-                  <p className="field-label">Growth</p>
+                  <p className="field-label">{d.drawer.growth}</p>
                   <p className={cn("mt-1 font-mono text-lg font-bold", growthTone(player.growth))}>
                     {signed(player.growth)}
                   </p>
@@ -93,8 +99,10 @@ export function PlayerDrawer({
 
               <section className="panel p-4">
                 <div className="mb-3 flex items-baseline justify-between gap-2">
-                  <h3 className="text-sm font-semibold text-zinc-200">Projected growth curve</h3>
-                  <span className="chip border-line bg-surface-2 text-zinc-400">{player.growthType}</span>
+                  <h3 className="text-sm font-semibold text-zinc-200">{d.drawer.growthCurve}</h3>
+                  <span className="chip border-line bg-surface-2 text-zinc-400">
+                    {d.growthTypes[player.growthType].name}
+                  </span>
                 </div>
                 <GrowthChart
                   series={[
@@ -107,15 +115,17 @@ export function PlayerDrawer({
                     },
                   ]}
                 />
-                <p className="mt-2 text-xs leading-relaxed text-zinc-500">{GROWTH_TYPE_NOTE[player.growthType]}</p>
+                <p className="mt-2 text-xs leading-relaxed text-zinc-500">{d.growthTypes[player.growthType].note}</p>
                 <p className="mt-1 text-xs text-zinc-400">
-                  End of next season:{" "}
-                  <span className="font-mono font-semibold text-accent">{nextSeasonOverall(player)} OVR</span>
+                  {d.drawer.nextSeason}{" "}
+                  <span className="font-mono font-semibold text-accent">
+                    {fmt(d.drawer.nextSeasonValue, { overall: nextSeasonOverall(player) })}
+                  </span>
                 </p>
               </section>
 
               <section className="panel flex flex-col items-center p-4">
-                <h3 className="mb-2 self-start text-sm font-semibold text-zinc-200">Attributes</h3>
+                <h3 className="mb-2 self-start text-sm font-semibold text-zinc-200">{d.drawer.attributes}</h3>
                 <RadarChart
                   axes={radarStats(player).map((s) => s.short)}
                   series={[
@@ -138,33 +148,33 @@ export function PlayerDrawer({
               </section>
 
               <section className="panel p-4">
-                <h3 className="mb-2 text-sm font-semibold text-zinc-200">Contract & cost</h3>
+                <h3 className="mb-2 text-sm font-semibold text-zinc-200">{d.drawer.contractCost}</h3>
                 <dl>
-                  <Row label="Transfer value" value={money(player.value)} />
-                  <Row label="Weekly wage" value={player.isFreeAgent ? "—" : wage(player.contract.wage)} />
+                  <Row label={d.drawer.transferValue} value={f.money(player.value)} />
+                  <Row label={d.drawer.weeklyWage} value={player.isFreeAgent ? "—" : f.wage(player.contract.wage)} />
                   <Row
-                    label="Release clause"
-                    value={player.contract.releaseClause ? money(player.contract.releaseClause) : "None"}
+                    label={d.drawer.releaseClauseRow}
+                    value={player.contract.releaseClause ? f.money(player.contract.releaseClause) : d.common.none}
                   />
                   <Row
-                    label="Contract expires"
+                    label={d.drawer.contractExpires}
                     value={
                       player.isFreeAgent
-                        ? "Free agent"
-                        : `${contractEnd(player.contract.expiresYear, player.contract.expiresMonth)} · ${monthsLabel(player.monthsRemaining)}`
+                        ? d.common.freeAgent
+                        : `${f.contractEnd(player.contract.expiresYear, player.contract.expiresMonth)} · ${f.monthsLabel(player.monthsRemaining)}`
                     }
                   />
                   <Row
-                    label="Cost per growth point"
-                    value={player.growth > 0 ? money(player.costPerGrowthPoint) : "—"}
+                    label={d.drawer.costPerGrowth}
+                    value={player.growth > 0 ? f.money(player.costPerGrowthPoint) : "—"}
                   />
-                  <Row label="Bargain score" value={`${player.bargainScore}/100`} />
+                  <Row label={d.drawer.bargainScore} value={fmt(d.drawer.bargainScoreValue, { score: player.bargainScore })} />
                 </dl>
               </section>
 
               {(player.playStyles.length > 0 || player.playStylesPlus.length > 0) && (
                 <section className="panel p-4">
-                  <h3 className="mb-2 text-sm font-semibold text-zinc-200">PlayStyles</h3>
+                  <h3 className="mb-2 text-sm font-semibold text-zinc-200">{d.drawer.playStyles}</h3>
                   <div className="flex flex-wrap gap-1.5">
                     {player.playStylesPlus.map((style) => (
                       <span key={style} className="chip border-gold/50 bg-gold/10 text-gold">
@@ -179,10 +189,10 @@ export function PlayerDrawer({
                   </div>
                   <div className="mt-3 flex gap-3 text-xs text-zinc-400">
                     <span>
-                      Weak foot <span className="font-mono text-zinc-100">{player.weakFoot}★</span>
+                      {d.drawer.weakFoot} <span className="font-mono text-zinc-100">{player.weakFoot}★</span>
                     </span>
                     <span>
-                      Skills <span className="font-mono text-zinc-100">{player.skillMoves}★</span>
+                      {d.drawer.skillMoves} <span className="font-mono text-zinc-100">{player.skillMoves}★</span>
                     </span>
                     <span>
                       <span className="font-mono text-zinc-100">{player.height}cm</span> / {player.weight}kg
@@ -192,7 +202,7 @@ export function PlayerDrawer({
               )}
 
               <section className="panel border-accent/25 bg-accent/5 p-4">
-                <h3 className="mb-1.5 text-sm font-semibold text-accent">Scout report</h3>
+                <h3 className="mb-1.5 text-sm font-semibold text-accent">{d.drawer.scoutReport}</h3>
                 <p className="text-sm leading-relaxed text-zinc-300">{player.scoutNote}</p>
               </section>
 
@@ -208,7 +218,7 @@ export function PlayerDrawer({
                   )}
                 >
                   <UserPlus className="size-4" aria-hidden />
-                  {inSquad ? "In squad plan" : "Add to squad"}
+                  {inSquad ? d.playerActions.inSquad : d.playerActions.addToSquad}
                 </button>
                 <button
                   type="button"
@@ -221,22 +231,23 @@ export function PlayerDrawer({
                   )}
                 >
                   <GitCompareArrows className="size-4" aria-hidden />
-                  Compare
+                  {d.playerActions.compare}
                 </button>
                 <button
                   type="button"
                   onClick={() =>
                     copyWithToast(
                       `${window.location.origin}/?v=${versionId}&player=${player.id}`,
-                      "Player link copied",
-                      `${player.name} — opens straight to this scout report.`,
+                      d.drawer.linkCopiedTitle,
+                      fmt(d.drawer.linkCopiedDescription, { name: player.name }),
+                      { title: d.toast.copyFailedTitle, description: d.toast.copyFailedDescription },
                     )
                   }
-                  title="Copy share link"
+                  title={d.playerActions.copyLink}
                   className="focus-ring rounded-lg border border-line bg-surface-2 px-3 py-2 text-zinc-300 transition hover:border-accent/50 hover:text-accent"
                 >
                   <Link2 className="size-4" aria-hidden />
-                  <span className="sr-only">Copy share link</span>
+                  <span className="sr-only">{d.playerActions.copyLink}</span>
                 </button>
               </div>
             </div>

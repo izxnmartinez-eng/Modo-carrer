@@ -1,6 +1,7 @@
 "use client";
 
 import * as SliderPrimitive from "@radix-ui/react-slider";
+import { useI18n } from "@/i18n/use-i18n";
 import { cn, ratingTone } from "@/lib/format";
 
 export function PageHeader({
@@ -88,6 +89,8 @@ export function RangeSlider({
   onChange: (value: [number, number]) => void;
   format?: (n: number) => string;
 }) {
+  const { d, fmt } = useI18n();
+
   return (
     <div>
       <div className="mb-2 flex items-baseline justify-between gap-2">
@@ -112,7 +115,7 @@ export function RangeSlider({
           <SliderPrimitive.Thumb
             key={i}
             className="focus-ring block size-3.5 rounded-full border-2 border-accent bg-ground transition hover:scale-110"
-            aria-label={`${label} ${i === 0 ? "minimum" : "maximum"}`}
+            aria-label={fmt(i === 0 ? d.common.sliderMin : d.common.sliderMax, { label })}
           />
         ))}
       </SliderPrimitive.Root>

@@ -13,7 +13,9 @@ Built for the five things a Career Mode player actually needs at the transfer sc
 5. **Scouts & Academy** — an intake-return calculator and a regen/pregen tracker.
 
 Every section is driven by a **persistent game-version switcher** (FC 27 / FC 26 / FC 25) that
-swaps the entire dataset — players, tactics, scouts, regens and the accent colour — in one action.
+swaps the entire dataset — players, tactics, scouts, regens and the accent colour — in one action,
+and by a **language switcher** covering English, Spanish, German, French, Italian and Brazilian
+Portuguese.
 
 ---
 
@@ -46,6 +48,7 @@ JSON in the repo.
 | State | Zustand (+ `persist`) for version, squad, comparison, toasts, search |
 | Primitives | Radix UI (Dialog, Dropdown Menu, Slider, Tabs) |
 | Motion | Framer Motion for tab, filter and list transitions |
+| i18n | Hand-rolled, typed dictionaries — no runtime translation library |
 | Icons | lucide-react |
 | Charts | Hand-rolled SVG (radar + growth curve) — no chart dependency |
 
@@ -62,6 +65,7 @@ data/                        Datasets, one folder per game version
     players.json             Player[]      — 19-24 detailed players per version
     tactics.json             Tactic[]      — 5 complete manager systems per version
     scouting.json            regions, scouts, regens
+    i18n/<locale>.json       optional translation of that dataset's prose
 
 src/
   app/                       App Router routes
@@ -73,8 +77,15 @@ src/
     scouts/page.tsx          /scouts    Scouts & Academy
     globals.css              Tailwind theme tokens, per-version accents
 
+  i18n/
+    index.ts                 Locale registry, detection, `fmt()` placeholder filling
+    use-i18n.ts              Hook: active locale → dictionary + localised formatters
+    dictionaries/en.ts       Source of truth; `Dictionary` is derived from it
+    dictionaries/{es,de,fr,it,pt}.ts   `satisfies Dictionary` — a missing key fails the build
+
   lib/
     types.ts                 Every domain type: GameVersion, Player, Tactic, Scout, RegenProfile…
+    localize-dataset.ts      Merges a locale's text overlay over an English dataset
     data.ts                  Dataset registry — the one file a new version touches
     derive.ts                DerivedPlayer: growth, months remaining, bargain score, gem flags
     growth.ts                Growth-curve projection engine (per growth type)
@@ -86,12 +97,13 @@ src/
 
   store/
     version.ts               Active game version (persisted)
+    locale.ts                Interface language (persisted, auto-detected on first visit)
     squad.ts                 Squad plan, wage budget, comparison slate (persisted, keyed by version)
     toast.ts                 Toast queue + `copyWithToast`
     search.ts                Global fuzzy-search query
 
   components/
-    layout/                  App shell, sidebar, mobile drawer, version switcher, global search
+    layout/                  App shell, sidebar, mobile drawer, version + language switchers, search
     players/                 Filters, table, grid cards, scout-report drawer, badges
     tactics/                 Pitch diagram, tactic cards, tactical detail
     squad/                   Squad planner, comparison tool
@@ -127,6 +139,51 @@ schema, and the switcher, filters, calculators and squad plans pick the new vers
 
 ---
 
+## Languages
+
+The interface ships in six languages: **English, Español, Deutsch, Français, Italiano and
+Português (BR)**. On a first visit the app follows the browser's preferred language; once a
+language is picked from the switcher, that choice is persisted and wins from then on.
+
+### How it is wired
+
+`src/i18n/dictionaries/en.ts` is the source of truth and `Dictionary` is derived from it with
+`typeof`. Every other locale is declared `satisfies Dictionary`, so a missing or misspelled key is
+a **build error**, not a string that silently falls back to English at runtime. Components read
+keys as plain properties (`d.players.title`) rather than dot-path strings, which keeps typos
+compile-time visible; `fmt()` fills `{placeholders}`.
+
+Numbers, currency and dates go through `Intl` via `createFormatters()`, so a German user sees
+`9,5 Mio. €` and an English one `€9.5M`. Compact currency is scaled by hand rather than with
+`Intl`'s `notation: "compact"` — Node and browser ICU builds disagree on it (`€9.5m` vs `€9.5M`),
+which would break SSR hydration.
+
+Language detection runs in an effect after mount, never during store rehydration: the prerendered
+HTML is always the default locale, so switching any earlier would make the first client render
+disagree with the server.
+
+### Adding a language
+
+1. Copy `src/i18n/dictionaries/en.ts` to `<code>.ts` and translate the values.
+2. Add the code to the `Locale` union and an entry to `LOCALES` + `DICTIONARIES` in
+   `src/i18n/index.ts`.
+
+`tsc` will list every key you still owe.
+
+### Dataset prose
+
+The datasets themselves are written in English. Their long-form prose — scout reports, tactical
+summaries, instructions, region and regen notes, and the in-game role glossary — is translated
+through optional overlays at `data/<version>/i18n/<locale>.json`, merged over the English text by
+`localizeDataset()`. Overlays are partial by design: anything a locale does not cover falls back to
+English, and an overlay can only ever replace prose, never a rating or a coordinate.
+
+**Spanish overlays ship for all three versions.** German, French, Italian and Portuguese currently
+translate the interface only; their dataset prose stays in English until an overlay file is added
+alongside the Spanish one and registered in `OVERLAYS` (`src/lib/data.ts`).
+
+---
+
 ## How the numbers work
 
 These are the parts a Career Mode player will want to audit before trusting the output.
@@ -158,6 +215,8 @@ coefficient is a named constant at the top of the file and can be re-tuned in on
 
 ## Interaction details
 
+- **Six-language interface** with a switcher beside the version selector, browser-language
+  detection on first visit, and `<html lang>` kept in sync.
 - **Instant fuzzy search** in the header spans player names, clubs, leagues, nations and positions,
   with exact > prefix > word-prefix > substring > subsequence scoring (`mstn` finds Mastantuono).
   It also filters the Tactical Hub (manager, club, formation) and the regen tracker.

@@ -51,10 +51,18 @@ export interface AcademyResult {
   monthsToFirstReport: number;
   /** Weekly wage bill for the assigned scouts, using the dataset's scout costs. */
   weeklyCost: number;
-  /** Plain-language read on the setup. */
-  verdict: string;
-  /** What to change next, ordered by impact. */
-  advice: string[];
+  /** True when both scout ratings are maxed — the setup the UI calls the benchmark. */
+  isBenchmark: boolean;
+  /** What to change next, ordered by impact. Rendered from the active dictionary. */
+  advice: AcademyAdvice[];
+}
+
+/** Advice is returned as an id plus its numbers so the UI can translate it. */
+export type AcademyAdviceId = "judgment" | "experience" | "region" | "facilities" | "scouts" | "optimal";
+
+export interface AcademyAdvice {
+  id: AcademyAdviceId;
+  vars: Record<string, string | number>;
 }
 
 const REPORTS_BASE = 0.8;
@@ -103,38 +111,41 @@ export function calculateAcademy(input: AcademyInput, version: GameVersion, week
   const reportSpread = Number(clamp(3.2 - 0.55 * judgment, 0.4, 3).toFixed(1));
   const monthsToFirstReport = Math.max(1, Math.round(6 - experience));
 
-  const advice: string[] = [];
+  const advice: AcademyAdvice[] = [];
   if (judgment < 5) {
-    advice.push(
-      `Judgment ${judgment}★ caps you at ~${potentialCeiling} POT and leaves a ±${reportSpread}★ report. Every judgment star is worth roughly +${CEILING_PER_JUDGMENT_STAR} potential.`,
-    );
+    advice.push({
+      id: "judgment",
+      vars: { judgment, ceiling: potentialCeiling, spread: reportSpread, perStar: CEILING_PER_JUDGMENT_STAR },
+    });
   }
   if (experience < 5) {
-    advice.push(
-      `Experience ${experience}★ returns ${perScout.toFixed(1)} players per scout per season. A 5★ experience scout returns ${(REPORTS_BASE + REPORTS_PER_EXPERIENCE_STAR * 4).toFixed(1)}.`,
-    );
+    advice.push({
+      id: "experience",
+      vars: {
+        experience,
+        perScout: perScout.toFixed(1),
+        best: (REPORTS_BASE + REPORTS_PER_EXPERIENCE_STAR * 4).toFixed(1),
+      },
+    });
   }
   if (region.potentialBias < 3) {
-    advice.push(
-      `${region.name} carries a ${region.potentialBias >= 0 ? "+" : ""}${region.potentialBias} potential bias. South America is +3 and is where the 90+ ceilings come from.`,
-    );
+    advice.push({
+      id: "region",
+      vars: {
+        region: region.name,
+        bias: `${region.potentialBias >= 0 ? "+" : ""}${region.potentialBias}`,
+      },
+    });
   }
   if (facilities < 3) {
-    advice.push(
-      "Youth facilities below Excellent cost you roughly 1.5 starting overall per level, which delays first-team readiness by a full season.",
-    );
+    advice.push({ id: "facilities", vars: {} });
   }
   if (scouts < 3) {
-    advice.push("Three assigned scouts is the practical sweet spot — intake size scales linearly with scout count.");
+    advice.push({ id: "scouts", vars: {} });
   }
   if (advice.length === 0) {
-    advice.push("This is the maximum-value setup in the game. Keep the assignment running year-round and never recall early.");
+    advice.push({ id: "optimal", vars: {} });
   }
-
-  const verdict =
-    judgment === 5 && experience === 5
-      ? `The 5★/5★ benchmark: ~${playersFound} players per intake, ceiling around ${potentialCeiling} POT, and a ${Math.round(gemChance * 100)}% chance of at least one 85+ potential prospect.`
-      : `Expect ~${playersFound} players per intake with a ceiling around ${potentialCeiling} POT. Chance of an 85+ potential gem: ${Math.round(gemChance * 100)}%.`;
 
   return {
     playersFound,
@@ -145,7 +156,7 @@ export function calculateAcademy(input: AcademyInput, version: GameVersion, week
     reportSpread,
     monthsToFirstReport,
     weeklyCost,
-    verdict,
+    isBenchmark: judgment === 5 && experience === 5,
     advice,
   };
 }

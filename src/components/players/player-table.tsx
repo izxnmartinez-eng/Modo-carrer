@@ -3,21 +3,29 @@
 import { ArrowDown, ArrowUp, GitCompareArrows, UserPlus } from "lucide-react";
 import { Rating } from "@/components/ui/primitives";
 import { PlayerBadges } from "./player-badges";
-import { cn, contractEnd, growthTone, money, monthsLabel, signed, wage } from "@/lib/format";
+import { useI18n } from "@/i18n/use-i18n";
+import { cn, growthTone, signed } from "@/lib/format";
 import type { SortKey } from "@/lib/filters";
+import type { Dictionary } from "@/i18n";
 import type { DerivedPlayer } from "@/lib/types";
 
-const COLUMNS: { key: SortKey; label: string; align?: "right"; hideBelow?: string }[] = [
-  { key: "name", label: "Player" },
-  { key: "age", label: "Age", align: "right" },
-  { key: "overall", label: "OVR", align: "right" },
-  { key: "potential", label: "POT", align: "right" },
-  { key: "growth", label: "+Δ", align: "right" },
-  { key: "value", label: "Value", align: "right" },
-  { key: "wage", label: "Wage", align: "right", hideBelow: "md" },
-  { key: "releaseClause", label: "Clause", align: "right", hideBelow: "lg" },
-  { key: "monthsRemaining", label: "Contract", align: "right", hideBelow: "lg" },
-  { key: "bargainScore", label: "Score", align: "right" },
+/** `label` keys into `dictionary.table`, so column headers follow the locale. */
+const COLUMNS: {
+  key: SortKey;
+  label: keyof Dictionary["table"];
+  align?: "right";
+  hideBelow?: string;
+}[] = [
+  { key: "name", label: "player" },
+  { key: "age", label: "age", align: "right" },
+  { key: "overall", label: "overall", align: "right" },
+  { key: "potential", label: "potential", align: "right" },
+  { key: "growth", label: "growth", align: "right" },
+  { key: "value", label: "value", align: "right" },
+  { key: "wage", label: "wage", align: "right", hideBelow: "md" },
+  { key: "releaseClause", label: "clause", align: "right", hideBelow: "lg" },
+  { key: "monthsRemaining", label: "contract", align: "right", hideBelow: "lg" },
+  { key: "bargainScore", label: "score", align: "right" },
 ];
 
 export function PlayerTable({
@@ -41,6 +49,8 @@ export function PlayerTable({
   squadIds: string[];
   compareIds: string[];
 }) {
+  const { d, f } = useI18n();
+
   return (
     <div className="panel overflow-x-auto">
       <table className="w-full min-w-[760px] border-collapse text-sm">
@@ -66,7 +76,7 @@ export function PlayerTable({
                     sortKey === col.key ? "text-accent" : "text-zinc-500 hover:text-zinc-200",
                   )}
                 >
-                  {col.label}
+                  {d.table[col.label]}
                   {sortKey === col.key &&
                     (sortDir === "asc" ? (
                       <ArrowUp className="size-3" aria-hidden />
@@ -77,7 +87,7 @@ export function PlayerTable({
               </th>
             ))}
             <th scope="col" className="px-3 py-2.5 text-right">
-              <span className="sr-only">Actions</span>
+              <span className="sr-only">{d.common.actions}</span>
             </th>
           </tr>
         </thead>
@@ -94,7 +104,7 @@ export function PlayerTable({
                       <span className="chip border-line bg-surface-2 text-[10px] text-zinc-400">{player.position}</span>
                     </span>
                     <span className="mt-0.5 flex items-center gap-2">
-                      <span className="truncate text-xs text-zinc-500">{player.club ?? "Free agent"}</span>
+                      <span className="truncate text-xs text-zinc-500">{player.club ?? d.common.freeAgent}</span>
                       <PlayerBadges player={player} compact />
                     </span>
                   </button>
@@ -109,19 +119,19 @@ export function PlayerTable({
                 <td className={cn("px-3 py-2.5 text-right font-mono font-semibold tabular-nums", growthTone(player.growth))}>
                   {signed(player.growth)}
                 </td>
-                <td className="px-3 py-2.5 text-right font-mono tabular-nums text-zinc-200">{money(player.value)}</td>
+                <td className="px-3 py-2.5 text-right font-mono tabular-nums text-zinc-200">{f.money(player.value)}</td>
                 <td className="hidden px-3 py-2.5 text-right font-mono tabular-nums text-zinc-300 md:table-cell">
-                  {player.isFreeAgent ? "—" : wage(player.contract.wage)}
+                  {player.isFreeAgent ? "—" : f.wage(player.contract.wage)}
                 </td>
                 <td className="hidden px-3 py-2.5 text-right font-mono tabular-nums text-zinc-300 lg:table-cell">
-                  {player.contract.releaseClause ? money(player.contract.releaseClause) : "—"}
+                  {player.contract.releaseClause ? f.money(player.contract.releaseClause) : "—"}
                 </td>
                 <td className="hidden px-3 py-2.5 text-right lg:table-cell">
                   <span className="font-mono text-xs tabular-nums text-zinc-300">
-                    {player.isFreeAgent ? "Free" : contractEnd(player.contract.expiresYear, player.contract.expiresMonth)}
+                    {player.isFreeAgent ? d.common.free : f.contractEnd(player.contract.expiresYear, player.contract.expiresMonth)}
                   </span>
                   <span className="block text-[10px] text-zinc-600">
-                    {player.isFreeAgent ? "no club" : monthsLabel(player.monthsRemaining)}
+                    {player.isFreeAgent ? d.common.noClub : f.monthsLabel(player.monthsRemaining)}
                   </span>
                 </td>
                 <td className="px-3 py-2.5 text-right">
@@ -141,7 +151,7 @@ export function PlayerTable({
                       type="button"
                       onClick={() => onToggleCompare(player)}
                       aria-pressed={inCompare}
-                      title={inCompare ? "Remove from comparison" : "Add to comparison"}
+                      title={inCompare ? d.playerActions.removeFromCompare : d.playerActions.addToCompare}
                       className={cn(
                         "focus-ring rounded-md border p-1.5 transition",
                         inCompare
@@ -155,7 +165,7 @@ export function PlayerTable({
                       type="button"
                       onClick={() => onToggleSquad(player)}
                       aria-pressed={inSquad}
-                      title={inSquad ? "Remove from squad plan" : "Add to squad plan"}
+                      title={inSquad ? d.playerActions.removeFromSquadTitle : d.playerActions.addToSquadTitle}
                       className={cn(
                         "focus-ring rounded-md border p-1.5 transition",
                         inSquad

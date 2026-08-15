@@ -12,8 +12,20 @@
  *   2. add `"fc28"` to `GameVersionId` in `types.ts`
  *   3. import the files below and add one entry to `DATASETS`
  * Nothing else in the app needs to change.
+ *
+ * Translations of the datasets' prose live alongside them in
+ * `/data/<id>/i18n/<locale>.json` and are registered in `OVERLAYS`. They are
+ * optional and partial: anything a locale does not cover falls back to English.
  */
-import type { GameVersion, GameVersionId, Player, Tactic, VersionDataset } from "./types";
+import type { Locale } from "@/i18n";
+import type {
+  DatasetTextOverlay,
+  GameVersion,
+  GameVersionId,
+  Player,
+  Tactic,
+  VersionDataset,
+} from "./types";
 
 import fc27Meta from "@data/fc27/meta.json";
 import fc27Players from "@data/fc27/players.json";
@@ -29,6 +41,10 @@ import fc25Meta from "@data/fc25/meta.json";
 import fc25Players from "@data/fc25/players.json";
 import fc25Tactics from "@data/fc25/tactics.json";
 import fc25Scouting from "@data/fc25/scouting.json";
+
+import fc27Es from "@data/fc27/i18n/es.json";
+import fc26Es from "@data/fc26/i18n/es.json";
+import fc25Es from "@data/fc25/i18n/es.json";
 
 /** JSON imports arrive as widened literal types, so each bundle is asserted once here. */
 function bundle(
@@ -50,6 +66,27 @@ export const DATASETS: Record<GameVersionId, VersionDataset> = {
   fc26: bundle(fc26Meta, fc26Players, fc26Tactics, fc26Scouting),
   fc25: bundle(fc25Meta, fc25Players, fc25Tactics, fc25Scouting),
 };
+
+/**
+ * Per-version, per-locale text overlays.
+ *
+ * English needs no entry — it is what the datasets are written in. Adding a
+ * translation is one JSON file plus one line here.
+ */
+export const OVERLAYS: Partial<Record<GameVersionId, Partial<Record<Locale, DatasetTextOverlay>>>> = {
+  fc27: { es: fc27Es as DatasetTextOverlay },
+  fc26: { es: fc26Es as DatasetTextOverlay },
+  fc25: { es: fc25Es as DatasetTextOverlay },
+};
+
+export function getOverlay(id: GameVersionId, locale: Locale): DatasetTextOverlay | undefined {
+  return OVERLAYS[id]?.[locale];
+}
+
+/** Locales that ship a dataset-prose translation for this version. */
+export function localesWithOverlay(id: GameVersionId): Locale[] {
+  return Object.keys(OVERLAYS[id] ?? {}) as Locale[];
+}
 
 /** Newest first — this is the order the version switcher renders in. */
 export const VERSION_ORDER: GameVersionId[] = ["fc27", "fc26", "fc25"];

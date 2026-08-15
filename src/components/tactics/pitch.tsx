@@ -34,15 +34,18 @@ const ROLE_SHORT: Record<string, string> = {
 };
 
 export function shortRole(role: string): string {
-  return (
-    ROLE_SHORT[role] ??
-    role
-      .split(/[\s-]+/)
-      .map((word) => word[0] ?? "")
-      .join("")
-      .slice(0, 3)
-      .toUpperCase()
-  );
+  const known = ROLE_SHORT[role];
+  if (known) return known;
+
+  // Translated role names have no entry in the glossary, so fall back to
+  // initials — and to the first three letters when a single word makes the
+  // initials too short to read ("Carrilero" → "CAR", not "C").
+  const initials = role
+    .split(/[\s-]+/)
+    .map((word) => word[0] ?? "")
+    .join("")
+    .slice(0, 3);
+  return (initials.length >= 2 ? initials : role.slice(0, 3)).toUpperCase();
 }
 
 /**

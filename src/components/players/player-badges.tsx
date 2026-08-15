@@ -1,18 +1,20 @@
 "use client";
 
 import { Clock, Gem, HandCoins, Sparkles } from "lucide-react";
+import { useI18n } from "@/i18n/use-i18n";
 import { BARGAIN_THRESHOLD } from "@/lib/filters";
 import type { DerivedPlayer } from "@/lib/types";
 
 /** The Career Mode signals a player can carry: gem, bargain, free agent, expiring. */
 export function PlayerBadges({ player, compact = false }: { player: DerivedPlayer; compact?: boolean }) {
+  const { d } = useI18n();
   const badges: { key: string; icon: typeof Gem; label: string; className: string }[] = [];
 
   if (player.isHiddenGem) {
     badges.push({
       key: "gem",
       icon: Gem,
-      label: "Hidden gem",
+      label: d.badges.hiddenGem,
       className: "border-gold/50 bg-gold/10 text-gold",
     });
   }
@@ -20,7 +22,7 @@ export function PlayerBadges({ player, compact = false }: { player: DerivedPlaye
     badges.push({
       key: "bargain",
       icon: Sparkles,
-      label: "Bargain",
+      label: d.badges.bargain,
       className: "border-accent/50 bg-accent/10 text-accent",
     });
   }
@@ -28,7 +30,7 @@ export function PlayerBadges({ player, compact = false }: { player: DerivedPlaye
     badges.push({
       key: "free",
       icon: HandCoins,
-      label: "Free agent",
+      label: d.badges.freeAgent,
       className: "border-emerald-500/40 bg-emerald-500/10 text-emerald-300",
     });
   }
@@ -36,7 +38,7 @@ export function PlayerBadges({ player, compact = false }: { player: DerivedPlaye
     badges.push({
       key: "expiring",
       icon: Clock,
-      label: "Expiring",
+      label: d.badges.expiring,
       className: "border-rose-500/40 bg-rose-500/10 text-rose-300",
     });
   }

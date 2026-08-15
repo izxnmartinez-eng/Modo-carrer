@@ -1,8 +1,10 @@
 "use client";
 
 import { useMemo } from "react";
-import { getDataset } from "./data";
+import { getDataset, getOverlay } from "./data";
 import { derivePlayers } from "./derive";
+import { localizeDataset } from "./localize-dataset";
+import { useLocaleStore } from "@/store/locale";
 import { useVersionStore } from "@/store/version";
 import type { DerivedPlayer, GameVersion, GameVersionId, Tactic, VersionDataset } from "./types";
 
@@ -16,16 +18,19 @@ export interface ActiveDataset {
 }
 
 /**
- * Reads the active game version and returns that version's dataset with all
- * derived fields already computed. Switching version in the navbar re-runs
- * this in every subscribed component, which is what makes the switch global.
+ * Reads the active game version and interface language, and returns that
+ * version's dataset — localised, with every derived field already computed.
+ * Switching either setting re-runs this in every subscribed component, which
+ * is what makes both switches global.
  */
 export function useDataset(): ActiveDataset {
   const versionId = useVersionStore((s) => s.version);
   const hydrated = useVersionStore((s) => s.hydrated);
+  const locale = useLocaleStore((s) => s.locale);
 
   return useMemo(() => {
-    const dataset = getDataset(versionId);
+    // English datasets first, then the locale's prose overlay on top.
+    const dataset = localizeDataset(getDataset(versionId), getOverlay(versionId, locale));
     return {
       versionId,
       version: dataset.version,
@@ -34,5 +39,5 @@ export function useDataset(): ActiveDataset {
       scouting: dataset.scouting,
       hydrated,
     };
-  }, [versionId, hydrated]);
+  }, [versionId, hydrated, locale]);
 }

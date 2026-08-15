@@ -5,6 +5,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { CircleCheck, Copy, TriangleAlert } from "lucide-react";
 import { EmptyState, PageHeader, Toggle } from "@/components/ui/primitives";
 import { Pitch, shortRole } from "./pitch";
+import { useI18n } from "@/i18n/use-i18n";
 import { cn } from "@/lib/format";
 import { scoreField } from "@/lib/fuzzy";
 import { useDataset } from "@/lib/use-dataset";
@@ -33,14 +34,17 @@ function SliderBar({ label, value, hint }: { label: string; value: number; hint?
 }
 
 function CopyCodeButton({ tactic, className }: { tactic: Tactic; className?: string }) {
+  const { d, fmt } = useI18n();
+
   return (
     <button
       type="button"
       onClick={() =>
         copyWithToast(
           tactic.shareCode,
-          "Tactical code copied",
-          `${tactic.manager} — ${tactic.name}. Paste it into the in-game Tactics > Community Tactics screen.`,
+          d.tactics.copiedTitle,
+          fmt(d.tactics.copiedDescription, { manager: tactic.manager, name: tactic.name }),
+          { title: d.toast.copyFailedTitle, description: d.toast.copyFailedDescription },
         )
       }
       className={cn(
@@ -55,6 +59,7 @@ function CopyCodeButton({ tactic, className }: { tactic: Tactic; className?: str
 }
 
 function TacticDetail({ tactic }: { tactic: Tactic }) {
+  const { d, fmt } = useI18n();
   const [selected, setSelected] = useState<string | null>(null);
   const active = tactic.positions.find((p) => p.id === selected) ?? null;
 
@@ -76,10 +81,12 @@ function TacticDetail({ tactic }: { tactic: Tactic }) {
                 <p className="text-sm font-semibold text-zinc-100">
                   {active.label} · {active.role}
                 </p>
-                <p className="mt-0.5 text-xs text-zinc-500">Focus: {active.focus}</p>
+                <p className="mt-0.5 text-xs text-zinc-500">
+                  {fmt(d.tactics.focus, { focus: d.tactics.roleFocus[active.focus as keyof typeof d.tactics.roleFocus] ?? active.focus })}
+                </p>
               </>
             ) : (
-              <p className="text-xs text-zinc-500">Tap any position on the pitch to see its role and focus.</p>
+              <p className="text-xs text-zinc-500">{d.tactics.pitchHint}</p>
             )}
           </motion.div>
         </AnimatePresence>
@@ -100,7 +107,9 @@ function TacticDetail({ tactic }: { tactic: Tactic }) {
                   {shortRole(position.role)}
                 </span>
                 <span className="min-w-0 flex-1 truncate text-[11px] text-zinc-400">{position.role}</span>
-                <span className="shrink-0 text-[10px] text-zinc-600">{position.focus}</span>
+                <span className="shrink-0 text-[10px] text-zinc-600">
+                  {d.tactics.roleFocus[position.focus as keyof typeof d.tactics.roleFocus] ?? position.focus}
+                </span>
               </button>
             </li>
           ))}
@@ -109,19 +118,21 @@ function TacticDetail({ tactic }: { tactic: Tactic }) {
 
       <div className="flex flex-col gap-4">
         <div className="panel p-4">
-          <h3 className="mb-3 text-sm font-semibold text-zinc-200">Tactical setup</h3>
+          <h3 className="mb-3 text-sm font-semibold text-zinc-200">{d.tactics.setup}</h3>
           <div className="grid gap-4 sm:grid-cols-2">
             <div className="flex flex-col gap-3">
               <div className="flex items-center justify-between gap-2 rounded-lg border border-line bg-surface-2 px-3 py-2">
-                <span className="field-label">Build-up</span>
-                <span className="text-xs font-semibold text-zinc-100">{tactic.offensive.buildUpStyle}</span>
+                <span className="field-label">{d.tactics.buildUp}</span>
+                <span className="text-xs font-semibold text-zinc-100">
+                  {d.tactics.buildUpStyle[tactic.offensive.buildUpStyle]}
+                </span>
               </div>
-              <SliderBar label="Attacking width" value={tactic.offensive.width} />
+              <SliderBar label={d.tactics.attackingWidth} value={tactic.offensive.width} />
               <div className="grid grid-cols-3 gap-2 text-center">
                 {[
-                  { label: "In box", value: tactic.offensive.playersInBox },
-                  { label: "Corners", value: tactic.offensive.corners },
-                  { label: "Free kicks", value: tactic.offensive.freeKicks },
+                  { label: d.tactics.playersInBox, value: tactic.offensive.playersInBox },
+                  { label: d.tactics.corners, value: tactic.offensive.corners },
+                  { label: d.tactics.freeKicks, value: tactic.offensive.freeKicks },
                 ].map((item) => (
                   <div key={item.label} className="rounded-lg border border-line bg-surface-2 px-2 py-1.5">
                     <p className="text-[10px] uppercase tracking-wider text-zinc-500">{item.label}</p>
@@ -132,19 +143,21 @@ function TacticDetail({ tactic }: { tactic: Tactic }) {
             </div>
             <div className="flex flex-col gap-3">
               <div className="flex items-center justify-between gap-2 rounded-lg border border-line bg-surface-2 px-3 py-2">
-                <span className="field-label">Defensive approach</span>
-                <span className="text-xs font-semibold text-zinc-100">{tactic.defensive.approach}</span>
+                <span className="field-label">{d.tactics.defensiveApproach}</span>
+                <span className="text-xs font-semibold text-zinc-100">
+                  {d.tactics.approach[tactic.defensive.approach]}
+                </span>
               </div>
-              <SliderBar label="Defensive width" value={tactic.defensive.width} />
+              <SliderBar label={d.tactics.defensiveWidth} value={tactic.defensive.width} />
               <SliderBar
-                label="Defensive line depth"
+                label={d.tactics.depth}
                 value={tactic.defensive.depth}
                 hint={
                   tactic.defensive.depth >= 65
-                    ? "High line — your centre-backs need pace."
+                    ? d.tactics.depthHighHint
                     : tactic.defensive.depth <= 40
-                      ? "Deep block — you will concede possession by design."
-                      : "Mid block."
+                      ? d.tactics.depthDeepHint
+                      : d.tactics.depthMidHint
                 }
               />
             </div>
@@ -152,7 +165,7 @@ function TacticDetail({ tactic }: { tactic: Tactic }) {
         </div>
 
         <div className="panel p-4">
-          <h3 className="mb-2 text-sm font-semibold text-zinc-200">Key instructions</h3>
+          <h3 className="mb-2 text-sm font-semibold text-zinc-200">{d.tactics.keyInstructions}</h3>
           <ul className="flex flex-col gap-2">
             {tactic.keyInstructions.map((instruction) => (
               <li key={instruction} className="flex gap-2 text-sm leading-relaxed text-zinc-300">
@@ -166,7 +179,7 @@ function TacticDetail({ tactic }: { tactic: Tactic }) {
         <div className="grid gap-4 sm:grid-cols-2">
           <div className="panel p-4">
             <h3 className="mb-2 flex items-center gap-2 text-sm font-semibold text-emerald-300">
-              <CircleCheck className="size-4" aria-hidden /> Strengths
+              <CircleCheck className="size-4" aria-hidden /> {d.tactics.strengths}
             </h3>
             <ul className="flex flex-col gap-1.5 text-xs leading-relaxed text-zinc-400">
               {tactic.strengths.map((item) => (
@@ -176,7 +189,7 @@ function TacticDetail({ tactic }: { tactic: Tactic }) {
           </div>
           <div className="panel p-4">
             <h3 className="mb-2 flex items-center gap-2 text-sm font-semibold text-amber-300">
-              <TriangleAlert className="size-4" aria-hidden /> Weaknesses
+              <TriangleAlert className="size-4" aria-hidden /> {d.tactics.weaknesses}
             </h3>
             <ul className="flex flex-col gap-1.5 text-xs leading-relaxed text-zinc-400">
               {tactic.weaknesses.map((item) => (
@@ -187,7 +200,7 @@ function TacticDetail({ tactic }: { tactic: Tactic }) {
         </div>
 
         <div className="panel p-4">
-          <h3 className="mb-2 text-sm font-semibold text-zinc-200">Who to sign for it</h3>
+          <h3 className="mb-2 text-sm font-semibold text-zinc-200">{d.tactics.recommended}</h3>
           <dl className="flex flex-col gap-2.5">
             {tactic.recommendedProfiles.map((profile) => (
               <div key={profile.slot} className="border-b border-line/60 pb-2.5 last:border-0 last:pb-0">
@@ -205,6 +218,7 @@ function TacticDetail({ tactic }: { tactic: Tactic }) {
 export function TacticsView() {
   const { tactics, version } = useDataset();
   const query = useSearchStore((s) => s.query);
+  const { d, fmt } = useI18n();
   const [activeId, setActiveId] = useState<string | null>(null);
   const [formationFilter, setFormationFilter] = useState<string | null>(null);
 
@@ -231,14 +245,14 @@ export function TacticsView() {
   return (
     <>
       <PageHeader
-        eyebrow={`${version.shortLabel} · ${version.season}`}
-        title="Tactical Hub & Manager Codes"
-        description="Legendary and meta managerial systems rebuilt with in-game roles, sliders and instructions. Copy the share code straight into Community Tactics."
+        eyebrow={fmt(d.players.eyebrow, { version: version.shortLabel, season: version.season })}
+        title={d.tactics.title}
+        description={d.tactics.description}
       />
 
       <div className="mb-4 flex flex-wrap gap-2">
         <Toggle active={formationFilter === null} onClick={() => setFormationFilter(null)}>
-          All formations
+          {d.tactics.allFormations}
         </Toggle>
         {formations.map((formation) => (
           <Toggle
@@ -252,10 +266,7 @@ export function TacticsView() {
       </div>
 
       {visible.length === 0 ? (
-        <EmptyState
-          title="No tactics match that search"
-          hint="Try a manager name (Guardiola, Alonso, Simeone), a club, or a formation like 3-2-4-1."
-        />
+        <EmptyState title={d.tactics.emptyTitle} hint={d.tactics.emptyHint} />
       ) : (
         <div className="flex flex-col gap-5">
           <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
@@ -285,7 +296,9 @@ export function TacticsView() {
                   <p className="line-clamp-3 text-xs leading-relaxed text-zinc-400">{tactic.summary}</p>
 
                   <div className="flex flex-wrap gap-1.5">
-                    <span className="chip border-line bg-surface-2 text-zinc-400">{tactic.difficulty}</span>
+                    <span className="chip border-line bg-surface-2 text-zinc-400">
+                      {d.tactics.difficulty[tactic.difficulty]}
+                    </span>
                     {tactic.tags.slice(0, 2).map((tag) => (
                       <span key={tag} className="chip border-line/60 bg-surface-2/60 text-zinc-500">
                         {tag}
@@ -300,7 +313,7 @@ export function TacticsView() {
                       onClick={() => setActiveId(tactic.id)}
                       className="focus-ring rounded-lg border border-line bg-surface-2 px-3 py-2 text-xs font-medium text-zinc-300 transition hover:text-zinc-50"
                     >
-                      {selected ? "Viewing" : "Open"}
+                      {selected ? d.common.viewing : d.common.open}
                     </button>
                   </div>
                 </motion.article>

@@ -3,6 +3,7 @@
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import { AnimatePresence, motion } from "framer-motion";
 import { Check, ChevronDown, Gamepad2 } from "lucide-react";
+import { useI18n } from "@/i18n/use-i18n";
 import { VERSIONS } from "@/lib/data";
 import { cn } from "@/lib/format";
 import { useToastStore } from "@/store/toast";
@@ -19,6 +20,7 @@ export function VersionSwitcher({ className }: { className?: string }) {
   const version = useVersionStore((s) => s.version);
   const setVersion = useVersionStore((s) => s.setVersion);
   const push = useToastStore((s) => s.push);
+  const { d, fmt } = useI18n();
 
   const active = VERSIONS.find((v) => v.id === version) ?? VERSIONS[0]!;
 
@@ -29,7 +31,7 @@ export function VersionSwitcher({ className }: { className?: string }) {
           "focus-ring group flex w-full items-center gap-2 rounded-lg border border-line bg-surface-2 px-3 py-2 text-left transition hover:border-accent/50",
           className,
         )}
-        aria-label={`Game version: ${active.label}`}
+        aria-label={fmt(d.version.aria, { version: active.label })}
       >
         <Gamepad2 className="size-4 shrink-0 text-accent" aria-hidden />
         <span className="min-w-0 flex-1">
@@ -46,7 +48,7 @@ export function VersionSwitcher({ className }: { className?: string }) {
           className="z-50 w-[min(20rem,calc(100vw-2rem))] overflow-hidden rounded-xl border border-line bg-surface shadow-2xl shadow-black/60"
         >
           <div className="border-b border-line px-3 py-2 text-[11px] font-semibold uppercase tracking-widest text-zinc-500">
-            Game version
+            {d.version.label}
           </div>
           {VERSIONS.map((v) => (
             <DropdownMenu.Item
@@ -55,8 +57,8 @@ export function VersionSwitcher({ className }: { className?: string }) {
                 if (v.id === version) return;
                 setVersion(v.id);
                 push({
-                  title: `Switched to ${v.label}`,
-                  description: `${v.season} dataset loaded — players, tactics and scouting updated.`,
+                  title: fmt(d.version.switchedTitle, { version: v.label }),
+                  description: fmt(d.version.switchedDescription, { season: v.season }),
                   tone: "info",
                 });
               }}

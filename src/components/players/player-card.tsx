@@ -4,7 +4,8 @@ import { motion } from "framer-motion";
 import { GitCompareArrows, UserPlus } from "lucide-react";
 import { Rating } from "@/components/ui/primitives";
 import { PlayerBadges } from "./player-badges";
-import { cn, contractEnd, growthTone, money, signed, wage } from "@/lib/format";
+import { useI18n } from "@/i18n/use-i18n";
+import { cn, growthTone, signed } from "@/lib/format";
 import type { DerivedPlayer } from "@/lib/types";
 
 export function PlayerCard({
@@ -22,6 +23,8 @@ export function PlayerCard({
   inSquad: boolean;
   inCompare: boolean;
 }) {
+  const { d, f, fmt } = useI18n();
+
   return (
     <motion.article
       layout
@@ -34,7 +37,7 @@ export function PlayerCard({
         <button type="button" onClick={onOpen} className="focus-ring min-w-0 rounded-md text-left">
           <p className="truncate font-semibold text-zinc-50 group-hover:text-accent">{player.name}</p>
           <p className="truncate text-xs text-zinc-500">
-            {player.club ?? "Free agent"} · {player.nation}
+            {player.club ?? d.common.freeAgent} · {player.nation}
           </p>
         </button>
         <div className="flex shrink-0 items-center gap-1">
@@ -51,7 +54,7 @@ export function PlayerCard({
             {pos}
           </span>
         ))}
-        <span className="chip border-line bg-surface-2 text-zinc-400">{player.age}y</span>
+        <span className="chip border-line bg-surface-2 text-zinc-400">{fmt(d.common.ageShort, { count: player.age })}</span>
         <span className={cn("chip border-line bg-surface-2 font-mono", growthTone(player.growth))}>
           {signed(player.growth)}
         </span>
@@ -59,23 +62,23 @@ export function PlayerCard({
 
       <dl className="grid grid-cols-2 gap-x-3 gap-y-1.5 text-xs">
         <div className="flex justify-between gap-2">
-          <dt className="text-zinc-500">Value</dt>
-          <dd className="font-mono text-zinc-200">{money(player.value)}</dd>
+          <dt className="text-zinc-500">{d.table.value}</dt>
+          <dd className="font-mono text-zinc-200">{f.money(player.value)}</dd>
         </div>
         <div className="flex justify-between gap-2">
-          <dt className="text-zinc-500">Wage</dt>
-          <dd className="font-mono text-zinc-200">{player.isFreeAgent ? "—" : wage(player.contract.wage)}</dd>
+          <dt className="text-zinc-500">{d.table.wage}</dt>
+          <dd className="font-mono text-zinc-200">{player.isFreeAgent ? "—" : f.wage(player.contract.wage)}</dd>
         </div>
         <div className="flex justify-between gap-2">
-          <dt className="text-zinc-500">Clause</dt>
+          <dt className="text-zinc-500">{d.table.clause}</dt>
           <dd className="font-mono text-zinc-200">
-            {player.contract.releaseClause ? money(player.contract.releaseClause) : "None"}
+            {player.contract.releaseClause ? f.money(player.contract.releaseClause) : d.common.none}
           </dd>
         </div>
         <div className="flex justify-between gap-2">
-          <dt className="text-zinc-500">Contract</dt>
+          <dt className="text-zinc-500">{d.table.contract}</dt>
           <dd className="font-mono text-zinc-200">
-            {player.isFreeAgent ? "—" : contractEnd(player.contract.expiresYear, player.contract.expiresMonth)}
+            {player.isFreeAgent ? "—" : f.contractEnd(player.contract.expiresYear, player.contract.expiresMonth)}
           </dd>
         </div>
       </dl>
@@ -88,13 +91,13 @@ export function PlayerCard({
           onClick={onOpen}
           className="focus-ring flex-1 rounded-lg border border-line bg-surface-2 px-3 py-1.5 text-xs font-medium text-zinc-300 transition hover:border-accent/50 hover:text-accent"
         >
-          Scout report
+          {d.playerActions.scoutReport}
         </button>
         <button
           type="button"
           onClick={onToggleCompare}
           aria-pressed={inCompare}
-          title={inCompare ? "Remove from comparison" : "Add to comparison"}
+          title={inCompare ? d.playerActions.removeFromCompare : d.playerActions.addToCompare}
           className={cn(
             "focus-ring rounded-lg border p-1.5 transition",
             inCompare
@@ -108,7 +111,7 @@ export function PlayerCard({
           type="button"
           onClick={onToggleSquad}
           aria-pressed={inSquad}
-          title={inSquad ? "Remove from squad plan" : "Add to squad plan"}
+          title={inSquad ? d.playerActions.removeFromSquadTitle : d.playerActions.addToSquadTitle}
           className={cn(
             "focus-ring rounded-lg border p-1.5 transition",
             inSquad

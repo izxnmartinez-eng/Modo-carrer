@@ -5,8 +5,9 @@ import { Plus, X } from "lucide-react";
 import { GrowthChart } from "@/components/charts/growth-chart";
 import { RadarChart } from "@/components/charts/radar-chart";
 import { EmptyState, PageHeader, Rating } from "@/components/ui/primitives";
+import { useI18n, type I18n } from "@/i18n/use-i18n";
 import { radarStats } from "@/lib/derive";
-import { cn, growthTone, money, signed, wage } from "@/lib/format";
+import { cn, growthTone, signed } from "@/lib/format";
 import { projectGrowth } from "@/lib/growth";
 import { scoreRecord } from "@/lib/fuzzy";
 import { useDataset } from "@/lib/use-dataset";
@@ -16,44 +17,63 @@ import type { DerivedPlayer } from "@/lib/types";
 const SERIES_COLORS = ["var(--color-accent)", "#38bdf8", "#fbbf24"];
 
 /** Rows of the head-to-head table. `better: "low"` means a smaller number wins. */
-const METRICS: {
+interface Metric {
   label: string;
   hint: string;
   value: (p: DerivedPlayer) => number;
   format: (p: DerivedPlayer) => string;
   better: "high" | "low";
-}[] = [
-  { label: "Overall", hint: "Current rating", value: (p) => p.overall, format: (p) => String(p.overall), better: "high" },
-  { label: "Potential", hint: "Career ceiling", value: (p) => p.potential, format: (p) => String(p.potential), better: "high" },
-  { label: "Growth", hint: "Potential minus overall", value: (p) => p.growth, format: (p) => signed(p.growth), better: "high" },
-  { label: "Age", hint: "Seasons of growth left", value: (p) => p.age, format: (p) => `${p.age}`, better: "low" },
-  { label: "Transfer value", hint: "Asking price baseline", value: (p) => p.value, format: (p) => money(p.value), better: "low" },
-  {
-    label: "Weekly wage",
-    hint: "Ongoing budget hit",
-    value: (p) => p.contract.wage,
-    format: (p) => (p.isFreeAgent ? "—" : wage(p.contract.wage)),
-    better: "low",
-  },
-  {
-    label: "Wage per OVR point",
-    hint: "What each rating point costs you every week",
-    value: (p) => Math.round(p.contract.wage / Math.max(1, p.overall)),
-    format: (p) => (p.isFreeAgent ? "—" : `${money(Math.round(p.contract.wage / Math.max(1, p.overall)))}/wk`),
-    better: "low",
-  },
-  {
-    label: "Fee per growth point",
-    hint: "What each future rating point costs up front",
-    value: (p) => (p.growth > 0 ? p.costPerGrowthPoint : Number.MAX_SAFE_INTEGER),
-    format: (p) => (p.growth > 0 ? money(p.costPerGrowthPoint) : "—"),
-    better: "low",
-  },
-  { label: "Bargain score", hint: "Composite signing rating out of 100", value: (p) => p.bargainScore, format: (p) => `${p.bargainScore}`, better: "high" },
-];
+}
+
+/** Built per render so labels and number formatting follow the active locale. */
+function buildMetrics({ d, f }: I18n): Metric[] {
+  const m = d.compare.metrics;
+  return [
+    { label: m.overall, hint: m.overallHint, value: (p) => p.overall, format: (p) => String(p.overall), better: "high" },
+    {
+      label: m.potential,
+      hint: m.potentialHint,
+      value: (p) => p.potential,
+      format: (p) => String(p.potential),
+      better: "high",
+    },
+    { label: m.growth, hint: m.growthHint, value: (p) => p.growth, format: (p) => signed(p.growth), better: "high" },
+    { label: m.age, hint: m.ageHint, value: (p) => p.age, format: (p) => `${p.age}`, better: "low" },
+    { label: m.value, hint: m.valueHint, value: (p) => p.value, format: (p) => f.money(p.value), better: "low" },
+    {
+      label: m.wage,
+      hint: m.wageHint,
+      value: (p) => p.contract.wage,
+      format: (p) => (p.isFreeAgent ? "—" : f.wage(p.contract.wage)),
+      better: "low",
+    },
+    {
+      label: m.wagePerOverall,
+      hint: m.wagePerOverallHint,
+      value: (p) => Math.round(p.contract.wage / Math.max(1, p.overall)),
+      format: (p) => (p.isFreeAgent ? "—" : f.wage(Math.round(p.contract.wage / Math.max(1, p.overall)))),
+      better: "low",
+    },
+    {
+      label: m.feePerGrowth,
+      hint: m.feePerGrowthHint,
+      value: (p) => (p.growth > 0 ? p.costPerGrowthPoint : Number.MAX_SAFE_INTEGER),
+      format: (p) => (p.growth > 0 ? f.money(p.costPerGrowthPoint) : "—"),
+      better: "low",
+    },
+    {
+      label: m.bargainScore,
+      hint: m.bargainScoreHint,
+      value: (p) => p.bargainScore,
+      format: (p) => `${p.bargainScore}`,
+      better: "high",
+    },
+  ];
+}
 
 function PlayerPicker({ onPick, taken }: { onPick: (player: DerivedPlayer) => void; taken: string[] }) {
   const { players } = useDataset();
+  const { d } = useI18n();
   const [query, setQuery] = useState("");
 
   const results = useMemo(() => {
@@ -81,13 +101,13 @@ function PlayerPicker({ onPick, taken }: { onPick: (player: DerivedPlayer) => vo
     <div className="panel flex flex-col gap-3 p-4">
       <div className="flex items-center gap-2 text-zinc-400">
         <Plus className="size-4" aria-hidden />
-        <span className="text-sm font-medium">Add a player</span>
+        <span className="text-sm font-medium">{d.compare.addPlayer}</span>
       </div>
       <input
         value={query}
         onChange={(event) => setQuery(event.target.value)}
-        placeholder="Search the database…"
-        aria-label="Search for a player to compare"
+        placeholder={d.compare.searchPlaceholder}
+        aria-label={d.compare.searchLabel}
         className="focus-ring rounded-lg border border-line bg-surface-2 px-3 py-2 text-sm text-zinc-100 placeholder:text-zinc-600"
       />
       <ul className="flex flex-col gap-1">
@@ -111,7 +131,7 @@ function PlayerPicker({ onPick, taken }: { onPick: (player: DerivedPlayer) => vo
             </button>
           </li>
         ))}
-        {results.length === 0 && <li className="px-2 py-1.5 text-xs text-zinc-600">No players match that search.</li>}
+        {results.length === 0 && <li className="px-2 py-1.5 text-xs text-zinc-600">{d.compare.noMatches}</li>}
       </ul>
     </div>
   );
@@ -122,6 +142,9 @@ export function CompareView() {
   const compareIds = useCompareIds(versionId);
   const toggleCompare = useSquadStore((s) => s.toggleCompare);
   const clearCompare = useSquadStore((s) => s.clearCompare);
+  const i18n = useI18n();
+  const { d, fmt } = i18n;
+  const metrics = buildMetrics(i18n);
 
   const selected = useMemo(
     () => compareIds.map((id) => players.find((p) => p.id === id)).filter((p): p is DerivedPlayer => Boolean(p)),
@@ -137,9 +160,9 @@ export function CompareView() {
   return (
     <>
       <PageHeader
-        eyebrow={`${version.shortLabel} · ${version.season}`}
-        title="Player Comparison"
-        description="Side-by-side attribute radars, growth curves on one axis, and the wage-versus-performance maths that decides which of two wonderkids you can actually afford."
+        eyebrow={fmt(d.players.eyebrow, { version: version.shortLabel, season: version.season })}
+        title={d.compare.title}
+        description={d.compare.description}
         actions={
           selected.length > 0 ? (
             <button
@@ -147,7 +170,7 @@ export function CompareView() {
               onClick={() => clearCompare(versionId)}
               className="focus-ring chip border-line bg-surface-2 text-zinc-400 hover:text-rose-300"
             >
-              Clear comparison
+              {d.compare.clear}
             </button>
           ) : undefined
         }
@@ -164,7 +187,8 @@ export function CompareView() {
             <div className="min-w-0 flex-1">
               <p className="truncate font-semibold text-zinc-50">{player.name}</p>
               <p className="truncate text-xs text-zinc-500">
-                {player.club ?? "Free agent"} · {player.position} · {player.age}y
+                {player.club ?? d.common.freeAgent} · {player.position} ·{" "}
+                {fmt(d.common.ageShort, { count: player.age })}
               </p>
               <div className="mt-2 flex items-center gap-1.5">
                 <Rating value={player.overall} />
@@ -178,7 +202,7 @@ export function CompareView() {
             <button
               type="button"
               onClick={() => toggleCompare(versionId, player.id)}
-              aria-label={`Remove ${player.name} from the comparison`}
+              aria-label={fmt(d.compare.removeAria, { name: player.name })}
               className="focus-ring rounded-md p-1 text-zinc-600 hover:text-rose-400"
             >
               <X className="size-4" aria-hidden />
@@ -189,15 +213,12 @@ export function CompareView() {
       </div>
 
       {selected.length === 0 ? (
-        <EmptyState
-          title="Nothing selected yet"
-          hint="Pick up to three players — from the search above or the compare button in the database — to overlay their radars, growth curves and cost ratios."
-        />
+        <EmptyState title={d.compare.emptyTitle} hint={d.compare.emptyHint} />
       ) : (
         <div className="flex flex-col gap-5">
           <div className="grid gap-5 lg:grid-cols-2">
             <section className="panel flex flex-col items-center p-4">
-              <h2 className="mb-2 self-start text-sm font-semibold text-zinc-200">Attribute radar</h2>
+              <h2 className="mb-2 self-start text-sm font-semibold text-zinc-200">{d.compare.radarTitle}</h2>
               {sameStatSet && axesSource ? (
                 <RadarChart
                   axes={radarStats(axesSource).map((s) => s.short)}
@@ -210,15 +231,12 @@ export function CompareView() {
                   size={300}
                 />
               ) : (
-                <p className="py-10 text-center text-xs text-zinc-500">
-                  Goalkeepers and outfield players use different card stats, so they can&apos;t share one radar. Compare
-                  keepers against keepers.
-                </p>
+                <p className="py-10 text-center text-xs text-zinc-500">{d.compare.keeperNote}</p>
               )}
             </section>
 
             <section className="panel p-4">
-              <h2 className="mb-2 text-sm font-semibold text-zinc-200">Growth curves</h2>
+              <h2 className="mb-2 text-sm font-semibold text-zinc-200">{d.compare.growthTitle}</h2>
               <GrowthChart
                 height={230}
                 series={selected.map((player, index) => ({
@@ -229,10 +247,7 @@ export function CompareView() {
                   potential: player.potential,
                 }))}
               />
-              <p className="mt-2 text-xs leading-relaxed text-zinc-500">
-                Solid lines are projected overall by age; the dashed line of the same colour is that player&apos;s
-                potential ceiling.
-              </p>
+              <p className="mt-2 text-xs leading-relaxed text-zinc-500">{d.compare.growthCaption}</p>
             </section>
           </div>
 
@@ -241,7 +256,7 @@ export function CompareView() {
               <thead>
                 <tr className="border-b border-line">
                   <th scope="col" className="px-4 py-3 text-left text-[11px] font-semibold uppercase tracking-wider text-zinc-500">
-                    Metric
+                    {d.compare.metric}
                   </th>
                   {selected.map((player, index) => (
                     <th key={player.id} scope="col" className="px-4 py-3 text-right text-xs font-semibold text-zinc-200">
@@ -258,7 +273,7 @@ export function CompareView() {
                 </tr>
               </thead>
               <tbody>
-                {METRICS.map((metric) => {
+                {metrics.map((metric) => {
                   const values = selected.map(metric.value);
                   const best = metric.better === "high" ? Math.max(...values) : Math.min(...values);
                   const uniqueWinner = values.filter((v) => v === best).length === 1;

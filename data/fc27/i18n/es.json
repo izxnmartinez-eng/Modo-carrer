@@ -1,0 +1,179 @@
+{
+  "roles": {
+    "Goalkeeper": "Portero",
+    "Sweeper Keeper": "Portero líbero",
+    "Fullback": "Lateral",
+    "Falseback": "Lateral falso",
+    "Wingback": "Carrilero",
+    "Attacking Wingback": "Carrilero ofensivo",
+    "Defender": "Defensa",
+    "Stopper": "Defensa agresivo",
+    "Ball-Playing Defender": "Defensa con salida de balón",
+    "Holding": "Pivote defensivo",
+    "Deep-Lying Playmaker": "Organizador retrasado",
+    "Box-To-Box": "Box to box",
+    "Playmaker": "Organizador",
+    "Wide Midfielder": "Interior",
+    "Winger": "Extremo",
+    "Inside Forward": "Extremo a pierna cambiada",
+    "Shadow Striker": "Media punta llegador",
+    "Advanced Forward": "Delantero avanzado",
+    "Poacher": "Rematador",
+    "False 9": "Falso 9",
+    "Target Forward": "Delantero referencia",
+    "Pressing Forward": "Delantero presionador"
+  },
+  "players": {
+    "fc27-yamal": { "scoutNote": "Cláusula intocable y una ficha a juego. Solo es un objetivo realista en una partida con presupuesto enorme desde el primer año; si no, es la referencia con la que se compara el precio de todos los demás extremos de esta lista." },
+    "fc27-estevao": { "scoutNote": "Crecimiento explosivo: espera +4 de media en las dos primeras temporadas si juega 25 partidos de liga. Sin cláusula, así que el Chelsea pedirá bastante por encima de su valor." },
+    "fc27-yildiz": { "scoutNote": "La cláusula está solo un 25% por encima de su valor: es la vía más barata para tener un interior de 90. Su altura lo convierte en un segundo delantero real en un 3-4-2-1." },
+    "fc27-guler": { "scoutNote": "Las cláusulas del Madrid lo hacen prácticamente imposible de fichar, pero como agente libre en 2029 es el mejor lanzador de faltas del listado." },
+    "fc27-doue": { "scoutNote": "Lo bastante ambidiestro como para cambiar de banda a mitad de partido. Al ser crecimiento temprano, casi todo su +5 llega antes de los 24: fíchalo ya o ni te molestes." },
+    "fc27-cubarsi": { "scoutNote": "El mejor perfil de central con salida de todo el fondo de FC 27. Un potencial de 91 en un central es rarísimo; su cláusula es el único obstáculo." },
+    "fc27-zaire-emery": { "scoutNote": "Cubre mediocentro, pivote y lateral derecho de emergencia con 80+. Es la ficha de plantilla más útil de la base de datos para montar un 3-2-4-1." },
+    "fc27-mastantuono": { "scoutNote": "+8 de crecimiento en curva explosiva. Al ser rotación en el Madrid, una oferta de cesión por toda la temporada es realista antes de pagar el traspaso." },
+    "fc27-endrick": { "scoutNote": "Sobre el papel es un delantero de rotación; en la práctica es un 88 en tres temporadas. El problema es la ficha: reserva 130.000 €/semana antes de pujar." },
+    "fc27-hato": { "scoutNote": "Central zurdo que también juega de lateral, justo lo que necesita una defensa de tres por la izquierda. Los contratos largos del Chelsea disparan el precio un 40% sobre su valor." },
+    "fc27-nusa": { "scoutNote": "Una cláusula de 60 M€ en un extremo con 87 de potencial y 92 de velocidad es el mejor negocio del mercado de FC 27. Actívala en la primera ventana, antes de que el Leipzig la renegocie." },
+    "fc27-bergvall": { "scoutNote": "Prototipo de box to box para el doble pivote de un 3-2-4-1. 44 M€ por +8 de crecimiento es la mejor inversión en el centro del campo para un equipo de media tabla." },
+    "fc27-nwaneri": { "scoutNote": "Le quedan dos años y no tiene cláusula: puja el segundo verano, cuando el contrato baje de 24 meses y el precio del Arsenal se desplome." },
+    "fc27-leoni": { "scoutNote": "Crecimiento tardío: plano hasta los 23 y luego +7 en dos temporadas. Cédelo dos años a un equipo de media tabla y recoges un monstruo aéreo de 87." },
+    "fc27-bouaddi": { "scoutNote": "Cláusula de 40 M€, 86 de potencial y ficha baja. La mejora más barata que existe en el pivote para un recién ascendido." },
+    "fc27-tel": { "scoutNote": "Último año de contrato. Espera al mercado de enero y fírmalo con un precontrato gratis: es el mejor fichaje libre de FC 27." },
+    "fc27-diao": { "scoutNote": "91 de velocidad con una cláusula de 35 M€. En la Serie A las cláusulas se pagan a plazos: revisa tu caja de la primera ventana antes de activarla." },
+    "fc27-restes": { "scoutNote": "Los porteros mantienen su nivel una década: un meta de 86 de potencial por 26 M€ es un fichaje único para el resto de la partida." },
+    "fc27-dowman": { "scoutNote": "Joya oculta: sus 67 de media esconden una curva de +21. Fíchalo, cédelo dos temporadas a la Championship y te vuelve con 85+ a los 20 años." },
+    "fc27-ngumoha": { "scoutNote": "Joya oculta. Sus 50 de físico son el único freno: dale una temporada de entrenamiento centrado en gimnasio antes de que sea titular." },
+    "fc27-nyoni": { "scoutNote": "Joya oculta con el precio de entrada más bajo de todo el podio de crecimiento. Menos de 7 M€ por +19." },
+    "fc27-obi": { "scoutNote": "Joya oculta con curva tardía. No pasa nada hasta los 21: planifica las cesiones con eso en mente y no lo vendas presa del pánico a los 19." },
+    "fc27-sancho": { "scoutNote": "Agente libre. Un extremo de 80 de media solo por la prima de fichaje: la forma más rápida de que un recién ascendido sobreviva a su primera temporada." },
+    "fc27-maignan": { "scoutNote": "Agente libre, 86 de media, coste cero. Fíchalo como titular de la primera temporada mientras tu portero joven de 86 de potencial se hace por detrás." }
+  },
+  "tactics": {
+    "fc27-zidane-diamond": {
+      "name": "Rombo de la BBC",
+      "summary": "El sistema con el que Zidane ganó dos Champions seguidas. Un rombo estrecho que cede las bandas a propósito, satura el centro del campo y deja que dos delanteros y dos laterales que se suman rematen todo lo que el rombo canaliza hacia arriba.",
+      "tags": ["Estrecho", "Posesión", "Laterales que se suman", "Dos delanteros"],
+      "keyInstructions": [
+        "Los dos laterales en carrilero (ofensivo): son la única amplitud que tiene el sistema.",
+        "El pivote nunca cruza el centro del campo: ponlo en defensivo y déjalo ahí.",
+        "El media punta en rol libre es la clave: se mete en los pasillos interiores que dejan los delanteros.",
+        "Salida equilibrada, no de pase corto: el rombo necesita poder buscar directamente a la pareja de arriba."
+      ],
+      "strengths": ["Superioridad numérica por dentro", "Dominio de los segundos balones", "Asociación entre los dos delanteros"],
+      "weaknesses": ["Las bandas al contragolpe", "Necesita laterales con 85+ de aguante", "Sufre contra bloques bajos con cinco defensas"],
+      "recommendedProfiles": [
+        { "slot": "Laterales", "note": "78+ de velocidad y 80+ de aguante. Los carrileros jóvenes son baratos: es la posición en la que merece la pena invertir en canteranos." },
+        { "slot": "Pivote", "note": "80+ en defensa y 78+ en pase. El perfil de Ayyoub Bouaddi es el arquetipo." },
+        { "slot": "Media punta", "note": "Organizador con rol libre: 85+ de regate, 4★ de filigranas y estilo Pase incisivo." }
+      ]
+    },
+    "fc27-pep-inverted": {
+      "name": "3-2-4-1 invertido",
+      "summary": "El sistema del triplete. Un lateral derecho se mete al centro del campo para formar un doble pivote, tres centrales sostienen la vigilancia defensiva contra el contragolpe y cuatro atacantes ocupan la amplitud y los dos pasillos interiores por delante de ellos.",
+      "tags": ["Posesión", "Juego posicional", "Vigilancia defensiva", "Lateral invertido"],
+      "keyInstructions": [
+        "Salida de pase corto con el portero en modo salida de balón: el meta es el hombre libre en la primera fase.",
+        "Los atacantes de banda se quedan pegados a la cal; solo los dos media puntas se meten dentro.",
+        "Planteamiento alto con amplitud estrecha (48): los tres centrales tapan el centro y los jugadores de banda repliegan.",
+        "Cuatro en el área como máximo: los dos pivotes no pueden sumarse al ataque a la vez."
+      ],
+      "strengths": ["Control absoluto de la posesión", "Inmunidad al contragolpe gracias a la vigilancia", "Superioridades en los pasillos interiores"],
+      "weaknesses": ["Le hace daño un rival directo de balón largo", "Exige 80+ de pase en los tres centrales", "La línea alta sufre contra delanteros de 90+ de velocidad"],
+      "recommendedProfiles": [
+        { "slot": "Centrales exteriores", "note": "78+ de velocidad y 78+ de pase. Pau Cubarsí y Jorrel Hato son los dos que mejor encajan en FC 27." },
+        { "slot": "Organizador retrasado", "note": "85+ de pase con el estilo Pase tenso. Es la posición que rompe los bloques bajos." },
+        { "slot": "Falso 9", "note": "Prioriza regate y pase por encima del tiro: un media punta reconvertido rinde más que un rematador puro." }
+      ]
+    },
+    "fc27-alonso-3421": {
+      "name": "3-4-2-1 del Leverkusen",
+      "summary": "La temporada invicta. Una defensa de tres paciente que invita a la presión, carriles que dan la máxima amplitud y dos interiores libres que atacan el espacio en cuanto se recupera el balón, por detrás de un delantero referencia.",
+      "tags": ["Equilibrado", "Carrileros", "Transiciones", "Defensa de tres"],
+      "keyInstructions": [
+        "Amplitud ofensiva 72: los carrileros son los únicos que pueden salir del ancho de las áreas.",
+        "Un pivote defensivo y un organizador retrasado. Nunca dos del mismo rol.",
+        "Los dos media puntas como llegadores: atacan el espacio a ambos lados del delantero en cada recuperación.",
+        "El planteamiento equilibrado mantiene la línea en 55: este sistema contragolpea, no presiona."
+      ],
+      "strengths": ["Enorme en transiciones", "Muy pocas instrucciones que gestionar", "Peligro a balón parado con la defensa de tres"],
+      "weaknesses": ["Los carriles quedan aislados en 2 contra 1", "Necesita un delantero de verdad en el juego aéreo", "Pierde el control contra un equipo de posesión"],
+      "recommendedProfiles": [
+        { "slot": "Carrileros", "note": "85+ de velocidad, 85+ de aguante y 4★ de pierna mala. La posición más exigente físicamente del juego." },
+        { "slot": "Media puntas", "note": "Perfiles de Kenan Yıldız y Ethan Nwaneri: 85+ de regate con gol de verdad." },
+        { "slot": "Delantero referencia", "note": "Estilo Remate de cabeza o Juego aéreo y 185 cm o más. Chido Obi crece exactamente hacia este rol." }
+      ]
+    },
+    "fc27-klopp-gegenpress": {
+      "name": "4-3-3 heavy metal",
+      "summary": "Gegenpressing en estado puro. Recuperar el balón en seis segundos, atacar por fuera de los laterales rivales y dejar que dos extremos a pierna cambiada definan desde los pasillos interiores mientras los laterales ponen todos los centros.",
+      "tags": ["Gegenpressing", "Línea alta", "Extremos a pierna cambiada", "Centros de los laterales"],
+      "keyInstructions": [
+        "Presión agresiva con altura 74: tu defensa necesita 80+ de velocidad de media o te la van a correr por detrás.",
+        "El delantero presionador activa la trampa: todo lo demás va detrás de su primer movimiento.",
+        "Los dos extremos a pierna cambiada y los dos laterales ofensivos: la amplitud la dan los defensas y los goles los extremos.",
+        "Salida al contragolpe, no de pase corto. Todo el sistema está pensado para marcar en menos de ocho segundos tras la recuperación."
+      ],
+      "strengths": ["Provoca pérdidas en campo rival", "Devastador en los primeros 20 minutos", "Fácil de aplicar a una plantilla normal"],
+      "weaknesses": ["El aguante se hunde a partir del minuto 70 sin rotaciones", "Muy expuesto a un pase largo de liberación", "Necesita tres preparadores físicos de nivel"],
+      "recommendedProfiles": [
+        { "slot": "Centrales", "note": "80+ de velocidad obligatorio. No juegues este sistema con una pareja de centrales por debajo de 75." },
+        { "slot": "Extremos", "note": "Perfiles de Antonio Nusa y Assane Diao: 90+ de velocidad y pierna cambiada respecto a su banda." },
+        { "slot": "Mediocentros", "note": "Estilos Presión eficaz o Incansable y 85+ de aguante. Rótalos cada tres partidos." }
+      ]
+    },
+    "fc27-simeone-4442": {
+      "name": "4-4-2 del Cholismo",
+      "summary": "Dos líneas de cuatro separadas veinte metros, moviéndose como un solo bloque. Ceder la posesión, negar por completo el centro y ganar el partido con una jugada a balón parado o un pase directo al espacio.",
+      "tags": ["Bloque bajo", "Compacto", "Directo", "Balón parado"],
+      "keyInstructions": [
+        "Amplitud defensiva 38 y altura 32: las dos líneas tienen que estar lo bastante juntas como para tocarse.",
+        "Los dos interiores en enfoque defensivo. Son laterales auxiliares, no extremos.",
+        "Salida en balón largo hacia el delantero referencia y el segundo balón lo recoge el box to box.",
+        "Tómate en serio el balón parado: córners y faltas en 4 es de donde salen los goles de este sistema."
+      ],
+      "strengths": ["El sistema más barato de montar", "Implacable contra líneas altas", "Gana feo con una plantilla peor"],
+      "weaknesses": ["Poca posesión: los partidos se hacen pasivos", "Necesita un delantero fuerte de cabeza", "Le cuesta remontar dos goles"],
+      "recommendedProfiles": [
+        { "slot": "Centrales", "note": "Estilos Juego aéreo y Fortachón por encima de la velocidad. Giovanni Leoni está hecho para este rol." },
+        { "slot": "Interiores", "note": "Prioriza 85+ de aguante y 70+ de defensa por encima del regate." },
+        { "slot": "Delantero referencia", "note": "185 cm o más y Remate de cabeza. Todo lo que produce la salida en largo pasa por él." }
+      ]
+    }
+  },
+  "scouting": {
+    "regions": {
+      "south-america": { "name": "Sudamérica", "bias": "Extremos, media puntas y delanteros técnicos", "note": "La región con el techo más alto del juego. También la más irregular: manda aquí a tu ojeador con mejor criterio." },
+      "western-europe": { "name": "Europa Occidental", "bias": "Equilibrada en todas las posiciones", "note": "La opción segura. Devuelve centrocampistas de 80+ de potencial de forma constante y sin problemas de permiso de trabajo." },
+      "uk-ireland": { "name": "Reino Unido e Irlanda", "bias": "Centrocampistas físicos, laterales y porteros", "note": "Imprescindible para cumplir la cuota de canteranos en una partida inglesa. Techos más bajos, suelos más altos." },
+      "eastern-europe": { "name": "Europa del Este", "bias": "Centrales y delanteros referencia", "note": "La región con mejor relación calidad-precio: los canteranos llegan con las fichas más bajas del juego." },
+      "scandinavia": { "name": "Escandinavia", "bias": "Delanteros altos y centrales", "note": "Perfiles físicos fiables. La altura media está 3 o 4 cm por encima de cualquier otra región." },
+      "africa": { "name": "África", "bias": "Extremos rapidísimos y centrocampistas box to box", "note": "Los mejores registros de velocidad en la cantera. En una partida inglesa el límite son los permisos de trabajo, no los jugadores." },
+      "asia": { "name": "Asia", "bias": "Centrocampistas técnicos y jugadores de banda", "note": "El potencial medio más bajo, pero la red de ojeo más barata. Útil como cuarta o quinta asignación." },
+      "north-america": { "name": "Norteamérica y Centroamérica", "bias": "Porteros y laterales atléticos", "note": "La única región que produce porteros de 85+ de potencial con regularidad." }
+    },
+    "scouts": {
+      "fc27-scout-1": { "specialty": "Delanteros" },
+      "fc27-scout-2": { "specialty": "Centrocampistas" },
+      "fc27-scout-3": { "specialty": "Defensas" },
+      "fc27-scout-4": { "specialty": "Equilibrado" },
+      "fc27-scout-5": { "specialty": "Extremos" },
+      "fc27-scout-6": { "specialty": "Equilibrado" },
+      "fc27-scout-7": { "specialty": "Porteros" }
+    },
+    "regens": {
+      "fc27-regen-messi": { "surfacesAt": "Cantera argentina o de la MLS", "note": "El regen con el techo más alto del juego. Revisa todos los extremos derechos argentinos nacidos el 24 de junio en tus tres primeras camadas tras su retirada." },
+      "fc27-regen-ronaldo": { "surfacesAt": "Cantera portuguesa o juvenil de la liga saudí", "note": "Delantero portugués diestro de 187 cm nacido el 5 de febrero. Suele aparecer una temporada después de su retirada." },
+      "fc27-regen-modric": { "surfacesAt": "Canteras de la liga croata", "note": "Mediocentro croata bajito nacido el 9 de septiembre. La cantera del Dinamo de Zagreb es el primer sitio donde mirar." },
+      "fc27-regen-benzema": { "surfacesAt": "Canteras de la Ligue 1 y la Ligue 2", "note": "Busca al delantero francés de 185 cm nacido el 19 de diciembre: la cantera del Lyon es el punto de aparición clásico." },
+      "fc27-regen-neuer": { "surfacesAt": "Canteras de la 2. Bundesliga", "note": "Los porteros regen empiezan bajos y crecen tarde. Un meta de 58 de media y 89 de potencial es lo normal: no lo vendas con el primer informe." },
+      "fc27-regen-silva": { "surfacesAt": "Canteras del Brasileirão", "note": "Central brasileño nacido el 22 de septiembre. Las canteras de Fluminense y Flamengo son el origen más habitual." },
+      "fc27-regen-dimaria": { "surfacesAt": "Canteras argentinas de la zona de Rosario", "note": "Extremo derecho argentino zurdo nacido el 14 de febrero. Se confunde a menudo con el regen de Messi: mira la altura (180 frente a 170)." },
+      "fc27-regen-suarez": { "surfacesAt": "Canteras uruguayas o de la MLS", "note": "Los delanteros uruguayos son raros en las camadas de cantera, así que este se localiza solo por nacionalidad." },
+      "fc27-regen-muller": { "surfacesAt": "Canteras de la Bundesliga", "note": "Media punta alemán de 186 cm nacido el 13 de septiembre. Los media puntas altos son poco frecuentes: es un filtro visual fácil." },
+      "fc27-regen-ramos": { "surfacesAt": "Canteras de LaLiga y de la Liga Portugal", "note": "Central español nacido el 30 de marzo, que suele generarse con el lateral derecho como posición secundaria, igual que el original." },
+      "fc27-regen-lewandowski": { "surfacesAt": "Canteras de la Ekstraklasa", "note": "Las camadas polacas son pequeñas, así que este es uno de los regens más fáciles de encontrar del juego." },
+      "fc27-regen-debruyne": { "surfacesAt": "Canteras de la liga belga", "note": "Se retira una temporada más tarde que el resto de esta lista. Las canteras del Genk y el Brujas son los puntos de aparición a vigilar." }
+    }
+  }
+}

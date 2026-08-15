@@ -32,12 +32,25 @@ export const useToastStore = create<ToastState>()((set, get) => ({
   dismiss: (id) => set((state) => ({ toasts: state.toasts.filter((t) => t.id !== id) })),
 }));
 
+export interface CopyFailureCopy {
+  title: string;
+  description: string;
+}
+
 /**
  * Copies text and raises a toast either way.
  * Falls back to a hidden textarea when the async clipboard API is unavailable
  * (older browsers, or a page served over plain HTTP).
+ *
+ * All four strings are passed in already translated — this module has no
+ * dictionary of its own so it stays usable from event handlers.
  */
-export async function copyWithToast(text: string, title: string, description?: string) {
+export async function copyWithToast(
+  text: string,
+  title: string,
+  description: string | undefined,
+  failure: CopyFailureCopy,
+) {
   const { push } = useToastStore.getState();
   try {
     if (navigator.clipboard?.writeText) {
@@ -55,11 +68,6 @@ export async function copyWithToast(text: string, title: string, description?: s
     }
     push({ title, description, tone: "success", code: text });
   } catch {
-    push({
-      title: "Couldn't copy to clipboard",
-      description: "Your browser blocked clipboard access — select the code and copy it manually.",
-      tone: "error",
-      code: text,
-    });
+    push({ title: failure.title, description: failure.description, tone: "error", code: text });
   }
 }

@@ -283,3 +283,38 @@ export interface VersionDataset {
     regens: RegenProfile[];
   };
 }
+
+/* ------------------------------------------------------------------ */
+/* Dataset text overlays                                               */
+/* ------------------------------------------------------------------ */
+
+/**
+ * Translations for the long-form prose inside a dataset.
+ *
+ * The datasets themselves stay in English; an overlay lives at
+ * `data/<version>/i18n/<locale>.json` and is merged over the English text at
+ * read time. Every field is optional, so a partial overlay simply falls back
+ * to English for whatever it does not cover.
+ */
+export interface DatasetTextOverlay {
+  /** Shared glossary of in-game role names, applied across every tactic. */
+  roles?: Record<string, string>;
+  players?: Record<string, { scoutNote?: string }>;
+  tactics?: Record<
+    string,
+    {
+      name?: string;
+      summary?: string;
+      tags?: string[];
+      keyInstructions?: string[];
+      strengths?: string[];
+      weaknesses?: string[];
+      recommendedProfiles?: { slot: string; note: string }[];
+    }
+  >;
+  scouting?: {
+    regions?: Record<string, { name?: string; bias?: string; note?: string }>;
+    scouts?: Record<string, { specialty?: string }>;
+    regens?: Record<string, { surfacesAt?: string; note?: string }>;
+  };
+}

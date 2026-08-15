@@ -5,18 +5,15 @@ import * as Tabs from "@radix-ui/react-tabs";
 import { motion } from "framer-motion";
 import { Cake, Info, Radar, Star } from "lucide-react";
 import { EmptyState, PageHeader, StatTile, Toggle } from "@/components/ui/primitives";
+import { useI18n } from "@/i18n/use-i18n";
 import { calculateAcademy, type FacilityLevel } from "@/lib/academy";
-import { cn, money } from "@/lib/format";
+import { cn } from "@/lib/format";
 import { scoreRecord } from "@/lib/fuzzy";
 import { useDataset } from "@/lib/use-dataset";
 import { useSearchStore } from "@/store/search";
 import type { Scout } from "@/lib/types";
 
-const FACILITIES: { level: FacilityLevel; label: string }[] = [
-  { level: 1, label: "Basic" },
-  { level: 2, label: "Good" },
-  { level: 3, label: "Excellent" },
-];
+const FACILITY_LEVELS: FacilityLevel[] = [1, 2, 3];
 
 function StarPicker({
   label,
@@ -29,6 +26,8 @@ function StarPicker({
   onChange: (value: number) => void;
   hint: string;
 }) {
+  const { d, fmt } = useI18n();
+
   return (
     <div>
       <div className="flex items-baseline justify-between gap-2">
@@ -41,7 +40,7 @@ function StarPicker({
             key={star}
             type="button"
             onClick={() => onChange(star)}
-            aria-label={`${label} ${star} stars`}
+            aria-label={fmt(d.scouts.starsAria, { label, count: star })}
             aria-pressed={value === star}
             className={cn(
               "focus-ring rounded-md border p-1.5 transition",
@@ -69,6 +68,7 @@ function estimateWeeklyCost(scouts: Scout[], count: number, experience: number, 
 
 function AcademyCalculator() {
   const { scouting, version } = useDataset();
+  const { d, f, fmt } = useI18n();
   const [scoutCount, setScoutCount] = useState(3);
   const [experience, setExperience] = useState(5);
   const [judgment, setJudgment] = useState(5);
@@ -94,7 +94,7 @@ function AcademyCalculator() {
       <div className="panel flex flex-col gap-5 p-4">
         <div>
           <div className="flex items-baseline justify-between gap-2">
-            <span className="field-label">Scouts assigned</span>
+            <span className="field-label">{d.scouts.scoutsAssigned}</span>
             <span className="font-mono text-xs text-zinc-300">{scoutCount}</span>
           </div>
           <div className="mt-2 flex gap-1.5">
@@ -107,20 +107,15 @@ function AcademyCalculator() {
         </div>
 
         <StarPicker
-          label="Experience"
+          label={d.scouts.experience}
           value={experience}
           onChange={setExperience}
-          hint="How many players each scout reports back per season, and how quickly the first reports arrive."
+          hint={d.scouts.experienceHint}
         />
-        <StarPicker
-          label="Judgment"
-          value={judgment}
-          onChange={setJudgment}
-          hint="How accurate the star range is, and how high the potential he is allowed to find goes."
-        />
+        <StarPicker label={d.scouts.judgment} value={judgment} onChange={setJudgment} hint={d.scouts.judgmentHint} />
 
         <div>
-          <p className="field-label mb-2">Scouting region</p>
+          <p className="field-label mb-2">{d.scouts.region}</p>
           <div className="flex flex-wrap gap-1.5">
             {scouting.regions.map((r) => (
               <Toggle key={r.id} active={r.id === region.id} onClick={() => setRegionId(r.id)} title={r.note}>
@@ -132,22 +127,22 @@ function AcademyCalculator() {
         </div>
 
         <div>
-          <p className="field-label mb-2">Months on assignment</p>
+          <p className="field-label mb-2">{d.scouts.months}</p>
           <div className="flex flex-wrap gap-1.5">
             {[3, 6, 9, 12].map((m) => (
               <Toggle key={m} active={months === m} onClick={() => setMonths(m)}>
-                {m} mo
+                {fmt(d.scouts.monthsValue, { count: m })}
               </Toggle>
             ))}
           </div>
         </div>
 
         <div>
-          <p className="field-label mb-2">Youth facilities</p>
+          <p className="field-label mb-2">{d.scouts.facilities}</p>
           <div className="flex flex-wrap gap-1.5">
-            {FACILITIES.map((f) => (
-              <Toggle key={f.level} active={facilities === f.level} onClick={() => setFacilities(f.level)}>
-                {f.label}
+            {FACILITY_LEVELS.map((level) => (
+              <Toggle key={level} active={facilities === level} onClick={() => setFacilities(level)}>
+                {d.scouts.facilityLevels[level]}
               </Toggle>
             ))}
           </div>
@@ -164,58 +159,81 @@ function AcademyCalculator() {
           }}
           className="focus-ring rounded-lg border border-accent/40 bg-accent/10 px-3 py-2 text-xs font-semibold text-accent transition hover:bg-accent/20"
         >
-          Load the 5★ experience / 5★ judgment benchmark
+          {d.scouts.benchmarkButton}
         </button>
       </div>
 
       <div className="flex flex-col gap-4">
         <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
-          <StatTile label="Players per intake" value={result.playersFound} hint={`${region.name} assignment`} />
-          <StatTile label="Potential ceiling" value={result.potentialCeiling} tone="accent" hint={`Cap for ${version.shortLabel} is ${version.potentialCap}`} />
           <StatTile
-            label="Chance of an 85+ gem"
+            label={d.scouts.playersPerIntake}
+            value={result.playersFound}
+            hint={fmt(d.scouts.playersPerIntakeHint, { region: region.name })}
+          />
+          <StatTile
+            label={d.scouts.potentialCeiling}
+            value={result.potentialCeiling}
+            tone="accent"
+            hint={fmt(d.scouts.potentialCeilingHint, { version: version.shortLabel, cap: version.potentialCap })}
+          />
+          <StatTile
+            label={d.scouts.gemChance}
             value={`${Math.round(result.gemChance * 100)}%`}
             tone={result.gemChance > 0.5 ? "accent" : "default"}
-            hint="At least one per intake"
+            hint={d.scouts.gemChanceHint}
           />
-          <StatTile label="Scouting cost" value={`${money(result.weeklyCost)}/wk`} hint={`${scoutCount} scouts`} />
+          <StatTile
+            label={d.scouts.cost}
+            value={f.wage(result.weeklyCost)}
+            hint={fmt(d.scouts.costHint, { count: scoutCount })}
+          />
         </div>
 
         <div className="panel p-4">
-          <h3 className="mb-2 text-sm font-semibold text-zinc-200">What this setup returns</h3>
-          <p className="text-sm leading-relaxed text-zinc-300">{result.verdict}</p>
+          <h3 className="mb-2 text-sm font-semibold text-zinc-200">{d.scouts.returnsTitle}</h3>
+          <p className="text-sm leading-relaxed text-zinc-300">
+            {fmt(result.isBenchmark ? d.scouts.verdictBenchmark : d.scouts.verdictStandard, {
+              players: result.playersFound,
+              ceiling: result.potentialCeiling,
+              chance: Math.round(result.gemChance * 100),
+            })}
+          </p>
           <dl className="mt-4 grid gap-3 sm:grid-cols-3">
             <div className="rounded-lg border border-line bg-surface-2 p-3">
-              <dt className="field-label">Typical prospect</dt>
+              <dt className="field-label">{d.scouts.typicalProspect}</dt>
               <dd className="mt-1 font-mono text-sm text-zinc-100">
                 {result.averageOverall} → {result.averagePotential}
               </dd>
             </div>
             <div className="rounded-lg border border-line bg-surface-2 p-3">
-              <dt className="field-label">Report spread</dt>
-              <dd className="mt-1 font-mono text-sm text-zinc-100">±{result.reportSpread}★</dd>
+              <dt className="field-label">{d.scouts.reportSpread}</dt>
+              <dd className="mt-1 font-mono text-sm text-zinc-100">±{f.decimal(result.reportSpread)}★</dd>
             </div>
             <div className="rounded-lg border border-line bg-surface-2 p-3">
-              <dt className="field-label">First reports</dt>
-              <dd className="mt-1 font-mono text-sm text-zinc-100">{result.monthsToFirstReport} mo</dd>
+              <dt className="field-label">{d.scouts.firstReports}</dt>
+              <dd className="mt-1 font-mono text-sm text-zinc-100">
+                {fmt(d.common.monthsShort, { count: result.monthsToFirstReport })}
+              </dd>
             </div>
           </dl>
         </div>
 
         <div className="panel p-4">
-          <h3 className="mb-2 text-sm font-semibold text-zinc-200">How to improve it</h3>
+          <h3 className="mb-2 text-sm font-semibold text-zinc-200">{d.scouts.improveTitle}</h3>
           <ul className="flex flex-col gap-2">
             {result.advice.map((item) => (
-              <li key={item} className="flex gap-2 text-xs leading-relaxed text-zinc-400">
+              <li key={item.id} className="flex gap-2 text-xs leading-relaxed text-zinc-400">
                 <span className="mt-1.5 size-1.5 shrink-0 rounded-full bg-accent" aria-hidden />
-                {item}
+                {fmt(d.scouts.advice[item.id], item.vars)}
               </li>
             ))}
           </ul>
         </div>
 
         <div className="panel p-4">
-          <h3 className="mb-3 text-sm font-semibold text-zinc-200">Scouts available in {version.shortLabel}</h3>
+          <h3 className="mb-3 text-sm font-semibold text-zinc-200">
+            {fmt(d.scouts.availableScouts, { version: version.shortLabel })}
+          </h3>
           <ul className="flex flex-col gap-1.5">
             {scouting.scouts.map((scout) => (
               <li key={scout.id}>
@@ -234,9 +252,9 @@ function AcademyCalculator() {
                     </span>
                   </span>
                   <span className="shrink-0 font-mono text-[11px] text-zinc-400">
-                    {scout.experience}★ exp / {scout.judgment}★ jdg
+                    {fmt(d.scouts.starsShort, { experience: scout.experience, judgment: scout.judgment })}
                   </span>
-                  <span className="shrink-0 font-mono text-xs text-zinc-300">{money(scout.cost)}/wk</span>
+                  <span className="shrink-0 font-mono text-xs text-zinc-300">{f.wage(scout.cost)}</span>
                 </button>
               </li>
             ))}
@@ -245,9 +263,7 @@ function AcademyCalculator() {
 
         <p className="flex gap-2 rounded-lg border border-line bg-surface/60 p-3 text-[11px] leading-relaxed text-zinc-500">
           <Info className="mt-0.5 size-3.5 shrink-0" aria-hidden />
-          The engine never publishes its real numbers. This is a transparent model fitted to observed behaviour — every
-          coefficient lives in <code className="font-mono text-zinc-400">src/lib/academy.ts</code> and can be re-tuned in
-          one place.
+          {fmt(d.scouts.modelNote, { file: "src/lib/academy.ts" })}
         </p>
       </div>
     </div>
@@ -257,6 +273,7 @@ function AcademyCalculator() {
 function RegenTracker() {
   const { scouting, version } = useDataset();
   const query = useSearchStore((s) => s.query);
+  const { d, fmt } = useI18n();
   const [positionFilter, setPositionFilter] = useState<string | null>(null);
 
   const positions = useMemo(
@@ -287,15 +304,20 @@ function RegenTracker() {
       <div className="panel flex gap-2 p-3 text-xs leading-relaxed text-zinc-400">
         <Info className="mt-0.5 size-4 shrink-0 text-accent" aria-hidden />
         <p>
-          When a real player retires, the engine reissues him as a youth &quot;regen&quot; who keeps his{" "}
-          <strong className="text-zinc-200">nationality, position, height, preferred foot and exact birthday</strong>.
-          Filter your youth intake and the free-agent pool on those five fields and the regen falls out of the list.
+          {d.scouts.regens.explainer.split("{highlight}").map((part, index) => (
+            <span key={index}>
+              {part}
+              {index === 0 && (
+                <strong className="text-zinc-200">{d.scouts.regens.explainerHighlight}</strong>
+              )}
+            </span>
+          ))}
         </p>
       </div>
 
       <div className="flex flex-wrap gap-1.5">
         <Toggle active={positionFilter === null} onClick={() => setPositionFilter(null)}>
-          All positions
+          {d.scouts.regens.allPositions}
         </Toggle>
         {positions.map((position) => (
           <Toggle
@@ -309,7 +331,7 @@ function RegenTracker() {
       </div>
 
       {visible.length === 0 ? (
-        <EmptyState title="No regens match that search" hint="Search by legend name, nation, or position." />
+        <EmptyState title={d.scouts.regens.emptyTitle} hint={d.scouts.regens.emptyHint} />
       ) : (
         <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
           {visible.map((regen) => (
@@ -318,7 +340,7 @@ function RegenTracker() {
                 <div className="min-w-0">
                   <p className="truncate font-semibold text-zinc-50">{regen.legend}</p>
                   <p className="text-xs text-zinc-500">
-                    Retires {regen.retiresSeason} · {version.shortLabel}
+                    {fmt(d.scouts.regens.retires, { season: regen.retiresSeason })} · {version.shortLabel}
                   </p>
                 </div>
                 <span className="chip border-accent/40 bg-accent/10 text-accent">{regen.position}</span>
@@ -326,31 +348,31 @@ function RegenTracker() {
 
               <dl className="grid grid-cols-2 gap-x-3 gap-y-1.5 text-xs">
                 <div className="flex justify-between gap-2">
-                  <dt className="text-zinc-500">Nation</dt>
+                  <dt className="text-zinc-500">{d.scouts.regens.nation}</dt>
                   <dd className="truncate text-zinc-200">{regen.nation}</dd>
                 </div>
                 <div className="flex justify-between gap-2">
                   <dt className="flex items-center gap-1 text-zinc-500">
-                    <Cake className="size-3" aria-hidden /> Birthday
+                    <Cake className="size-3" aria-hidden /> {d.scouts.regens.birthday}
                   </dt>
                   <dd className="font-mono text-accent">{regen.birthday}</dd>
                 </div>
                 <div className="flex justify-between gap-2">
-                  <dt className="text-zinc-500">Height</dt>
+                  <dt className="text-zinc-500">{d.scouts.regens.height}</dt>
                   <dd className="font-mono text-zinc-200">{regen.height}cm</dd>
                 </div>
                 <div className="flex justify-between gap-2">
-                  <dt className="text-zinc-500">Foot</dt>
-                  <dd className="text-zinc-200">{regen.foot}</dd>
+                  <dt className="text-zinc-500">{d.scouts.regens.foot}</dt>
+                  <dd className="text-zinc-200">{d.common.foot[regen.foot]}</dd>
                 </div>
                 <div className="flex justify-between gap-2">
-                  <dt className="text-zinc-500">Start OVR</dt>
+                  <dt className="text-zinc-500">{d.scouts.regens.startOverall}</dt>
                   <dd className="font-mono text-zinc-200">
                     {regen.expectedOverall[0]}–{regen.expectedOverall[1]}
                   </dd>
                 </div>
                 <div className="flex justify-between gap-2">
-                  <dt className="text-zinc-500">POT</dt>
+                  <dt className="text-zinc-500">{d.scouts.regens.potential}</dt>
                   <dd className="font-mono font-semibold text-accent">
                     {regen.expectedPotential[0]}–{regen.expectedPotential[1]}
                   </dd>
@@ -358,7 +380,7 @@ function RegenTracker() {
               </dl>
 
               <p className="text-[11px] leading-relaxed text-zinc-500">
-                <span className="text-zinc-400">Where to look:</span> {regen.surfacesAt}
+                <span className="text-zinc-400">{d.scouts.regens.whereToLook}</span> {regen.surfacesAt}
               </p>
               <p className="mt-auto text-xs leading-relaxed text-zinc-400">{regen.note}</p>
             </motion.article>
@@ -371,20 +393,21 @@ function RegenTracker() {
 
 export function ScoutsView() {
   const { version } = useDataset();
+  const { d, fmt } = useI18n();
 
   return (
     <>
       <PageHeader
-        eyebrow={`${version.shortLabel} · ${version.season}`}
-        title="Scouts & Academy Calculator"
-        description="Work out what a scouting setup actually returns before you spend a season on it — then track which retiring legends are about to reappear in your youth intake."
+        eyebrow={fmt(d.players.eyebrow, { version: version.shortLabel, season: version.season })}
+        title={d.scouts.title}
+        description={d.scouts.description}
       />
 
       <Tabs.Root defaultValue="academy">
-        <Tabs.List className="mb-5 inline-flex gap-1 rounded-lg border border-line bg-surface-2 p-1" aria-label="Scouting tools">
+        <Tabs.List className="mb-5 inline-flex gap-1 rounded-lg border border-line bg-surface-2 p-1" aria-label={d.scouts.tabsLabel}>
           {[
-            { value: "academy", label: "Academy calculator", icon: Radar },
-            { value: "regens", label: "Regens & pregens", icon: Cake },
+            { value: "academy", label: d.scouts.tabAcademy, icon: Radar },
+            { value: "regens", label: d.scouts.tabRegens, icon: Cake },
           ].map(({ value, label, icon: Icon }) => (
             <Tabs.Trigger
               key={value}

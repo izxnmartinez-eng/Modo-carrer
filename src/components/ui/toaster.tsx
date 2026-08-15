@@ -2,6 +2,7 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import { CircleAlert, CircleCheck, Info, X } from "lucide-react";
+import { useI18n } from "@/i18n/use-i18n";
 import { cn } from "@/lib/format";
 import { useToastStore, type ToastTone } from "@/store/toast";
 
@@ -15,12 +16,13 @@ const TONE: Record<ToastTone, { icon: typeof Info; ring: string; iconColor: stri
 export function Toaster() {
   const toasts = useToastStore((s) => s.toasts);
   const dismiss = useToastStore((s) => s.dismiss);
+  const { d } = useI18n();
 
   return (
     <div
       role="region"
       aria-live="polite"
-      aria-label="Notifications"
+      aria-label={d.common.notifications}
       className="pointer-events-none fixed inset-x-3 bottom-3 z-[60] flex flex-col items-end gap-2 sm:inset-x-auto sm:right-5 sm:bottom-5"
     >
       <AnimatePresence initial={false}>
@@ -55,7 +57,7 @@ export function Toaster() {
                 <button
                   type="button"
                   onClick={() => dismiss(toast.id)}
-                  aria-label="Dismiss notification"
+                  aria-label={d.common.dismiss}
                   className="focus-ring rounded-md p-0.5 text-zinc-500 transition hover:text-zinc-200"
                 >
                   <X className="size-3.5" aria-hidden />

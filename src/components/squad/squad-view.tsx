@@ -5,7 +5,8 @@ import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import { Trash2, TriangleAlert, X } from "lucide-react";
 import { EmptyState, PageHeader, Rating, StatTile } from "@/components/ui/primitives";
-import { cn, money, signed, wage } from "@/lib/format";
+import { useI18n } from "@/i18n/use-i18n";
+import { cn, signed } from "@/lib/format";
 import { nextSeasonOverall } from "@/lib/growth";
 import { useDataset } from "@/lib/use-dataset";
 import { DEFAULT_WAGE_BUDGET, useBudget, useSquadIds, useSquadStore } from "@/store/squad";
@@ -26,6 +27,7 @@ export function SquadView() {
   const setBudget = useSquadStore((s) => s.setBudget);
   const removeFromSquad = useSquadStore((s) => s.removeFromSquad);
   const clearSquad = useSquadStore((s) => s.clearSquad);
+  const { d, f, fmt } = useI18n();
 
   const squad = useMemo(
     () => squadIds.map((id) => players.find((p) => p.id === id)).filter((p): p is DerivedPlayer => Boolean(p)),
@@ -67,9 +69,9 @@ export function SquadView() {
   return (
     <>
       <PageHeader
-        eyebrow={`${version.shortLabel} · ${version.season}`}
-        title="Squad Planner"
-        description="Build a shortlist against a real wage budget, then check the age profile and the total growth you are actually buying."
+        eyebrow={fmt(d.players.eyebrow, { version: version.shortLabel, season: version.season })}
+        title={d.squad.title}
+        description={d.squad.description}
         actions={
           squad.length > 0 ? (
             <button
@@ -77,7 +79,7 @@ export function SquadView() {
               onClick={() => clearSquad(versionId)}
               className="focus-ring chip border-line bg-surface-2 text-zinc-400 hover:text-rose-300"
             >
-              <Trash2 className="size-3.5" aria-hidden /> Clear plan
+              <Trash2 className="size-3.5" aria-hidden /> {d.squad.clearPlan}
             </button>
           ) : undefined
         }
@@ -86,7 +88,7 @@ export function SquadView() {
       <div className="panel mb-5 flex flex-col gap-3 p-4 sm:flex-row sm:items-end sm:justify-between">
         <div className="min-w-0 flex-1">
           <label htmlFor="wage-budget" className="field-label">
-            Weekly wage budget
+            {d.squad.budgetLabel}
           </label>
           <div className="mt-2 flex items-center gap-3">
             <span className="font-mono text-sm text-zinc-500">€</span>
@@ -104,21 +106,21 @@ export function SquadView() {
               onClick={() => setBudget(versionId, DEFAULT_WAGE_BUDGET)}
               className="focus-ring rounded-md px-2 py-1 text-xs text-zinc-500 hover:text-zinc-200"
             >
-              Reset
+              {d.common.reset}
             </button>
           </div>
         </div>
         {stats && (
           <div className="min-w-0 flex-1">
             <div className="flex items-baseline justify-between gap-2">
-              <span className="field-label">Wage bill</span>
+              <span className="field-label">{d.squad.wageBill}</span>
               <span
                 className={cn(
                   "font-mono text-sm tabular-nums",
                   stats.overBudget ? "text-rose-400" : "text-accent",
                 )}
               >
-                {wage(stats.totalWage)} / {money(budget)}
+                {f.wage(stats.totalWage)} / {f.money(budget)}
               </span>
             </div>
             <div className="mt-2 h-2 overflow-hidden rounded-full bg-line">
@@ -132,7 +134,7 @@ export function SquadView() {
             {stats.overBudget && (
               <p className="mt-1.5 flex items-center gap-1.5 text-xs text-rose-400">
                 <TriangleAlert className="size-3.5" aria-hidden />
-                Over budget by {money(stats.totalWage - budget)} per week.
+                {fmt(d.squad.overBudget, { amount: f.money(stats.totalWage - budget) })}
               </p>
             )}
           </div>
@@ -140,37 +142,51 @@ export function SquadView() {
       </div>
 
       {squad.length === 0 || !stats ? (
-        <EmptyState
-          title="No players in the plan yet"
-          hint="Add players from the Wonderkids database — the wage bill, average age and total growth update as you go."
-        />
+        <EmptyState title={d.squad.emptyTitle} hint={d.squad.emptyHint} />
       ) : (
         <div className="flex flex-col gap-5">
           <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
-            <StatTile label="Squad size" value={squad.length} hint={`${money(stats.totalValue)} of transfer value`} />
-            <StatTile label="Average age" value={stats.avgAge} hint={stats.avgAge < 24 ? "Young project squad" : "Balanced age profile"} />
             <StatTile
-              label="Average rating"
-              value={`${stats.avgOverall} → ${stats.avgPotential}`}
-              tone="accent"
-              hint={`Projected ${stats.nextSeasonAvg} next season`}
+              label={d.squad.size}
+              value={squad.length}
+              hint={fmt(d.squad.sizeHint, { value: f.money(stats.totalValue) })}
             />
-            <StatTile label="Total growth" value={signed(stats.totalGrowth)} tone="accent" hint="Sum of every +Δ in the plan" />
+            <StatTile
+              label={d.squad.averageAge}
+              value={f.decimal(stats.avgAge)}
+              hint={stats.avgAge < 24 ? d.squad.ageYoung : d.squad.ageBalanced}
+            />
+            <StatTile
+              label={d.squad.averageRating}
+              value={`${f.decimal(stats.avgOverall)} → ${f.decimal(stats.avgPotential)}`}
+              tone="accent"
+              hint={fmt(d.squad.averageRatingHint, { value: f.decimal(stats.nextSeasonAvg) })}
+            />
+            <StatTile
+              label={d.squad.totalGrowth}
+              value={signed(stats.totalGrowth)}
+              tone="accent"
+              hint={d.squad.totalGrowthHint}
+            />
           </div>
 
           <div className="panel p-4">
-            <h2 className="mb-3 text-sm font-semibold text-zinc-200">Positional cover</h2>
+            <h2 className="mb-3 text-sm font-semibold text-zinc-200">{d.squad.cover}</h2>
             <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
               {stats.byGroup.map(({ group, count, minimum }) => {
                 const short = count < minimum;
                 return (
                   <div key={group} className="rounded-lg border border-line bg-surface-2 p-3">
-                    <p className="field-label">{group}s</p>
+                    <p className="field-label">{d.common.positionGroupsPlural[group]}</p>
                     <p className={cn("mt-1 font-mono text-lg font-bold", short ? "text-amber-400" : "text-zinc-100")}>
                       {count}
                       <span className="ml-1 text-xs font-normal text-zinc-600">/ {minimum}</span>
                     </p>
-                    {short && <p className="mt-0.5 text-[11px] text-amber-400/80">{minimum - count} short of a full squad</p>}
+                    {short && (
+                      <p className="mt-0.5 text-[11px] text-amber-400/80">
+                        {fmt(d.squad.coverShort, { count: minimum - count })}
+                      </p>
+                    )}
                   </div>
                 );
               })}
@@ -179,9 +195,9 @@ export function SquadView() {
 
           <div className="panel overflow-hidden">
             <div className="flex items-center justify-between border-b border-line px-4 py-3">
-              <h2 className="text-sm font-semibold text-zinc-200">Players in the plan</h2>
+              <h2 className="text-sm font-semibold text-zinc-200">{d.squad.listTitle}</h2>
               <Link href="/" className="focus-ring rounded-md text-xs text-accent hover:underline">
-                Add more from the database
+                {d.squad.addMore}
               </Link>
             </div>
             <ul>
@@ -201,7 +217,8 @@ export function SquadView() {
                     <span className="min-w-0 flex-1">
                       <span className="block truncate text-sm font-medium text-zinc-100">{player.name}</span>
                       <span className="block truncate text-xs text-zinc-500">
-                        {player.club ?? "Free agent"} · {player.age}y · {wage(player.contract.wage)}
+                        {player.club ?? d.common.freeAgent} · {fmt(d.common.ageShort, { count: player.age })} ·{" "}
+                        {f.wage(player.contract.wage)}
                       </span>
                     </span>
                     <span className="hidden items-center gap-1 sm:flex">
@@ -210,12 +227,12 @@ export function SquadView() {
                       <Rating value={player.potential} />
                     </span>
                     <span className="w-16 text-right font-mono text-sm tabular-nums text-zinc-300">
-                      {money(player.value)}
+                      {f.money(player.value)}
                     </span>
                     <button
                       type="button"
                       onClick={() => removeFromSquad(versionId, player.id)}
-                      aria-label={`Remove ${player.name} from the squad plan`}
+                      aria-label={fmt(d.squad.removeAria, { name: player.name })}
                       className="focus-ring rounded-md p-1.5 text-zinc-600 transition hover:text-rose-400"
                     >
                       <X className="size-4" aria-hidden />

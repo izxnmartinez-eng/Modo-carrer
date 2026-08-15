@@ -76,13 +76,3 @@ export function nextSeasonOverall(player: Pick<Player, "age" | "overall" | "pote
   const next = curve.find((p) => p.age === player.age + 1);
   return next?.overall ?? player.overall;
 }
-
-/** Human-readable summary of what the growth type means for planning. */
-export const GROWTH_TYPE_NOTE: Record<GrowthType, string> = {
-  Explosive: "Huge jumps between 17 and 21, then flat. Play him immediately.",
-  Early: "Most of the growth lands before 23. Buying at 24 means buying a finished player.",
-  Normal: "Steady, predictable gains through to 25.",
-  Slow: "Small annual gains that keep coming until 28.",
-  Late: "Almost nothing before 23, then a steep climb to 27. Loan him out and wait.",
-  Constant: "At or near his ceiling. What you see is what you get.",
-};

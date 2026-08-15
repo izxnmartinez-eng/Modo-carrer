@@ -1,0 +1,171 @@
+{
+  "roles": {
+    "Goalkeeper": "Portero",
+    "Sweeper Keeper": "Portero líbero",
+    "Fullback": "Lateral",
+    "Falseback": "Lateral falso",
+    "Wingback": "Carrilero",
+    "Attacking Wingback": "Carrilero ofensivo",
+    "Defender": "Defensa",
+    "Stopper": "Defensa agresivo",
+    "Ball-Playing Defender": "Defensa con salida de balón",
+    "Holding": "Pivote defensivo",
+    "Deep-Lying Playmaker": "Organizador retrasado",
+    "Box-To-Box": "Box to box",
+    "Playmaker": "Organizador",
+    "Wide Midfielder": "Interior",
+    "Winger": "Extremo",
+    "Inside Forward": "Extremo a pierna cambiada",
+    "Shadow Striker": "Media punta llegador",
+    "Advanced Forward": "Delantero avanzado",
+    "Poacher": "Rematador",
+    "False 9": "Falso 9",
+    "Target Forward": "Delantero referencia",
+    "Pressing Forward": "Delantero presionador"
+  },
+  "players": {
+    "fc25-yamal": { "scoutNote": "+12 de crecimiento en el mejor perfil de extremo de FC 25. La cláusula lo hace imposible de fichar: esta ficha está aquí como referencia de precio." },
+    "fc25-zaire-emery": { "scoutNote": "Cubre mediocentro, pivote y lateral derecho. El PSG rara vez vende por debajo del 160% de su valor: puja en la segunda ventana." },
+    "fc25-cubarsi": { "scoutNote": "+13 en un central. La mejor inversión defensiva a largo plazo de FC 25 si alguna vez consigues renegociar la cláusula a la baja." },
+    "fc25-guler": { "scoutNote": "Al ser rotación en el Madrid, una oferta de cesión es realista. El mejor lanzador de faltas menor de 20 años del fondo de FC 25." },
+    "fc25-yildiz": { "scoutNote": "Cláusula de 60 M€ sobre una curva de +11. Actívala en la primera ventana: la Juve la sube tras su primera buena temporada." },
+    "fc25-doue": { "scoutNote": "Curva temprana: casi todo el +10 llega antes de los 22. Comprarlo a los 23 es comprar un jugador ya hecho." },
+    "fc25-tel": { "scoutNote": "Minutos de banquillo por detrás de un delantero consolidado: el Bayern acepta la cesión con opción de compra mucho antes que una oferta directa." },
+    "fc25-hato": { "scoutNote": "Los clubes de la Eredivisie venden cerca de su valor. 26 M€ por un central zurdo que también hace de lateral y con +12 es la mejor operación defensiva de FC 25." },
+    "fc25-nusa": { "scoutNote": "90 de velocidad y 5★ de filigranas por 24 M€ de valor. La cláusula está alta respecto a su valor: negocia en vez de activarla." },
+    "fc25-endrick": { "scoutNote": "+14 en curva explosiva. Lo que frena a la mayoría de partidas es la ficha, no el traspaso." },
+    "fc25-jonathan-david": { "scoutNote": "Último año de contrato. Fírmalo con un precontrato en enero y tendrás un delantero de 82 de media solo por la prima de fichaje." },
+    "fc25-restes": { "scoutNote": "12 M€ por un portero de 84 de potencial. Los metas mantienen su nivel hasta los treinta y tantos: este es un fichaje para quince temporadas." },
+    "fc25-bergvall": { "scoutNote": "+15 de crecimiento por 16 M€. Cualquier partida en la Championship o en media tabla debería tener a este jugador en plantilla." },
+    "fc25-mastantuono": { "scoutNote": "Joya oculta: 68 de media y 86 de potencial por menos de 10 M€ en Sudamérica. El mejor fichaje de relación calidad-precio de FC 25." },
+    "fc25-nwaneri": { "scoutNote": "Joya oculta y además canterano válido en Inglaterra. Le quedan dos años: el precio se reduce a la mitad en los últimos doce meses." },
+    "fc25-leoni": { "scoutNote": "Joya oculta en la Serie B por menos de 4 M€. Curva tardía: no se ve nada hasta los 21 y luego +15 en tres temporadas." },
+    "fc25-bouaddi": { "scoutNote": "Joya oculta, 16 años y 3,2 M€. La curva de +21 más barata de todo el listado de FC 25." },
+    "fc25-rabiot": { "scoutNote": "Agente libre con 84 de media: el mejor fichaje a coste cero de FC 25. Espera exigencias salariales altas y un contrato corto." },
+    "fc25-hermoso": { "scoutNote": "Agente libre, zurdo y cubre central y lateral izquierdo. Justo el parche que necesita una defensa de tres mientras se hace una promesa." }
+  },
+  "tactics": {
+    "fc25-zidane-diamond": {
+      "name": "Rombo de la BBC",
+      "summary": "La estructura de las dos Champions seguidas. Un rombo estrecho que renuncia a las bandas a propósito, satura el centro y deja que dos delanteros y dos laterales que se suman rematen lo que el rombo genera.",
+      "tags": ["Estrecho", "Posesión", "Laterales que se suman", "Dos delanteros"],
+      "keyInstructions": [
+        "Los dos laterales en carrilero (ofensivo): ellos dan toda la amplitud del sistema.",
+        "El pivote defensivo se queda siempre por detrás del balón.",
+        "El organizador libre de la punta del rombo se mete en el pasillo interior que dejen los delanteros.",
+        "Salida equilibrada para que el rombo mantenga disponible el pase directo a la pareja de arriba."
+      ],
+      "strengths": ["Superioridades por dentro", "Segundos balones", "Asociación entre los dos delanteros"],
+      "weaknesses": ["Muy expuesto por las bandas", "Necesita laterales con un aguante de élite", "Sufre contra defensas de cinco"],
+      "recommendedProfiles": [
+        { "slot": "Laterales", "note": "78+ de velocidad y 80+ de aguante: la posición más barata de cubrir con canteranos." },
+        { "slot": "Pivote", "note": "80+ de defensa con 78+ de pase." },
+        { "slot": "Media punta", "note": "4★ de filigranas y 85+ de regate. Arda Güler crece directamente hacia este rol." }
+      ]
+    },
+    "fc25-klopp-gegenpress": {
+      "name": "4-3-3 heavy metal",
+      "summary": "El gegenpressing como principio de partida. Recuperar en seis segundos, atacar por fuera de los laterales y dejar que dos extremos a pierna cambiada definan desde los pasillos interiores.",
+      "tags": ["Gegenpressing", "Línea alta", "Extremos a pierna cambiada", "Centros de los laterales"],
+      "keyInstructions": [
+        "Presión agresiva con altura 72: una pareja de centrales por debajo de 75 de velocidad te va a costar partidos.",
+        "El delantero presionador activa todas las trampas.",
+        "La amplitud la dan los laterales y los goles llegan de los extremos a pierna cambiada.",
+        "Salida al contragolpe: marcar en menos de ocho segundos tras la recuperación o volver a empezar."
+      ],
+      "strengths": ["Provoca pérdidas en el último tercio", "Dominante en los primeros 20 minutos", "Fácil de entrenar"],
+      "weaknesses": ["Hundimiento del aguante tras el minuto 70", "Los pases largos de liberación rompen la presión", "Exige rotaciones profundas"],
+      "recommendedProfiles": [
+        { "slot": "Centrales", "note": "80+ de velocidad es obligatorio, no recomendable." },
+        { "slot": "Extremos", "note": "Los 90 de velocidad de Antonio Nusa, a pierna cambiada respecto a su banda." },
+        { "slot": "Mediocentros", "note": "Presión eficaz o Incansable con 85+ de aguante, rotados cada tres partidos." }
+      ]
+    },
+    "fc25-sarri-433": {
+      "name": "4-3-3 del Sarrismo",
+      "summary": "Pase corto coreografiado a máximo ritmo. Un organizador retrasado marca todos los tiempos, los dos interiores rotan a su alrededor y el tridente ataca con patrones fijos y ensayados.",
+      "tags": ["Posesión", "Pase corto", "Ritmo alto", "Rotaciones posicionales"],
+      "keyInstructions": [
+        "Pase corto con portero en salida de balón: cada ataque empieza en los pies del meta.",
+        "El organizador retrasado tiene que ser tu jugador con mejor pase, sin excepciones.",
+        "Los dos centrales con salida de balón: la primera línea tiene que romper la presión sola.",
+        "La línea alta en 64 comprime el campo para que la red de pase corto siga conectada."
+      ],
+      "strengths": ["La mayor cuota de posesión de todos estos sistemas", "Desarma bloques bajos", "Índice de pérdidas muy bajo"],
+      "weaknesses": ["Le castigan los contragolpes directos", "Exige 80+ de pase en toda la columna", "Poco peligro a balón parado"],
+      "recommendedProfiles": [
+        { "slot": "Organizador retrasado", "note": "85+ de pase con Pase tenso o Tiki taka. Innegociable." },
+        { "slot": "Centrales", "note": "75+ de pase. Pau Cubarsí y Jorrel Hato son los que mejor encajan en FC 25." },
+        { "slot": "Falso 9", "note": "Regate y pase por encima del tiro: un media punta reconvertido funciona mejor." }
+      ]
+    },
+    "fc25-alonso-3421": {
+      "name": "3-4-2-1 del Leverkusen",
+      "summary": "La temporada invicta de la Bundesliga. La defensa de tres invita a la presión, los carriles dan la máxima amplitud y dos interiores libres atacan el espacio a ambos lados del delantero referencia en cada recuperación.",
+      "tags": ["Equilibrado", "Carrileros", "Transiciones", "Defensa de tres"],
+      "keyInstructions": [
+        "Amplitud ofensiva 70: los carrileros son la única amplitud del sistema.",
+        "Un pivote defensivo y un organizador retrasado, nunca dos del mismo rol.",
+        "Los dos media puntas como llegadores para atacar por delante del delantero referencia.",
+        "Equilibrado con altura 54: contragolpear, no presionar."
+      ],
+      "strengths": ["Transiciones de élite", "Pocas instrucciones que gestionar", "Amenaza aérea a balón parado"],
+      "weaknesses": ["Carrileros aislados en 2 contra 1", "Necesita un delantero fuerte de cabeza", "Cede la posesión ante un equipo de control"],
+      "recommendedProfiles": [
+        { "slot": "Carrileros", "note": "85+ de velocidad y aguante en las dos bandas." },
+        { "slot": "Media puntas", "note": "El perfil de Kenan Yıldız: regate con definición de verdad." },
+        { "slot": "Delantero referencia", "note": "185 cm o más con Juego aéreo o Remate de cabeza." }
+      ]
+    },
+    "fc25-simeone-4442": {
+      "name": "4-4-2 del Cholismo",
+      "summary": "Dos líneas de cuatro separadas veinte metros, moviéndose como un solo bloque. Ceder el balón, negar el centro y ganar el partido a balón parado o con un pase al espacio.",
+      "tags": ["Bloque bajo", "Compacto", "Directo", "Balón parado"],
+      "keyInstructions": [
+        "Amplitud defensiva 36 y altura 30: las dos líneas se quedan lo bastante juntas como para tocarse.",
+        "Los interiores en enfoque defensivo: son laterales auxiliares.",
+        "Balón largo al delantero referencia y el segundo balón para el box to box.",
+        "Córners y faltas en 4: de ahí salen los goles."
+      ],
+      "strengths": ["El sistema más barato de montar", "Castiga las líneas altas", "Gana con una plantilla inferior"],
+      "weaknesses": ["Poca posesión", "Necesita un delantero fuerte de cabeza", "Le cuesta remontar"],
+      "recommendedProfiles": [
+        { "slot": "Centrales", "note": "Juego aéreo y Fortachón por encima de la velocidad: Giovanni Leoni está hecho para esto." },
+        { "slot": "Interiores", "note": "85+ de aguante y 70+ de defensa antes que el regate." },
+        { "slot": "Delantero referencia", "note": "185 cm o más con Remate de cabeza. Todo pasa por él." }
+      ]
+    }
+  },
+  "scouting": {
+    "regions": {
+      "south-america": { "name": "Sudamérica", "bias": "Extremos, media puntas y delanteros técnicos", "note": "Los techos más altos de FC 25 y la mayor variedad de resultados. Manda aquí a tu mejor ojeador de criterio." },
+      "western-europe": { "name": "Europa Occidental", "bias": "Equilibrada en todas las posiciones", "note": "La asignación por defecto. Centrocampistas de 80+ de potencial de forma constante y sin problemas de permisos." },
+      "uk-ireland": { "name": "Reino Unido e Irlanda", "bias": "Centrocampistas físicos, laterales y porteros", "note": "Necesaria para las cuotas de canteranos en una partida inglesa." },
+      "eastern-europe": { "name": "Europa del Este", "bias": "Centrales y delanteros referencia", "note": "Las exigencias salariales más bajas de toda la cantera." },
+      "scandinavia": { "name": "Escandinavia", "bias": "Delanteros altos y centrales", "note": "Las camadas más altas de media: encaja de forma natural con un sistema de delantero referencia." },
+      "africa": { "name": "África", "bias": "Extremos rapidísimos y centrocampistas box to box", "note": "Los mejores registros de velocidad de toda la cantera de FC 25." },
+      "asia": { "name": "Asia", "bias": "Centrocampistas técnicos y jugadores de banda", "note": "La red más barata y los techos más bajos. Una cuarta asignación sensata." },
+      "north-america": { "name": "Norteamérica y Centroamérica", "bias": "Porteros y laterales atléticos", "note": "La región más fiable para encontrar porteros de alto potencial." }
+    },
+    "scouts": {
+      "fc25-scout-1": { "specialty": "Delanteros" },
+      "fc25-scout-2": { "specialty": "Defensas" },
+      "fc25-scout-3": { "specialty": "Extremos" },
+      "fc25-scout-4": { "specialty": "Centrocampistas" },
+      "fc25-scout-5": { "specialty": "Equilibrado" },
+      "fc25-scout-6": { "specialty": "Porteros" }
+    },
+    "regens": {
+      "fc25-regen-kroos": { "surfacesAt": "Canteras de la Bundesliga", "note": "Se retiró antes incluso de que empiece la carrera de FC 25: su regen puede aparecer en tu primerísima camada." },
+      "fc25-regen-pepe": { "surfacesAt": "Canteras de la Liga Portugal", "note": "Central portugués de 188 cm nacido el 26 de febrero. La cantera del Oporto es el origen clásico." },
+      "fc25-regen-alba": { "surfacesAt": "Canteras de LaLiga y de la MLS", "note": "Los laterales izquierdos de alto potencial son el tipo de regen más escaso: merece la pena dedicarle dos temporadas extra de ojeo." },
+      "fc25-regen-busquets": { "surfacesAt": "Canteras de LaLiga", "note": "Pivote español de 189 cm nacido el 16 de julio: un filtro fácil, porque los pivotes altos son poco habituales." },
+      "fc25-regen-modric": { "surfacesAt": "Canteras de la liga croata", "note": "Primero la cantera del Dinamo de Zagreb y después el resto del fondo croata." },
+      "fc25-regen-benzema": { "surfacesAt": "Canteras de la Ligue 1 y la Ligue 2", "note": "Delantero francés de 185 cm nacido el 19 de diciembre. La cantera del Lyon es la aparición más habitual." },
+      "fc25-regen-silva": { "surfacesAt": "Canteras del Brasileirão", "note": "Central brasileño nacido el 22 de septiembre, normalmente del Fluminense o del Flamengo." },
+      "fc25-regen-neuer": { "surfacesAt": "Canteras de la 2. Bundesliga", "note": "Los porteros regen son los que más tarde crecen. Júzgalo por el rango de potencial, nunca por la media actual." },
+      "fc25-regen-messi": { "surfacesAt": "Cantera argentina o de la MLS", "note": "El regen con el techo más alto de FC 25. Merece la pena dedicarle una asignación en Sudamérica tres temporadas seguidas." },
+      "fc25-regen-ronaldo": { "surfacesAt": "Canteras portuguesas", "note": "Delantero portugués de 187 cm nacido el 5 de febrero. Revisa tanto la cantera del Sporting como las juveniles saudíes." }
+    }
+  }
+}

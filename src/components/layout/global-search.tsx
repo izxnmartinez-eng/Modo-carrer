@@ -2,6 +2,7 @@
 
 import { usePathname, useRouter } from "next/navigation";
 import { Search, X } from "lucide-react";
+import { useI18n } from "@/i18n/use-i18n";
 import { cn } from "@/lib/format";
 import { useSearchStore } from "@/store/search";
 
@@ -15,6 +16,7 @@ export function GlobalSearch({ className }: { className?: string }) {
   const setQuery = useSearchStore((s) => s.setQuery);
   const router = useRouter();
   const pathname = usePathname();
+  const { d } = useI18n();
 
   return (
     <div className={cn("relative", className)}>
@@ -26,15 +28,15 @@ export function GlobalSearch({ className }: { className?: string }) {
           setQuery(event.target.value);
           if (event.target.value && pathname !== "/") router.push("/");
         }}
-        placeholder="Search players, clubs, positions…"
-        aria-label="Search players, clubs and positions"
+        placeholder={d.search.placeholder}
+        aria-label={d.search.label}
         className="focus-ring w-full rounded-lg border border-line bg-surface-2 py-2 pl-9 pr-9 text-sm text-zinc-100 placeholder:text-zinc-600 transition hover:border-zinc-700"
       />
       {query && (
         <button
           type="button"
           onClick={() => setQuery("")}
-          aria-label="Clear search"
+          aria-label={d.search.clear}
           className="focus-ring absolute right-2 top-1/2 -translate-y-1/2 rounded-md p-1 text-zinc-500 transition hover:text-zinc-200"
         >
           <X className="size-4" aria-hidden />
