@@ -5,9 +5,10 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import * as Dialog from "@radix-ui/react-dialog";
 import { AnimatePresence, motion } from "framer-motion";
-import { Menu, ShieldHalf, X } from "lucide-react";
+import { CircleHelp, Menu, ShieldHalf, X } from "lucide-react";
 import { useI18n } from "@/i18n/use-i18n";
 import { cn } from "@/lib/format";
+import { useOnboardingStore } from "@/store/onboarding";
 import { NAV_ITEMS } from "./nav";
 import { GlobalSearch } from "./global-search";
 import { LanguageSwitcher } from "./language-switcher";
@@ -53,6 +54,23 @@ function NavList({ onNavigate }: { onNavigate?: () => void }) {
   );
 }
 
+/** Reopens the welcome tour. Lives beside the disclaimer in both menus. */
+function TourButton() {
+  const { d } = useI18n();
+  const openTour = useOnboardingStore((s) => s.openTour);
+
+  return (
+    <button
+      type="button"
+      onClick={openTour}
+      className="focus-ring flex w-full items-center gap-2 rounded-lg border border-line bg-surface-2 px-3 py-2 text-sm font-medium text-zinc-300 transition hover:border-accent/50 hover:text-accent"
+    >
+      <CircleHelp className="size-4 shrink-0 text-accent" aria-hidden />
+      {d.onboarding.open}
+    </button>
+  );
+}
+
 function Brand({ compact = false }: { compact?: boolean }) {
   const { d } = useI18n();
 
@@ -89,8 +107,11 @@ export function AppShell({ children }: { children: React.ReactNode }) {
         <VersionSwitcher />
         <LanguageSwitcher />
         <NavList />
-        <div className="mt-auto rounded-lg border border-line bg-surface/60 p-3">
-          <p className="text-[11px] leading-relaxed text-zinc-500">{d.brand.disclaimer}</p>
+        <div className="mt-auto flex flex-col gap-3">
+          <TourButton />
+          <div className="rounded-lg border border-line bg-surface/60 p-3">
+            <p className="text-[11px] leading-relaxed text-zinc-500">{d.brand.disclaimer}</p>
+          </div>
         </div>
       </aside>
 
@@ -122,6 +143,10 @@ export function AppShell({ children }: { children: React.ReactNode }) {
                   <VersionSwitcher />
                   <LanguageSwitcher />
                   <NavList onNavigate={() => setDrawerOpen(false)} />
+                  <div className="mt-auto flex flex-col gap-3 pt-4">
+                    <TourButton />
+                    <p className="text-[11px] leading-relaxed text-zinc-500">{d.brand.disclaimer}</p>
+                  </div>
                 </Dialog.Content>
               </Dialog.Portal>
             </Dialog.Root>

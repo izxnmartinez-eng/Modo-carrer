@@ -91,7 +91,9 @@ function AcademyCalculator() {
 
   return (
     <div className="grid gap-5 lg:grid-cols-[minmax(0,20rem)_minmax(0,1fr)]">
-      <div className="panel flex flex-col gap-5 p-4">
+      {/* On a phone the answer matters more than the dials, so the results
+          column comes first and the controls sit underneath it. */}
+      <div className="panel order-2 flex min-w-0 flex-col gap-5 p-4 lg:order-1">
         <div>
           <div className="flex items-baseline justify-between gap-2">
             <span className="field-label">{d.scouts.scoutsAssigned}</span>
@@ -163,8 +165,8 @@ function AcademyCalculator() {
         </button>
       </div>
 
-      <div className="flex flex-col gap-4">
-        <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
+      <div className="order-1 flex min-w-0 flex-col gap-4 lg:order-2">
+        <div className="grid grid-flow-col auto-cols-[10.5rem] gap-3 overflow-x-auto pb-1 [scrollbar-width:none] sm:grid-flow-row sm:auto-cols-auto sm:grid-cols-2 sm:overflow-visible lg:grid-cols-4">
           <StatTile
             label={d.scouts.playersPerIntake}
             value={result.playersFound}

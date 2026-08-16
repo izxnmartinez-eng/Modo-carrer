@@ -85,6 +85,8 @@ export const en = {
     dismiss: "Dismiss notification",
     notifications: "Notifications",
     actions: "Actions",
+    more: "More",
+    less: "Less",
     years: "{count} years",
     ageShort: "{count}y",
     monthsShort: "{count} mo",
@@ -449,6 +451,41 @@ export const en = {
       whereToLook: "Where to look:",
       emptyTitle: "No regens match that search",
       emptyHint: "Search by legend name, nation, or position.",
+    },
+  },
+
+  onboarding: {
+    open: "Take the tour",
+    skip: "Skip",
+    back: "Back",
+    next: "Next",
+    done: "Start exploring",
+    stepOf: "Step {current} of {total}",
+    steps: {
+      welcome: {
+        title: "Welcome to Career Hub",
+        body: "A database built only for EA SPORTS FC Career Mode: potential, growth curves, release clauses and real manager tactics. No Ultimate Team prices, no packs, no market noise. Two minutes and you will know your way around.",
+      },
+      players: {
+        title: "Find the wonderkid",
+        body: "Every player is ranked by how good a Career Mode signing he is. OVR is what he is today, POT is his ceiling, and +Δ is the growth you are actually buying. The quick filters surface bargains, hidden gems, free agents and expiring contracts in one tap.",
+      },
+      tactics: {
+        title: "Steal a manager's tactics",
+        body: "Real systems from Guardiola, Zidane, Alonso, Klopp and Simeone, rebuilt with in-game roles and sliders. Tap the green code to copy it, then paste it into Tactics › Community Tactics inside the game.",
+      },
+      squad: {
+        title: "Plan the squad, compare the options",
+        body: "Add players to your plan and the wage bill, average age and total growth update as you go. The comparison tool puts up to three players on one radar and one growth chart, and shows what each rating point really costs you.",
+      },
+      scouts: {
+        title: "Do the academy maths",
+        body: "Work out what a scouting setup returns before you spend a season on it, and track which retiring legends are about to come back as youth regens — filter your intake by nation, position, height, foot and birthday.",
+      },
+      settings: {
+        title: "Your game, your language",
+        body: "Switch between FC 27, FC 26 and FC 25 at the top of the menu and the whole app reloads that dataset; the language selector sits right below it. One thing to know: the data is illustrative sample data written for this project, not scraped from the game.",
+      },
     },
   },
 

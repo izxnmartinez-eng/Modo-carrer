@@ -78,6 +78,8 @@ export const es = {
     dismiss: "Descartar la notificación",
     notifications: "Notificaciones",
     actions: "Acciones",
+    more: "Más",
+    less: "Menos",
     years: "{count} años",
     ageShort: "{count} a",
     monthsShort: "{count} m",
@@ -445,6 +447,41 @@ export const es = {
       whereToLook: "Dónde buscarlo:",
       emptyTitle: "Ningún regen coincide con esa búsqueda",
       emptyHint: "Busca por nombre de la leyenda, país o posición.",
+    },
+  },
+
+  onboarding: {
+    open: "Ver el tutorial",
+    skip: "Saltar",
+    back: "Atrás",
+    next: "Siguiente",
+    done: "Empezar",
+    stepOf: "Paso {current} de {total}",
+    steps: {
+      welcome: {
+        title: "Bienvenido a Career Hub",
+        body: "Una base de datos hecha solo para el Modo Carrera de EA SPORTS FC: potencial, curvas de crecimiento, cláusulas de rescisión y tácticas de entrenadores reales. Sin precios de Ultimate Team, sin sobres y sin ruido de mercado. En dos minutos te manejas.",
+      },
+      players: {
+        title: "Encuentra la perla",
+        body: "Cada jugador está ordenado por lo buen fichaje que es para el Modo Carrera. MED es lo que es hoy, POT es su techo y +Δ es el crecimiento que estás comprando de verdad. Los filtros rápidos te sacan chollos, joyas ocultas, agentes libres y contratos que terminan, de un toque.",
+      },
+      tactics: {
+        title: "Copia las tácticas de un entrenador",
+        body: "Sistemas reales de Guardiola, Zidane, Alonso, Klopp y Simeone, reconstruidos con los roles y sliders del juego. Toca el código verde para copiarlo y pégalo en Tácticas › Tácticas de la comunidad dentro del juego.",
+      },
+      squad: {
+        title: "Planifica la plantilla y compara",
+        body: "Añade jugadores a tu plan y la masa salarial, la edad media y el crecimiento total se actualizan solos. El comparador pone hasta tres jugadores en el mismo radar y la misma curva, y te dice lo que te cuesta de verdad cada punto de media.",
+      },
+      scouts: {
+        title: "Haz los números de la cantera",
+        body: "Calcula lo que te va a dar una configuración de ojeo antes de gastarte una temporada en ella, y controla qué leyendas a punto de retirarse van a volver como regens: filtra tu cantera por país, posición, altura, pierna y fecha de nacimiento.",
+      },
+      settings: {
+        title: "Tu juego, tu idioma",
+        body: "Cambia entre FC 27, FC 26 y FC 25 arriba del menú y toda la app recarga ese conjunto de datos; el selector de idioma está justo debajo. Un aviso: los datos son de muestra, escritos para este proyecto, no extraídos del juego.",
+      },
     },
   },
 

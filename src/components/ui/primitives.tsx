@@ -1,6 +1,8 @@
 "use client";
 
+import { useState } from "react";
 import * as SliderPrimitive from "@radix-ui/react-slider";
+import { ChevronDown } from "lucide-react";
 import { useI18n } from "@/i18n/use-i18n";
 import { cn, ratingTone } from "@/lib/format";
 
@@ -15,12 +17,34 @@ export function PageHeader({
   description: string;
   actions?: React.ReactNode;
 }) {
+  // On a phone the intro paragraph pushed the actual content off the first
+  // screen, so it is clamped to two lines with a tap to expand. From `sm`
+  // upwards there is room for the whole thing and the toggle disappears.
+  const [expanded, setExpanded] = useState(false);
+  const { d } = useI18n();
+
   return (
-    <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+    <div className="mb-4 flex flex-col gap-3 sm:mb-6 sm:gap-4 md:flex-row md:items-end md:justify-between">
       <div className="min-w-0">
-        <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-accent">{eyebrow}</p>
-        <h1 className="mt-1 text-2xl font-bold tracking-tight text-zinc-50 sm:text-3xl">{title}</h1>
-        <p className="mt-1.5 max-w-2xl text-sm leading-relaxed text-zinc-400">{description}</p>
+        <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-accent sm:text-[11px]">{eyebrow}</p>
+        <h1 className="mt-1 text-xl font-bold tracking-tight text-zinc-50 sm:text-2xl lg:text-3xl">{title}</h1>
+        <p
+          className={cn(
+            "mt-1.5 max-w-2xl text-[13px] leading-relaxed text-zinc-400 sm:text-sm",
+            !expanded && "line-clamp-2 sm:line-clamp-none",
+          )}
+        >
+          {description}
+        </p>
+        <button
+          type="button"
+          onClick={() => setExpanded((v) => !v)}
+          aria-expanded={expanded}
+          className="focus-ring mt-1 inline-flex items-center gap-1 rounded text-[11px] font-medium text-zinc-500 transition hover:text-zinc-300 sm:hidden"
+        >
+          <ChevronDown className={cn("size-3 transition-transform", expanded && "rotate-180")} aria-hidden />
+          {expanded ? d.common.less : d.common.more}
+        </button>
       </div>
       {actions && <div className="flex shrink-0 flex-wrap items-center gap-2">{actions}</div>}
     </div>
@@ -54,11 +78,11 @@ export function StatTile({
   tone?: "default" | "accent" | "warn";
 }) {
   return (
-    <div className="panel p-3.5">
+    <div className="panel p-3 sm:p-3.5">
       <p className="field-label">{label}</p>
       <p
         className={cn(
-          "mt-1 font-mono text-xl font-bold tabular-nums",
+          "mt-0.5 font-mono text-lg font-bold tabular-nums sm:mt-1 sm:text-xl",
           tone === "accent" && "text-accent",
           tone === "warn" && "text-amber-400",
           tone === "default" && "text-zinc-100",
@@ -66,7 +90,7 @@ export function StatTile({
       >
         {value}
       </p>
-      {hint && <p className="mt-1 text-[11px] leading-relaxed text-zinc-500">{hint}</p>}
+      {hint && <p className="mt-1 text-[10px] leading-snug text-zinc-500 sm:text-[11px]">{hint}</p>}
     </div>
   );
 }

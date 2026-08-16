@@ -3,6 +3,7 @@ import "./globals.css";
 import { AppShell } from "@/components/layout/app-shell";
 import { Toaster } from "@/components/ui/toaster";
 import { VersionTheme } from "@/components/layout/version-theme";
+import { WelcomeTour } from "@/components/onboarding/welcome-tour";
 
 export const metadata: Metadata = {
   title: "Career Hub — EA SPORTS FC Career Mode Database",
@@ -22,6 +23,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="font-sans antialiased">
         <VersionTheme />
         <AppShell>{children}</AppShell>
+        <WelcomeTour />
         <Toaster />
       </body>
     </html>

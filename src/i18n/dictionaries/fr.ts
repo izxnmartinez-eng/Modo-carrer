@@ -78,6 +78,8 @@ export const fr = {
     dismiss: "Fermer la notification",
     notifications: "Notifications",
     actions: "Actions",
+    more: "Plus",
+    less: "Moins",
     years: "{count} ans",
     ageShort: "{count} ans",
     monthsShort: "{count} mois",
@@ -445,6 +447,41 @@ export const fr = {
       whereToLook: "Où chercher :",
       emptyTitle: "Aucun regen ne correspond à cette recherche",
       emptyHint: "Cherche par nom de légende, nation ou poste.",
+    },
+  },
+
+  onboarding: {
+    open: "Voir le tutoriel",
+    skip: "Passer",
+    back: "Retour",
+    next: "Suivant",
+    done: "C'est parti",
+    stepOf: "Étape {current} sur {total}",
+    steps: {
+      welcome: {
+        title: "Bienvenue sur Career Hub",
+        body: "Une base de données pensée uniquement pour le Mode Carrière d'EA SPORTS FC : potentiel, courbes de progression, clauses libératoires et tactiques d'entraîneurs réels. Pas de prix Ultimate Team, pas de packs, pas de bruit de marché. Deux minutes et tu seras à l'aise.",
+      },
+      players: {
+        title: "Trouve la pépite",
+        body: "Chaque joueur est classé selon la qualité de la recrue en Mode Carrière. NOT est son niveau actuel, POT son plafond, et +Δ la progression que tu achètes vraiment. Les filtres rapides sortent les bonnes affaires, les pépites cachées, les agents libres et les fins de contrat en un geste.",
+      },
+      tactics: {
+        title: "Pique la tactique d'un entraîneur",
+        body: "Des systèmes réels de Guardiola, Zidane, Alonso, Klopp et Simeone, reconstruits avec les rôles et curseurs du jeu. Touche le code vert pour le copier, puis colle-le dans Tactiques › Tactiques de la communauté.",
+      },
+      squad: {
+        title: "Planifie l'effectif, compare les options",
+        body: "Ajoute des joueurs à ton plan : masse salariale, âge moyen et progression totale se mettent à jour au fil de l'eau. Le comparateur place jusqu'à trois joueurs sur un même radar et une même courbe, et montre ce que coûte réellement chaque point de note.",
+      },
+      scouts: {
+        title: "Fais les calculs du centre de formation",
+        body: "Calcule ce que rapporte une configuration de recrutement avant d'y passer une saison, et suis les légendes bientôt retraitées qui vont revenir en regens — filtre ta promotion par nation, poste, taille, pied et date de naissance.",
+      },
+      settings: {
+        title: "Ton jeu, ta langue",
+        body: "Bascule entre FC 27, FC 26 et FC 25 en haut du menu et toute l'appli recharge ce jeu de données ; le sélecteur de langue est juste en dessous. À savoir : les données sont des exemples écrits pour ce projet, pas extraites du jeu.",
+      },
     },
   },
 

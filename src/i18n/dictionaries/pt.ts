@@ -78,6 +78,8 @@ export const pt = {
     dismiss: "Dispensar a notificação",
     notifications: "Notificações",
     actions: "Ações",
+    more: "Mais",
+    less: "Menos",
     years: "{count} anos",
     ageShort: "{count} a",
     monthsShort: "{count} m",
@@ -445,6 +447,41 @@ export const pt = {
       whereToLook: "Onde procurar:",
       emptyTitle: "Nenhum regen corresponde a essa busca",
       emptyHint: "Busque pelo nome da lenda, país ou posição.",
+    },
+  },
+
+  onboarding: {
+    open: "Ver o tutorial",
+    skip: "Pular",
+    back: "Voltar",
+    next: "Avançar",
+    done: "Começar",
+    stepOf: "Passo {current} de {total}",
+    steps: {
+      welcome: {
+        title: "Bem-vindo ao Career Hub",
+        body: "Uma base de dados feita só para o Modo Carreira do EA SPORTS FC: potencial, curvas de evolução, cláusulas de rescisão e táticas de treinadores reais. Sem preços de Ultimate Team, sem pacotes, sem barulho de mercado. Em dois minutos você se vira.",
+      },
+      players: {
+        title: "Ache a joia",
+        body: "Cada jogador é ordenado por quão boa é a contratação no Modo Carreira. OVR é o que ele é hoje, POT é o teto dele e +Δ é a evolução que você está comprando de verdade. Os filtros rápidos mostram pechinchas, joias escondidas, jogadores sem contrato e contratos acabando em um toque.",
+      },
+      tactics: {
+        title: "Roube a tática de um treinador",
+        body: "Sistemas reais de Guardiola, Zidane, Alonso, Klopp e Simeone, reconstruídos com as funções e controles do jogo. Toque no código verde para copiar e cole em Táticas › Táticas da comunidade dentro do jogo.",
+      },
+      squad: {
+        title: "Planeje o elenco e compare",
+        body: "Adicione jogadores ao seu plano: folha salarial, idade média e evolução total se atualizam sozinhas. O comparador coloca até três jogadores no mesmo radar e na mesma curva, e mostra quanto cada ponto de overall custa de verdade.",
+      },
+      scouts: {
+        title: "Faça as contas da base",
+        body: "Calcule o que uma configuração de observação rende antes de gastar uma temporada nela, e acompanhe quais lendas prestes a se aposentar vão voltar como regens: filtre a sua safra por país, posição, altura, perna e data de nascimento.",
+      },
+      settings: {
+        title: "Seu jogo, seu idioma",
+        body: "Troque entre FC 27, FC 26 e FC 25 no topo do menu e o app todo recarrega aquele conjunto de dados; o seletor de idioma fica logo abaixo. Um aviso: os dados são de exemplo, escritos para este projeto, e não extraídos do jogo.",
+      },
     },
   },
 

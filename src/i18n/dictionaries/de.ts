@@ -78,6 +78,8 @@ export const de = {
     dismiss: "Benachrichtigung schließen",
     notifications: "Benachrichtigungen",
     actions: "Aktionen",
+    more: "Mehr",
+    less: "Weniger",
     years: "{count} Jahre",
     ageShort: "{count} J.",
     monthsShort: "{count} Mon.",
@@ -445,6 +447,41 @@ export const de = {
       whereToLook: "Wo du suchen musst:",
       emptyTitle: "Kein Regen passt zu dieser Suche",
       emptyHint: "Suche nach dem Namen der Legende, der Nation oder der Position.",
+    },
+  },
+
+  onboarding: {
+    open: "Tour ansehen",
+    skip: "Überspringen",
+    back: "Zurück",
+    next: "Weiter",
+    done: "Los geht's",
+    stepOf: "Schritt {current} von {total}",
+    steps: {
+      welcome: {
+        title: "Willkommen bei Career Hub",
+        body: "Eine Datenbank nur für den Karrieremodus von EA SPORTS FC: Potenzial, Wachstumskurven, Ausstiegsklauseln und Taktiken echter Trainer. Keine Ultimate-Team-Preise, keine Packs, kein Marktrauschen. Zwei Minuten und du findest dich zurecht.",
+      },
+      players: {
+        title: "Finde das Wunderkind",
+        body: "Jeder Spieler ist danach sortiert, wie gut er als Karrieremodus-Transfer ist. GES ist das, was er heute kann, POT sein Limit und +Δ das Wachstum, das du tatsächlich einkaufst. Die Schnellfilter zeigen Schnäppchen, Geheimtipps, Vereinslose und auslaufende Verträge mit einem Tipp.",
+      },
+      tactics: {
+        title: "Klau dir die Taktik eines Trainers",
+        body: "Echte Systeme von Guardiola, Zidane, Alonso, Klopp und Simeone, nachgebaut mit den Rollen und Reglern des Spiels. Tippe auf den grünen Code, um ihn zu kopieren, und füge ihn im Spiel unter Taktik › Community-Taktiken ein.",
+      },
+      squad: {
+        title: "Kader planen, Optionen vergleichen",
+        body: "Füge Spieler zu deinem Plan hinzu — Gehaltslast, Durchschnittsalter und Gesamtwachstum aktualisieren sich sofort. Der Vergleich legt bis zu drei Spieler auf ein Radar und eine Wachstumskurve und zeigt, was dich jeder Wertungspunkt wirklich kostet.",
+      },
+      scouts: {
+        title: "Rechne den Nachwuchs durch",
+        body: "Finde heraus, was eine Scouting-Aufstellung einbringt, bevor du eine Saison darauf verwendest, und behalte im Blick, welche Legenden bald als Regens zurückkommen — filtere deinen Jahrgang nach Nation, Position, Größe, Fuß und Geburtstag.",
+      },
+      settings: {
+        title: "Dein Spiel, deine Sprache",
+        body: "Wechsle oben im Menü zwischen FC 27, FC 26 und FC 25 — die ganze App lädt diesen Datensatz neu; die Sprachauswahl steht direkt darunter. Ein Hinweis: Die Daten sind Beispieldaten für dieses Projekt, nicht aus dem Spiel ausgelesen.",
+      },
     },
   },
 

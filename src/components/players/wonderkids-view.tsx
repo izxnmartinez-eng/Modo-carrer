@@ -11,6 +11,7 @@ import { PlayerDrawer } from "./player-drawer";
 import { PlayerTable } from "./player-table";
 import { useI18n } from "@/i18n/use-i18n";
 import { DEFAULT_FILTERS, queryPlayers, type PlayerFilters, type SortKey } from "@/lib/filters";
+import { cn } from "@/lib/format";
 import { useDataset } from "@/lib/use-dataset";
 import { useSearchStore } from "@/store/search";
 import { MAX_COMPARE, useCompareIds, useSquadIds, useSquadStore } from "@/store/squad";
@@ -150,12 +151,14 @@ export function WonderkidsView() {
         description={d.players.description}
         actions={
           <>
-            <Toggle active={view === "table"} onClick={() => setView("table")}>
-              <Rows3 className="size-3.5" aria-hidden /> {d.players.viewTable}
-            </Toggle>
-            <Toggle active={view === "grid"} onClick={() => setView("grid")}>
-              <LayoutGrid className="size-3.5" aria-hidden /> {d.players.viewGrid}
-            </Toggle>
+            <span className="hidden items-center gap-2 lg:flex">
+              <Toggle active={view === "table"} onClick={() => setView("table")}>
+                <Rows3 className="size-3.5" aria-hidden /> {d.players.viewTable}
+              </Toggle>
+              <Toggle active={view === "grid"} onClick={() => setView("grid")}>
+                <LayoutGrid className="size-3.5" aria-hidden /> {d.players.viewGrid}
+              </Toggle>
+            </span>
             <button
               type="button"
               onClick={() => setFiltersOpen(true)}
@@ -167,7 +170,8 @@ export function WonderkidsView() {
         }
       />
 
-      <div className="mb-5 grid grid-cols-2 gap-3 lg:grid-cols-4">
+      {/* One swipeable row on phones, a 2x2 then 1x4 grid once there is room. */}
+      <div className="-mx-4 mb-5 grid grid-flow-col auto-cols-[10.5rem] gap-3 overflow-x-auto px-4 pb-1 [scrollbar-width:none] sm:mx-0 sm:grid-flow-row sm:auto-cols-auto sm:grid-cols-2 sm:overflow-visible sm:px-0 lg:grid-cols-4">
         <StatTile
           label={d.players.stats.matching}
           value={summary.count}
@@ -187,12 +191,14 @@ export function WonderkidsView() {
         />
       </div>
 
-      <div className="mb-4 flex flex-wrap gap-2">
+      <div className="-mx-4 mb-4 flex gap-2 overflow-x-auto px-4 pb-1 [scrollbar-width:none] sm:mx-0 sm:flex-wrap sm:overflow-visible sm:px-0 sm:pb-0">
         {presets.map(({ key, icon: Icon, label, hint }) => (
-          <Toggle key={key} active={filters[key]} onClick={() => setFilters({ ...filters, [key]: !filters[key] })} title={hint}>
-            <Icon className="size-3.5" aria-hidden />
-            {label}
-          </Toggle>
+          <span key={key} className="shrink-0">
+            <Toggle active={filters[key]} onClick={() => setFilters({ ...filters, [key]: !filters[key] })} title={hint}>
+              <Icon className="size-3.5" aria-hidden />
+              {label}
+            </Toggle>
+          </span>
         ))}
       </div>
 
@@ -204,34 +210,45 @@ export function WonderkidsView() {
         <div className="min-w-0 flex-1">
           {results.length === 0 ? (
             <EmptyState title={d.players.emptyTitle} hint={d.players.emptyHint} />
-          ) : view === "table" ? (
-            <PlayerTable
-              players={results}
-              sortKey={sortKey}
-              sortDir={sortDir}
-              onSort={handleSort}
-              onOpen={(p) => setOpenPlayerId(p.id)}
-              onToggleSquad={handleToggleSquad}
-              onToggleCompare={handleToggleCompare}
-              squadIds={squadIds}
-              compareIds={compareIds}
-            />
           ) : (
-            <motion.div layout className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
-              <AnimatePresence mode="popLayout">
-                {results.map((player) => (
-                  <PlayerCard
-                    key={player.id}
-                    player={player}
-                    onOpen={() => setOpenPlayerId(player.id)}
-                    onToggleSquad={() => handleToggleSquad(player)}
-                    onToggleCompare={() => handleToggleCompare(player)}
-                    inSquad={squadIds.includes(player.id)}
-                    inCompare={compareIds.includes(player.id)}
+            <>
+              {view === "table" && (
+                <div className="hidden lg:block">
+                  <PlayerTable
+                    players={results}
+                    sortKey={sortKey}
+                    sortDir={sortDir}
+                    onSort={handleSort}
+                    onOpen={(p) => setOpenPlayerId(p.id)}
+                    onToggleSquad={handleToggleSquad}
+                    onToggleCompare={handleToggleCompare}
+                    squadIds={squadIds}
+                    compareIds={compareIds}
                   />
-                ))}
-              </AnimatePresence>
-            </motion.div>
+                </div>
+              )}
+              <motion.div
+                layout
+                className={cn(
+                  "grid gap-3 sm:grid-cols-2 xl:grid-cols-3",
+                  view === "table" && "lg:hidden",
+                )}
+              >
+                <AnimatePresence mode="popLayout">
+                  {results.map((player) => (
+                    <PlayerCard
+                      key={player.id}
+                      player={player}
+                      onOpen={() => setOpenPlayerId(player.id)}
+                      onToggleSquad={() => handleToggleSquad(player)}
+                      onToggleCompare={() => handleToggleCompare(player)}
+                      inSquad={squadIds.includes(player.id)}
+                      inCompare={compareIds.includes(player.id)}
+                    />
+                  ))}
+                </AnimatePresence>
+              </motion.div>
+            </>
           )}
         </div>
       </div>

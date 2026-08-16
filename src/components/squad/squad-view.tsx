@@ -145,7 +145,7 @@ export function SquadView() {
         <EmptyState title={d.squad.emptyTitle} hint={d.squad.emptyHint} />
       ) : (
         <div className="flex flex-col gap-5">
-          <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
+          <div className="-mx-4 grid grid-flow-col auto-cols-[10.5rem] gap-3 overflow-x-auto px-4 pb-1 [scrollbar-width:none] sm:mx-0 sm:grid-flow-row sm:auto-cols-auto sm:grid-cols-2 sm:overflow-visible sm:px-0 lg:grid-cols-4">
             <StatTile
               label={d.squad.size}
               value={squad.length}

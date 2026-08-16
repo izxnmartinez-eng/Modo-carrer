@@ -78,6 +78,8 @@ export const it = {
     dismiss: "Chiudi la notifica",
     notifications: "Notifiche",
     actions: "Azioni",
+    more: "Altro",
+    less: "Meno",
     years: "{count} anni",
     ageShort: "{count} a",
     monthsShort: "{count} mesi",
@@ -445,6 +447,41 @@ export const it = {
       whereToLook: "Dove cercarlo:",
       emptyTitle: "Nessun regen corrisponde a questa ricerca",
       emptyHint: "Cerca per nome della leggenda, nazione o ruolo.",
+    },
+  },
+
+  onboarding: {
+    open: "Guarda il tutorial",
+    skip: "Salta",
+    back: "Indietro",
+    next: "Avanti",
+    done: "Iniziamo",
+    stepOf: "Passo {current} di {total}",
+    steps: {
+      welcome: {
+        title: "Benvenuto su Career Hub",
+        body: "Un database pensato solo per la Modalità Carriera di EA SPORTS FC: potenziale, curve di crescita, clausole rescissorie e tattiche di allenatori reali. Niente prezzi di Ultimate Team, niente pacchetti, niente rumore di mercato. Due minuti e ci prendi la mano.",
+      },
+      players: {
+        title: "Trova il talento",
+        body: "Ogni giocatore è ordinato per quanto vale come colpo in Modalità Carriera. VAL è quello che è oggi, POT è il suo tetto e +Δ è la crescita che stai comprando davvero. I filtri rapidi tirano fuori affari, gioielli nascosti, svincolati e contratti in scadenza con un tocco.",
+      },
+      tactics: {
+        title: "Ruba la tattica di un allenatore",
+        body: "Sistemi reali di Guardiola, Zidane, Alonso, Klopp e Simeone, ricostruiti con ruoli e cursori del gioco. Tocca il codice verde per copiarlo e incollalo in Tattiche › Tattiche della community dentro il gioco.",
+      },
+      squad: {
+        title: "Pianifica la rosa e confronta",
+        body: "Aggiungi giocatori al tuo piano: monte ingaggi, età media e crescita totale si aggiornano da soli. Il confronto mette fino a tre giocatori sullo stesso radar e sulla stessa curva, e mostra quanto ti costa davvero ogni punto di valutazione.",
+      },
+      scouts: {
+        title: "Fai i conti del vivaio",
+        body: "Calcola cosa rende una configurazione di scouting prima di dedicarle una stagione, e tieni d'occhio quali leggende in ritiro stanno per tornare come regen: filtra la tua leva per nazione, ruolo, altezza, piede e data di nascita.",
+      },
+      settings: {
+        title: "Il tuo gioco, la tua lingua",
+        body: "Passa tra FC 27, FC 26 e FC 25 in cima al menu e tutta l'app ricarica quel dataset; il selettore della lingua sta subito sotto. Una precisazione: i dati sono di esempio, scritti per questo progetto e non estratti dal gioco.",
+      },
     },
   },
 

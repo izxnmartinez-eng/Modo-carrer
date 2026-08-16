@@ -98,12 +98,14 @@ src/
   store/
     version.ts               Active game version (persisted)
     locale.ts                Interface language (persisted, auto-detected on first visit)
+    onboarding.ts            First-run tour state (persisted "already seen" flag)
     squad.ts                 Squad plan, wage budget, comparison slate (persisted, keyed by version)
     toast.ts                 Toast queue + `copyWithToast`
     search.ts                Global fuzzy-search query
 
   components/
     layout/                  App shell, sidebar, mobile drawer, version + language switchers, search
+    onboarding/              First-run welcome tour
     players/                 Filters, table, grid cards, scout-report drawer, badges
     tactics/                 Pitch diagram, tactic cards, tactical detail
     squad/                   Squad planner, comparison tool
@@ -215,6 +217,12 @@ coefficient is a named constant at the top of the file and can be re-tuned in on
 
 ## Interaction details
 
+- **First-run tour**: a six-step welcome walks through what the app is and what each
+  section does, skippable at any point and reopenable from the help button in the menu. It
+  opens only after the persisted flag has been read, so it never fights hydration.
+- **Mobile-first density**: phones always get the player cards (the ten-column table is
+  desktop-only), KPI tiles and quick filters become swipeable rows, page intros collapse to two
+  lines behind a *More* toggle, and the academy calculator puts its results above its controls.
 - **Six-language interface** with a switcher beside the version selector, browser-language
   detection on first visit, and `<html lang>` kept in sync.
 - **Instant fuzzy search** in the header spans player names, clubs, leagues, nations and positions,
