@@ -12,6 +12,7 @@ import { useOnboardingStore } from "@/store/onboarding";
 import { NAV_ITEMS } from "./nav";
 import { GlobalSearch } from "./global-search";
 import { LanguageSwitcher } from "./language-switcher";
+import { BottomNav } from "./bottom-nav";
 import { VersionPill, VersionSwitcher } from "./version-switcher";
 
 function NavList({ onNavigate }: { onNavigate?: () => void }) {
@@ -163,7 +164,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
           </div>
         </header>
 
-        <main className="min-w-0 flex-1 px-4 py-6 sm:px-6">
+        <main className="min-w-0 flex-1 px-4 pb-24 pt-6 sm:px-6 lg:pb-6">
           <AnimatePresence mode="wait" initial={false}>
             <motion.div
               key={pathname}
@@ -177,6 +178,8 @@ export function AppShell({ children }: { children: React.ReactNode }) {
           </AnimatePresence>
         </main>
       </div>
+
+      <BottomNav />
     </div>
   );
 }

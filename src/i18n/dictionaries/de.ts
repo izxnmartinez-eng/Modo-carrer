@@ -16,28 +16,34 @@ export const de = {
 
   nav: {
     sections: "Bereiche",
+    mainNav: "Hauptnavigation",
     openMenu: "Navigation öffnen",
     closeMenu: "Navigation schließen",
     drawerDescription: "Wähle einen Bereich von Career Hub, die aktive Spielversion und die Sprache der Oberfläche.",
     items: {
       wonderkids: {
         label: "Wunderkinder & Juwelen",
+        short: "Spieler",
         description: "Potenzial, Wachstum, Klauseln und Schnäppchen",
       },
       tactics: {
         label: "Taktik-Zentrale",
+        short: "Taktik",
         description: "Systeme echter Trainer und Taktik-Codes",
       },
       squad: {
         label: "Kaderplaner",
+        short: "Kader",
         description: "Gehaltsbudget, Altersstruktur, Wachstum",
       },
       compare: {
         label: "Spielervergleich",
+        short: "Vergleich",
         description: "Radar, Wachstumskurven, Gehaltsverhältnis",
       },
       scouts: {
         label: "Scouts & Nachwuchs",
+        short: "Scouts",
         description: "Nachwuchs-Rechner und Regen-Tracker",
       },
     },

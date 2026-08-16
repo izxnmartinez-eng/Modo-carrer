@@ -23,28 +23,34 @@ export const en = {
 
   nav: {
     sections: "Sections",
+    mainNav: "Main navigation",
     openMenu: "Open navigation",
     closeMenu: "Close navigation",
     drawerDescription: "Choose a section of Career Hub, the active game version and the interface language.",
     items: {
       wonderkids: {
         label: "Wonderkids & Gems",
+        short: "Players",
         description: "Potential, growth, clauses and bargains",
       },
       tactics: {
         label: "Tactical Hub",
+        short: "Tactics",
         description: "Real manager systems and share codes",
       },
       squad: {
         label: "Squad Planner",
+        short: "Squad",
         description: "Wage budget, age profile, growth",
       },
       compare: {
         label: "Player Comparison",
+        short: "Compare",
         description: "Radar, growth overlay, wage ratio",
       },
       scouts: {
         label: "Scouts & Academy",
+        short: "Scouts",
         description: "Intake maths and regen tracker",
       },
     },

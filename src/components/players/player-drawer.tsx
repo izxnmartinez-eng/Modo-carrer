@@ -201,10 +201,12 @@ export function PlayerDrawer({
                 </section>
               )}
 
-              <section className="panel border-accent/25 bg-accent/5 p-4">
-                <h3 className="mb-1.5 text-sm font-semibold text-accent">{d.drawer.scoutReport}</h3>
-                <p className="text-sm leading-relaxed text-zinc-300">{player.scoutNote}</p>
-              </section>
+              {player.scoutNote && (
+                <section className="panel border-accent/25 bg-accent/5 p-4">
+                  <h3 className="mb-1.5 text-sm font-semibold text-accent">{d.drawer.scoutReport}</h3>
+                  <p className="text-sm leading-relaxed text-zinc-300">{player.scoutNote}</p>
+                </section>
+              )}
 
               <div className="mt-auto flex flex-wrap gap-2 pt-1">
                 <button
