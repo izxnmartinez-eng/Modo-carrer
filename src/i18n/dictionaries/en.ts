@@ -93,8 +93,6 @@ export const en = {
     dismiss: "Dismiss notification",
     notifications: "Notifications",
     actions: "Actions",
-    more: "More",
-    less: "Less",
     years: "{count} years",
     ageShort: "{count}y",
     monthsShort: "{count} mo",
@@ -146,8 +144,7 @@ export const en = {
   players: {
     eyebrow: "{version} · {season}",
     title: "Wonderkids & Gem Finder",
-    description:
-      "Every player in the dataset ranked by how good a Career Mode signing he is — potential, growth curve, release clause and wage burden, not Ultimate Team price.",
+    description: "Find wonderkids and bargains: potential, growth and price.",
     viewTable: "Table",
     viewGrid: "Grid",
     filtersButton: "Filters",
@@ -182,6 +179,7 @@ export const en = {
 
   filters: {
     title: "Filters",
+    advanced: "Advanced",
     age: "Age",
     overall: "Overall",
     potential: "Potential",
@@ -206,7 +204,6 @@ export const en = {
     wage: "Wage",
     clause: "Clause",
     contract: "Contract",
-    score: "Score",
   },
 
   drawer: {
@@ -223,8 +220,6 @@ export const en = {
     releaseClauseRow: "Release clause",
     contractExpires: "Contract expires",
     costPerGrowth: "Cost per growth point",
-    bargainScore: "Bargain score",
-    bargainScoreValue: "{score}/100",
     playStyles: "PlayStyles",
     weakFoot: "Weak foot",
     skillMoves: "Skills",
@@ -262,8 +257,7 @@ export const en = {
 
   tactics: {
     title: "Tactical Hub & Manager Codes",
-    description:
-      "Legendary and meta managerial systems rebuilt with in-game roles, sliders and instructions. Copy the share code straight into Community Tactics.",
+    description: "Real managers' systems, ready to copy into the game.",
     allFormations: "All formations",
     emptyTitle: "No tactics match that search",
     emptyHint: "Try a manager name (Guardiola, Alonso, Simeone), a club, or a formation like 3-2-4-1.",
@@ -315,8 +309,7 @@ export const en = {
 
   squad: {
     title: "Squad Planner",
-    description:
-      "Build a shortlist against a real wage budget, then check the age profile and the total growth you are actually buying.",
+    description: "Check whether your shortlist fits the wage budget.",
     clearPlan: "Clear plan",
     budgetLabel: "Weekly wage budget",
     wageBill: "Wage bill",
@@ -345,8 +338,7 @@ export const en = {
 
   compare: {
     title: "Player Comparison",
-    description:
-      "Side-by-side attribute radars, growth curves on one axis, and the wage-versus-performance maths that decides which of two wonderkids you can actually afford.",
+    description: "Put up to three players side by side.",
     clear: "Clear comparison",
     addPlayer: "Add a player",
     searchPlaceholder: "Search the database…",
@@ -383,15 +375,12 @@ export const en = {
       wagePerOverallHint: "What each rating point costs you every week",
       feePerGrowth: "Fee per growth point",
       feePerGrowthHint: "What each future rating point costs up front",
-      bargainScore: "Bargain score",
-      bargainScoreHint: "Composite signing rating out of 100",
     },
   },
 
   scouts: {
     title: "Scouts & Academy Calculator",
-    description:
-      "Work out what a scouting setup actually returns before you spend a season on it — then track which retiring legends are about to reappear in your youth intake.",
+    description: "Work out what your academy will return, and track regens.",
     tabsLabel: "Scouting tools",
     tabAcademy: "Academy calculator",
     tabRegens: "Regens & pregens",

@@ -156,8 +156,8 @@ export function WonderkidsView() {
     },
   ];
 
-  const filterPanel = (
-    <FilterPanel filters={filters} onChange={setFilters} expiryYears={expiryYears} />
+  const filterPanel = (hideTitle: boolean) => (
+    <FilterPanel filters={filters} onChange={setFilters} expiryYears={expiryYears} hideTitle={hideTitle} />
   );
 
   return (
@@ -221,7 +221,7 @@ export function WonderkidsView() {
 
       <div className="flex gap-6">
         <aside className="hidden w-64 shrink-0 lg:block">
-          <div className="panel sticky top-24 max-h-[calc(100dvh-8rem)] overflow-y-auto p-4">{filterPanel}</div>
+          <div className="panel sticky top-24 max-h-[calc(100dvh-8rem)] overflow-y-auto p-4">{filterPanel(false)}</div>
         </aside>
 
         <div className="min-w-0 flex-1">
@@ -297,7 +297,7 @@ export function WonderkidsView() {
               </Dialog.Close>
             </div>
             <Dialog.Description className="sr-only">{d.players.mobileFiltersDescription}</Dialog.Description>
-            {filterPanel}
+            {filterPanel(true)}
             <button
               type="button"
               onClick={() => setFiltersOpen(false)}

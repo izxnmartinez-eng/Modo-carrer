@@ -61,13 +61,6 @@ function buildMetrics({ d, f }: I18n): Metric[] {
       format: (p) => (p.growth > 0 ? f.money(p.costPerGrowthPoint) : "—"),
       better: "low",
     },
-    {
-      label: m.bargainScore,
-      hint: m.bargainScoreHint,
-      value: (p) => p.bargainScore,
-      format: (p) => `${p.bargainScore}`,
-      better: "high",
-    },
   ];
 }
 

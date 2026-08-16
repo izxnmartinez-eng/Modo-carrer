@@ -49,11 +49,6 @@ export function PlayerCard({
 
       <div className="flex flex-wrap items-center gap-1.5">
         <span className="chip border-line bg-surface-2 text-zinc-300">{player.position}</span>
-        {player.altPositions.slice(0, 2).map((pos) => (
-          <span key={pos} className="chip border-line/60 bg-surface-2/50 text-zinc-500">
-            {pos}
-          </span>
-        ))}
         <span className="chip border-line bg-surface-2 text-zinc-400">{fmt(d.common.ageShort, { count: player.age })}</span>
         <span className={cn("chip border-line bg-surface-2 font-mono", growthTone(player.growth))}>
           {signed(player.growth)}

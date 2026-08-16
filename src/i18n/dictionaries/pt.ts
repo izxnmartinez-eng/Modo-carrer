@@ -86,8 +86,6 @@ export const pt = {
     dismiss: "Dispensar a notificação",
     notifications: "Notificações",
     actions: "Ações",
-    more: "Mais",
-    less: "Menos",
     years: "{count} anos",
     ageShort: "{count} a",
     monthsShort: "{count} m",
@@ -139,8 +137,7 @@ export const pt = {
   players: {
     eyebrow: "{version} · {season}",
     title: "Joias e caça-promessas",
-    description:
-      "Todos os jogadores da base ordenados por quão boa é a contratação no Modo Carreira — potencial, curva de evolução, cláusula de rescisão e peso salarial, não o preço no Ultimate Team.",
+    description: "Ache joias e pechinchas: potencial, evolução e preço.",
     viewTable: "Tabela",
     viewGrid: "Grade",
     filtersButton: "Filtros",
@@ -176,6 +173,7 @@ export const pt = {
 
   filters: {
     title: "Filtros",
+    advanced: "Avançado",
     age: "Idade",
     overall: "Overall",
     potential: "Potencial",
@@ -200,7 +198,6 @@ export const pt = {
     wage: "Salário",
     clause: "Cláusula",
     contract: "Contrato",
-    score: "Nota",
   },
 
   drawer: {
@@ -217,8 +214,6 @@ export const pt = {
     releaseClauseRow: "Cláusula de rescisão",
     contractExpires: "Fim do contrato",
     costPerGrowth: "Custo por ponto de evolução",
-    bargainScore: "Nota de pechincha",
-    bargainScoreValue: "{score}/100",
     playStyles: "Estilos de jogo",
     weakFoot: "Perna ruim",
     skillMoves: "Dribles",
@@ -256,8 +251,7 @@ export const pt = {
 
   tactics: {
     title: "Central tática e códigos de treinadores",
-    description:
-      "Sistemas lendários e meta reconstruídos com as funções, controles e instruções do jogo. Copie o código direto para as Táticas da comunidade.",
+    description: "Sistemas de treinadores reais, prontos para copiar no jogo.",
     allFormations: "Todas as formações",
     emptyTitle: "Nenhuma tática corresponde a essa busca",
     emptyHint: "Tente um treinador (Guardiola, Alonso, Simeone), um clube ou uma formação como 3-2-4-1.",
@@ -309,8 +303,7 @@ export const pt = {
 
   squad: {
     title: "Planejador de elenco",
-    description:
-      "Monte uma lista de alvos contra um orçamento salarial real e confira o perfil de idade e a evolução total que você está comprando de verdade.",
+    description: "Veja se suas contratações cabem no orçamento salarial.",
     clearPlan: "Limpar o plano",
     budgetLabel: "Orçamento salarial semanal",
     wageBill: "Folha salarial",
@@ -339,8 +332,7 @@ export const pt = {
 
   compare: {
     title: "Comparador de jogadores",
-    description:
-      "Radares de atributos lado a lado, curvas de evolução no mesmo eixo e a conta de salário versus rendimento que decide qual das duas joias você realmente consegue pagar.",
+    description: "Coloque até três jogadores lado a lado.",
     clear: "Limpar a comparação",
     addPlayer: "Adicionar um jogador",
     searchPlaceholder: "Buscar na base de dados…",
@@ -377,15 +369,12 @@ export const pt = {
       wagePerOverallHint: "Quanto cada ponto de overall custa por semana",
       feePerGrowth: "Preço por ponto de evolução",
       feePerGrowthHint: "Quanto cada ponto futuro de overall custa à vista",
-      bargainScore: "Nota de pechincha",
-      bargainScoreHint: "Nota geral da contratação de 0 a 100",
     },
   },
 
   scouts: {
     title: "Calculadora de observadores e base",
-    description:
-      "Calcule o que uma configuração de observação realmente rende antes de gastar uma temporada nela — e acompanhe quais lendas prestes a se aposentar vão reaparecer na sua base.",
+    description: "Calcule o que a base rende e acompanhe os regens.",
     tabsLabel: "Ferramentas de observação",
     tabAcademy: "Calculadora da base",
     tabRegens: "Regens e pregens",

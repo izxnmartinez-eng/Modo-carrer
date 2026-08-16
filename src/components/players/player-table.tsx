@@ -25,7 +25,6 @@ const COLUMNS: {
   { key: "wage", label: "wage", align: "right", hideBelow: "md" },
   { key: "releaseClause", label: "clause", align: "right", hideBelow: "lg" },
   { key: "monthsRemaining", label: "contract", align: "right", hideBelow: "lg" },
-  { key: "bargainScore", label: "score", align: "right" },
 ];
 
 export function PlayerTable({
@@ -132,17 +131,6 @@ export function PlayerTable({
                   </span>
                   <span className="block text-[10px] text-zinc-600">
                     {player.isFreeAgent ? d.common.noClub : f.monthsLabel(player.monthsRemaining)}
-                  </span>
-                </td>
-                <td className="px-3 py-2.5 text-right">
-                  <span className="inline-flex items-center gap-2">
-                    <span className="hidden h-1.5 w-12 overflow-hidden rounded-full bg-line sm:block">
-                      <span
-                        className="block h-full rounded-full bg-accent"
-                        style={{ width: `${player.bargainScore}%` }}
-                      />
-                    </span>
-                    <span className="font-mono text-xs tabular-nums text-zinc-300">{player.bargainScore}</span>
                   </span>
                 </td>
                 <td className="px-3 py-2.5">

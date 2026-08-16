@@ -168,7 +168,6 @@ export function PlayerDrawer({
                     label={d.drawer.costPerGrowth}
                     value={player.growth > 0 ? f.money(player.costPerGrowthPoint) : "—"}
                   />
-                  <Row label={d.drawer.bargainScore} value={fmt(d.drawer.bargainScoreValue, { score: player.bargainScore })} />
                 </dl>
               </section>
 

@@ -86,8 +86,6 @@ export const it = {
     dismiss: "Chiudi la notifica",
     notifications: "Notifiche",
     actions: "Azioni",
-    more: "Altro",
-    less: "Meno",
     years: "{count} anni",
     ageShort: "{count} a",
     monthsShort: "{count} mesi",
@@ -139,8 +137,7 @@ export const it = {
   players: {
     eyebrow: "{version} · {season}",
     title: "Talenti e cerca gioielli",
-    description:
-      "Tutti i giocatori del database ordinati per quanto valgono come colpo in Modalità Carriera — potenziale, curva di crescita, clausola rescissoria e peso dell'ingaggio, non il prezzo in Ultimate Team.",
+    description: "Trova talenti e affari: potenziale, crescita e prezzo.",
     viewTable: "Tabella",
     viewGrid: "Griglia",
     filtersButton: "Filtri",
@@ -176,6 +173,7 @@ export const it = {
 
   filters: {
     title: "Filtri",
+    advanced: "Avanzate",
     age: "Età",
     overall: "Valutazione",
     potential: "Potenziale",
@@ -200,7 +198,6 @@ export const it = {
     wage: "Ingaggio",
     clause: "Clausola",
     contract: "Contratto",
-    score: "Voto",
   },
 
   drawer: {
@@ -217,8 +214,6 @@ export const it = {
     releaseClauseRow: "Clausola rescissoria",
     contractExpires: "Scadenza del contratto",
     costPerGrowth: "Costo per punto di crescita",
-    bargainScore: "Voto affare",
-    bargainScoreValue: "{score}/100",
     playStyles: "Stili di gioco",
     weakFoot: "Piede debole",
     skillMoves: "Abilità",
@@ -256,8 +251,7 @@ export const it = {
 
   tactics: {
     title: "Centro tattico e codici degli allenatori",
-    description:
-      "Sistemi leggendari e meta ricostruiti con ruoli, cursori e istruzioni del gioco. Copia il codice e incollalo nelle Tattiche della community.",
+    description: "Sistemi di allenatori reali, pronti da copiare nel gioco.",
     allFormations: "Tutti i moduli",
     emptyTitle: "Nessuna tattica corrisponde a questa ricerca",
     emptyHint: "Prova con un allenatore (Guardiola, Alonso, Simeone), un club o un modulo come 3-2-4-1.",
@@ -309,8 +303,7 @@ export const it = {
 
   squad: {
     title: "Pianificatore della rosa",
-    description:
-      "Costruisci una lista di obiettivi con un monte ingaggi reale, poi controlla l'età media e la crescita totale che stai davvero comprando.",
+    description: "Controlla se i tuoi colpi rientrano nel monte ingaggi.",
     clearPlan: "Svuota il piano",
     budgetLabel: "Monte ingaggi settimanale",
     wageBill: "Monte ingaggi",
@@ -339,8 +332,7 @@ export const it = {
 
   compare: {
     title: "Confronto giocatori",
-    description:
-      "Radar degli attributi affiancati, curve di crescita su un unico asse e i calcoli ingaggio/rendimento che decidono quale dei due talenti puoi davvero permetterti.",
+    description: "Metti fino a tre giocatori uno accanto all'altro.",
     clear: "Svuota il confronto",
     addPlayer: "Aggiungi un giocatore",
     searchPlaceholder: "Cerca nel database…",
@@ -377,15 +369,12 @@ export const it = {
       wagePerOverallHint: "Quanto ti costa ogni punto di valutazione ogni settimana",
       feePerGrowth: "Costo per punto di crescita",
       feePerGrowthHint: "Quanto ti costa subito ogni punto futuro di valutazione",
-      bargainScore: "Voto affare",
-      bargainScoreHint: "Valutazione complessiva del colpo su 100",
     },
   },
 
   scouts: {
     title: "Calcolatore osservatori e vivaio",
-    description:
-      "Calcola cosa rende davvero una configurazione di scouting prima di dedicarle una stagione — poi tieni d'occhio quali leggende in ritiro stanno per riapparire nel tuo vivaio.",
+    description: "Calcola cosa rende il vivaio e segui i regen.",
     tabsLabel: "Strumenti di scouting",
     tabAcademy: "Calcolatore del vivaio",
     tabRegens: "Regen e pregen",

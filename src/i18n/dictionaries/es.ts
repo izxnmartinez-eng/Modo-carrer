@@ -86,8 +86,6 @@ export const es = {
     dismiss: "Descartar la notificación",
     notifications: "Notificaciones",
     actions: "Acciones",
-    more: "Más",
-    less: "Menos",
     years: "{count} años",
     ageShort: "{count} a",
     monthsShort: "{count} m",
@@ -139,8 +137,7 @@ export const es = {
   players: {
     eyebrow: "{version} · {season}",
     title: "Perlas y buscador de joyas",
-    description:
-      "Todos los jugadores de la base de datos ordenados por lo buen fichaje que son para el Modo Carrera: potencial, curva de crecimiento, cláusula de rescisión y peso salarial, no el precio en Ultimate Team.",
+    description: "Encuentra perlas y chollos: potencial, crecimiento y precio.",
     viewTable: "Tabla",
     viewGrid: "Cuadrícula",
     filtersButton: "Filtros",
@@ -176,6 +173,7 @@ export const es = {
 
   filters: {
     title: "Filtros",
+    advanced: "Avanzado",
     age: "Edad",
     overall: "Media",
     potential: "Potencial",
@@ -200,7 +198,6 @@ export const es = {
     wage: "Salario",
     clause: "Cláusula",
     contract: "Contrato",
-    score: "Nota",
   },
 
   drawer: {
@@ -217,8 +214,6 @@ export const es = {
     releaseClauseRow: "Cláusula de rescisión",
     contractExpires: "Fin de contrato",
     costPerGrowth: "Coste por punto de crecimiento",
-    bargainScore: "Nota de chollo",
-    bargainScoreValue: "{score}/100",
     playStyles: "Estilos de juego",
     weakFoot: "Pierna mala",
     skillMoves: "Filigranas",
@@ -256,8 +251,7 @@ export const es = {
 
   tactics: {
     title: "Centro táctico y códigos de entrenadores",
-    description:
-      "Sistemas legendarios y meta reconstruidos con los roles, sliders e instrucciones del juego. Copia el código y pégalo directamente en Tácticas de la comunidad.",
+    description: "Sistemas de entrenadores reales, listos para copiar al juego.",
     allFormations: "Todas las formaciones",
     emptyTitle: "Ninguna táctica coincide con esa búsqueda",
     emptyHint: "Prueba con un entrenador (Guardiola, Alonso, Simeone), un club o una formación como 3-2-4-1.",
@@ -309,8 +303,7 @@ export const es = {
 
   squad: {
     title: "Planificador de plantilla",
-    description:
-      "Monta una lista de fichajes contra un presupuesto salarial real y comprueba el perfil de edad y el crecimiento total que estás comprando de verdad.",
+    description: "Comprueba si tus fichajes caben en el presupuesto salarial.",
     clearPlan: "Vaciar el plan",
     budgetLabel: "Presupuesto salarial semanal",
     wageBill: "Masa salarial",
@@ -339,8 +332,7 @@ export const es = {
 
   compare: {
     title: "Comparador de jugadores",
-    description:
-      "Radares de atributos enfrentados, curvas de crecimiento en un mismo eje y los cálculos de salario frente a rendimiento que deciden cuál de dos perlas te puedes permitir de verdad.",
+    description: "Pon hasta tres jugadores uno al lado del otro.",
     clear: "Vaciar la comparación",
     addPlayer: "Añadir un jugador",
     searchPlaceholder: "Busca en la base de datos…",
@@ -377,15 +369,12 @@ export const es = {
       wagePerOverallHint: "Lo que te cuesta cada punto de media todas las semanas",
       feePerGrowth: "Precio por punto de crecimiento",
       feePerGrowthHint: "Lo que te cuesta por adelantado cada punto futuro de media",
-      bargainScore: "Nota de chollo",
-      bargainScoreHint: "Valoración global del fichaje sobre 100",
     },
   },
 
   scouts: {
     title: "Calculadora de ojeadores y cantera",
-    description:
-      "Calcula lo que te va a dar de verdad una configuración de ojeo antes de gastarte una temporada en ella, y controla qué leyendas a punto de retirarse van a reaparecer en tu cantera.",
+    description: "Calcula lo que dará tu cantera y sigue a los regens.",
     tabsLabel: "Herramientas de ojeo",
     tabAcademy: "Calculadora de cantera",
     tabRegens: "Regens y pregens",

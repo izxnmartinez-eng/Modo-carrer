@@ -86,8 +86,6 @@ export const de = {
     dismiss: "Benachrichtigung schließen",
     notifications: "Benachrichtigungen",
     actions: "Aktionen",
-    more: "Mehr",
-    less: "Weniger",
     years: "{count} Jahre",
     ageShort: "{count} J.",
     monthsShort: "{count} Mon.",
@@ -139,8 +137,7 @@ export const de = {
   players: {
     eyebrow: "{version} · {season}",
     title: "Wunderkinder & Juwelen-Finder",
-    description:
-      "Alle Spieler des Datensatzes, sortiert danach, wie gut sie als Karrieremodus-Transfer sind — Potenzial, Wachstumskurve, Ausstiegsklausel und Gehaltslast, nicht der Ultimate-Team-Preis.",
+    description: "Finde Wunderkinder und Schnäppchen: Potenzial, Wachstum, Preis.",
     viewTable: "Tabelle",
     viewGrid: "Kacheln",
     filtersButton: "Filter",
@@ -176,6 +173,7 @@ export const de = {
 
   filters: {
     title: "Filter",
+    advanced: "Erweitert",
     age: "Alter",
     overall: "Gesamtwertung",
     potential: "Potenzial",
@@ -200,7 +198,6 @@ export const de = {
     wage: "Gehalt",
     clause: "Klausel",
     contract: "Vertrag",
-    score: "Wertung",
   },
 
   drawer: {
@@ -217,8 +214,6 @@ export const de = {
     releaseClauseRow: "Ausstiegsklausel",
     contractExpires: "Vertrag endet",
     costPerGrowth: "Kosten pro Wachstumspunkt",
-    bargainScore: "Schnäppchen-Wertung",
-    bargainScoreValue: "{score}/100",
     playStyles: "Spielstile",
     weakFoot: "Schwacher Fuß",
     skillMoves: "Skill-Moves",
@@ -256,8 +251,7 @@ export const de = {
 
   tactics: {
     title: "Taktik-Zentrale & Trainer-Codes",
-    description:
-      "Legendäre und Meta-Systeme, nachgebaut mit den Rollen, Reglern und Anweisungen des Spiels. Kopiere den Code direkt in die Community-Taktiken.",
+    description: "Systeme echter Trainer, fertig zum Kopieren ins Spiel.",
     allFormations: "Alle Formationen",
     emptyTitle: "Keine Taktik passt zu dieser Suche",
     emptyHint: "Versuch es mit einem Trainer (Guardiola, Alonso, Simeone), einem Verein oder einer Formation wie 3-2-4-1.",
@@ -309,8 +303,7 @@ export const de = {
 
   squad: {
     title: "Kaderplaner",
-    description:
-      "Stelle eine Transferliste gegen ein echtes Gehaltsbudget zusammen und prüfe die Altersstruktur und das Wachstum, das du tatsächlich einkaufst.",
+    description: "Prüfe, ob deine Wunschliste ins Gehaltsbudget passt.",
     clearPlan: "Plan leeren",
     budgetLabel: "Wöchentliches Gehaltsbudget",
     wageBill: "Gehaltslast",
@@ -339,8 +332,7 @@ export const de = {
 
   compare: {
     title: "Spielervergleich",
-    description:
-      "Attribut-Radare nebeneinander, Wachstumskurven auf einer Achse und die Gehalt-gegen-Leistung-Rechnung, die entscheidet, welches von zwei Wunderkindern du dir wirklich leisten kannst.",
+    description: "Stelle bis zu drei Spieler nebeneinander.",
     clear: "Vergleich leeren",
     addPlayer: "Spieler hinzufügen",
     searchPlaceholder: "Datenbank durchsuchen…",
@@ -377,15 +369,12 @@ export const de = {
       wagePerOverallHint: "Was dich jeder Wertungspunkt pro Woche kostet",
       feePerGrowth: "Ablöse pro Wachstumspunkt",
       feePerGrowthHint: "Was dich jeder künftige Wertungspunkt sofort kostet",
-      bargainScore: "Schnäppchen-Wertung",
-      bargainScoreHint: "Gesamtbewertung des Transfers von 100",
     },
   },
 
   scouts: {
     title: "Scout- & Nachwuchsrechner",
-    description:
-      "Rechne aus, was eine Scouting-Aufstellung wirklich einbringt, bevor du eine Saison darauf verwendest — und behalte im Blick, welche Legenden bald als Nachwuchsspieler zurückkommen.",
+    description: "Berechne, was dein Nachwuchs bringt, und verfolge Regens.",
     tabsLabel: "Scouting-Werkzeuge",
     tabAcademy: "Nachwuchsrechner",
     tabRegens: "Regens & Pregens",
