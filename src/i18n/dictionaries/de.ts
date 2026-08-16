@@ -12,6 +12,8 @@ export const de = {
     tagline: "Nur Karrieremodus",
     disclaimer:
       "Beispieldatensatz zu Demonstrationszwecken. Wertungen, Marktwerte und Codes sind illustrativ und nicht aus dem Spiel ausgelesen.",
+    disclaimerReal:
+      "Die FC-26-Spielerdaten stammen aus einem öffentlichen Community-Datensatz ({source}). Wachstumstypen sind abgeleitet, nicht offiziell.",
   },
 
   nav: {
@@ -168,6 +170,8 @@ export const de = {
     mobileFiltersDescription:
       "Grenze die Spielerdatenbank nach Alter, Wertung, Potenzial, Kosten und Vertragslage ein.",
     showPlayers: "{count} Spieler anzeigen",
+    showMore: "Mehr anzeigen",
+    showingCount: "{shown} von {total} angezeigt",
   },
 
   filters: {

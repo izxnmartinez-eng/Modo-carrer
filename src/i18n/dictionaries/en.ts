@@ -19,6 +19,8 @@ export const en = {
     tagline: "Career Mode only",
     disclaimer:
       "Sample dataset for demonstration. Ratings, values and share codes are illustrative, not scraped from the game.",
+    disclaimerReal:
+      "FC 26 player data comes from a public community dataset ({source}). Growth types are inferred, not official.",
   },
 
   nav: {
@@ -174,6 +176,8 @@ export const en = {
       "Career Mode datasets are small by design. Widen the potential range, clear a preset, or reset the filters to see the full board.",
     mobileFiltersDescription: "Narrow the player database by age, rating, potential, cost and contract status.",
     showPlayers: "Show {count} players",
+    showMore: "Show more",
+    showingCount: "Showing {shown} of {total}",
   },
 
   filters: {

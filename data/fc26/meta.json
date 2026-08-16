@@ -5,7 +5,9 @@
   "season": "2025/26",
   "careerStartDate": "2025-08-01",
   "preContractDate": "2026-01-01",
-  "potentialCap": 94,
-  "note": "Role-based tactics with Archetypes. Tighter potential caps than FC 27 on intake players.",
-  "accent": "gold"
+  "potentialCap": 95,
+  "note": "Real player data. Role-based tactics with Archetypes.",
+  "accent": "gold",
+  "dataSource": "real",
+  "sourceLabel": "SoFIFA-derived community dataset · 21 Sep 2025"
 }

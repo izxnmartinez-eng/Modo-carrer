@@ -12,6 +12,8 @@ export const es = {
     tagline: "Solo Modo Carrera",
     disclaimer:
       "Datos de muestra para demostración. Las medias, valores y códigos son ilustrativos, no extraídos del juego.",
+    disclaimerReal:
+      "Los datos de FC 26 provienen de un conjunto de datos público de la comunidad ({source}). Los tipos de crecimiento son deducidos, no oficiales.",
   },
 
   nav: {
@@ -168,6 +170,8 @@ export const es = {
     mobileFiltersDescription:
       "Acota la base de datos por edad, media, potencial, coste y situación contractual.",
     showPlayers: "Ver {count} jugadores",
+    showMore: "Ver más",
+    showingCount: "Mostrando {shown} de {total}",
   },
 
   filters: {

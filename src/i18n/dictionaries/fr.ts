@@ -12,6 +12,8 @@ export const fr = {
     tagline: "Mode Carrière uniquement",
     disclaimer:
       "Jeu de données d'exemple à but de démonstration. Les notes, valeurs et codes sont illustratifs et non extraits du jeu.",
+    disclaimerReal:
+      "Les données FC 26 proviennent d’un jeu de données communautaire public ({source}). Les types de progression sont déduits, pas officiels.",
   },
 
   nav: {
@@ -168,6 +170,8 @@ export const fr = {
     mobileFiltersDescription:
       "Affine la base de joueurs par âge, note, potentiel, coût et situation contractuelle.",
     showPlayers: "Voir {count} joueurs",
+    showMore: "Voir plus",
+    showingCount: "{shown} sur {total} affichés",
   },
 
   filters: {

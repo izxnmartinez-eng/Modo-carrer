@@ -36,6 +36,14 @@ export interface GameVersion {
   potentialCap: number;
   /** Short note surfaced in the version switcher. */
   note: string;
+  /**
+   * Where this version's player data came from.
+   * `real` = imported from a published dataset; `sample` = written for the
+   * project. The UI states which, because claiming one is the other misleads.
+   */
+  dataSource: "real" | "sample";
+  /** Human-readable provenance, shown with the real-data disclaimer. */
+  sourceLabel?: string;
   /** Tailwind-friendly accent token key, see `globals.css`. */
   accent: "lime" | "gold" | "cyan";
 }

@@ -20,6 +20,15 @@ import type { DerivedPlayer } from "@/lib/types";
 
 type ViewMode = "table" | "grid";
 
+/**
+ * How many players to paint at once.
+ *
+ * A real dataset is thousands of rows; rendering them all locked up scrolling
+ * on a phone. A visible "show more" is cheaper than virtualisation and keeps
+ * the page height honest, which matters for the browser's back-scroll.
+ */
+const PAGE_SIZE = 40;
+
 export function WonderkidsView() {
   const { players, version, versionId } = useDataset();
   const query = useSearchStore((s) => s.query);
@@ -31,6 +40,7 @@ export function WonderkidsView() {
   const [view, setView] = useState<ViewMode>("table");
   const [openPlayerId, setOpenPlayerId] = useState<string | null>(null);
   const [filtersOpen, setFiltersOpen] = useState(false);
+  const [visible, setVisible] = useState(PAGE_SIZE);
 
   const squadIds = useSquadIds(versionId);
   const compareIds = useCompareIds(versionId);
@@ -57,6 +67,13 @@ export function WonderkidsView() {
     () => queryPlayers(players, { filters, query, sortKey, sortDir }),
     [players, filters, query, sortKey, sortDir],
   );
+
+  // Any change to what is being asked for starts the list again from the top.
+  useEffect(() => {
+    setVisible(PAGE_SIZE);
+  }, [filters, query, sortKey, sortDir, versionId]);
+
+  const shown = useMemo(() => results.slice(0, visible), [results, visible]);
 
   const openPlayer = players.find((p) => p.id === openPlayerId) ?? null;
 
@@ -215,7 +232,7 @@ export function WonderkidsView() {
               {view === "table" && (
                 <div className="hidden lg:block">
                   <PlayerTable
-                    players={results}
+                    players={shown}
                     sortKey={sortKey}
                     sortDir={sortDir}
                     onSort={handleSort}
@@ -235,7 +252,7 @@ export function WonderkidsView() {
                 )}
               >
                 <AnimatePresence mode="popLayout">
-                  {results.map((player) => (
+                  {shown.map((player) => (
                     <PlayerCard
                       key={player.id}
                       player={player}
@@ -248,6 +265,21 @@ export function WonderkidsView() {
                   ))}
                 </AnimatePresence>
               </motion.div>
+
+              {results.length > shown.length && (
+                <div className="mt-5 flex flex-col items-center gap-2">
+                  <button
+                    type="button"
+                    onClick={() => setVisible((v) => v + PAGE_SIZE)}
+                    className="focus-ring w-full rounded-lg border border-accent/50 bg-accent/10 px-4 py-3 text-sm font-semibold text-accent transition hover:bg-accent/20 sm:w-auto sm:px-8"
+                  >
+                    {d.players.showMore}
+                  </button>
+                  <p className="text-xs text-zinc-500">
+                    {fmt(d.players.showingCount, { shown: shown.length, total: results.length })}
+                  </p>
+                </div>
+              )}
             </>
           )}
         </div>

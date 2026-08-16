@@ -23,154 +23,319 @@
     "Target Forward": "Delantero referencia",
     "Pressing Forward": "Delantero presionador"
   },
-  "players": {
-    "fc26-yamal": { "scoutNote": "Cláusula de mil millones. Imposible de fichar salvo en una partida con compra del club el primer año: tómalo como el techo de precio del resto del listado." },
-    "fc26-doue": { "scoutNote": "+7 en curva temprana, y casi todo antes de los 23. El PSG no vende en la primera ventana: vuelve a pujar en enero." },
-    "fc26-yildiz": { "scoutNote": "La cláusula está 22 M€ por encima de su valor: es el camino más limpio para tener un interior de 89 en FC 26." },
-    "fc26-zaire-emery": { "scoutNote": "Tres posiciones con 78+. El centrocampista más a prueba de calendario de la base de datos para una temporada de 45 partidos." },
-    "fc26-guler": { "scoutNote": "El mejor lanzador de faltas del fondo de promesas de FC 26. La cláusula del Madrid lo convierte en una operación de agente libre en 2029, no en un fichaje." },
-    "fc26-estevao": { "scoutNote": "Contrato de ocho años: el precio que pide el Chelsea no baja nunca. O pagas el 150% de su valor ahora o te olvidas de él." },
-    "fc26-cubarsi": { "scoutNote": "90 de potencial en un central con 75 de velocidad. El perfil definitivo de defensa con salida para jugar con línea alta." },
-    "fc26-hato": { "scoutNote": "Híbrido de central y lateral zurdo: justo la posición que a una defensa de tres le cuesta cubrir por menos de 50 M€." },
-    "fc26-nusa": { "scoutNote": "91 de velocidad, 5★ de filigranas y cláusula de 50 M€. La mejor velocidad por euro del listado de FC 26." },
-    "fc26-mastantuono": { "scoutNote": "+11 de crecimiento. El Madrid lo rota el primer año: una oferta de cesión con opción de compra se acepta mucho más a menudo que una oferta directa." },
-    "fc26-endrick": { "scoutNote": "Su ficha es 2,5 veces lo que suele costar un 77 de media. Presupuéstalo o la operación se cae en la negociación del contrato." },
-    "fc26-tel": { "scoutNote": "87 de velocidad por 31 M€. La mejora estándar de delantero para un equipo de media tabla: espera que tres o cuatro clubes de la IA pujen contra ti." },
-    "fc26-bergvall": { "scoutNote": "+11 de crecimiento por 28 M€. Los box to box de 187 cm son lo más escaso del mercado de centrocampistas de FC 26." },
-    "fc26-restes": { "scoutNote": "Le quedan dos años. 19 M€ ahora o una puja a la baja en los últimos doce meses: en cualquier caso, un portero para toda la partida." },
-    "fc26-leoni": { "scoutNote": "+13 en curva tardía. Plano hasta los 22: la IA lo infravalora durante dos temporadas enteras, y esa es tu ventana." },
-    "fc26-nwaneri": { "scoutNote": "Último año de contrato. Un media punta inglés con +13 de crecimiento disponible con precontrato en enero es el mejor fichaje libre de FC 26." },
-    "fc26-bouaddi": { "scoutNote": "18 M€ de valor, 30 M€ de cláusula y +13 de crecimiento. Si tu presupuesto solo da para un fichaje, que sea este." },
-    "fc26-dowman": { "scoutNote": "Joya oculta: +25 de crecimiento, el mayor de todo el listado de FC 26. Dos cesiones a la Championship y camiseta de titular a los 19." },
-    "fc26-ngumoha": { "scoutNote": "Joya oculta. Con 42 de físico se lo comen en la Premier hasta los 19: cédelo al extranjero, no a una categoría inferior." },
-    "fc26-obi": { "scoutNote": "Joya oculta con curva tardía. Menos de 5 M€ por un delantero referencia que llega a 83: el plan de delantero más barato que existe." },
-    "fc26-ziyech": { "scoutNote": "Agente libre. 84 de pase y balón parado de élite solo por la prima de fichaje: el parche estándar para un recién ascendido." },
-    "fc26-eriksen": { "scoutNote": "Agente libre con 86 de pase. Ponlo junto a un pivote joven y deja que la promesa aprenda a su lado durante dos temporadas." }
-  },
   "tactics": {
     "fc26-ancelotti-433": {
       "name": "4-3-3 del champán",
       "summary": "Estructura mínima, libertad individual máxima. Un centro del campo veterano controla el ritmo, los laterales se mantienen disciplinados y al tridente se le da permiso para hacer lo que quiera en el último tercio.",
-      "tags": ["Equilibrado", "Roles libres", "Control del centro", "Contragolpe"],
+      "tags": [
+        "Equilibrado",
+        "Roles libres",
+        "Control del centro",
+        "Contragolpe"
+      ],
       "keyInstructions": [
         "Un lateral ataca y el otro se queda. Nunca los dos: la cobertura al contragolpe depende de ello.",
         "El pivote en defensivo ancla la estructura mientras el organizador se mueve libre.",
         "Todo equilibrado: este sistema gana por calidad individual, no por instrucciones.",
         "Ideal para una partida en la que tu plantilla sea mejor que tu paciencia táctica."
       ],
-      "strengths": ["Apenas requiere microgestión", "Enorme en transiciones", "Funciona con cualquier tridente"],
-      "weaknesses": ["Cede el centro del campo ante un 3-2-4-1", "Presión floja", "Necesita delanteros individualmente excelentes"],
+      "strengths": [
+        "Apenas requiere microgestión",
+        "Enorme en transiciones",
+        "Funciona con cualquier tridente"
+      ],
+      "weaknesses": [
+        "Cede el centro del campo ante un 3-2-4-1",
+        "Presión floja",
+        "Necesita delanteros individualmente excelentes"
+      ],
       "recommendedProfiles": [
-        { "slot": "Organizador libre", "note": "85+ de pase y de regate. El perfil de Arda Güler es el arquetipo." },
-        { "slot": "Pivote", "note": "78+ de defensa y 80+ de físico: cubre él solo al lateral que ataca." },
-        { "slot": "Tridente", "note": "Aquí es donde hay que gastar el presupuesto. El sistema no les pide nada en defensa." }
+        {
+          "slot": "Organizador libre",
+          "note": "85+ de pase y de regate. El perfil de Arda Güler es el arquetipo."
+        },
+        {
+          "slot": "Pivote",
+          "note": "78+ de defensa y 80+ de físico: cubre él solo al lateral que ataca."
+        },
+        {
+          "slot": "Tridente",
+          "note": "Aquí es donde hay que gastar el presupuesto. El sistema no les pide nada en defensa."
+        }
       ]
     },
     "fc26-pep-inverted": {
       "name": "3-2-4-1 invertido",
       "summary": "El plano del triplete adaptado al sistema de roles de FC 26. Defensa de tres más doble pivote como vigilancia permanente, cuatro atacantes ocupando amplitud y pasillos interiores, y un falso nueve que cae al espacio que dejan.",
-      "tags": ["Posesión", "Juego posicional", "Vigilancia defensiva", "Línea alta"],
+      "tags": [
+        "Posesión",
+        "Juego posicional",
+        "Vigilancia defensiva",
+        "Línea alta"
+      ],
       "keyInstructions": [
         "Portero líbero en salida de balón: es el hombre libre contra una presión con dos delanteros.",
         "Los atacantes de banda pegados a la cal; solo los media puntas se meten dentro.",
         "Amplitud defensiva estrecha (46) con línea alta: la defensa de tres tapa el centro y los de banda repliegan.",
         "Nunca dejes que los dos pivotes se sumen al ataque. Cuatro en el área, ni uno más."
       ],
-      "strengths": ["Dominio de la posesión", "Inmune a los contragolpes", "Superioridades en los pasillos interiores"],
-      "weaknesses": ["Los equipos de balón largo se saltan la presión", "Exige 80+ de pase en los tres centrales", "Sufre ante delanteros de 90+ de velocidad"],
+      "strengths": [
+        "Dominio de la posesión",
+        "Inmune a los contragolpes",
+        "Superioridades en los pasillos interiores"
+      ],
+      "weaknesses": [
+        "Los equipos de balón largo se saltan la presión",
+        "Exige 80+ de pase en los tres centrales",
+        "Sufre ante delanteros de 90+ de velocidad"
+      ],
       "recommendedProfiles": [
-        { "slot": "Centrales exteriores", "note": "78+ de velocidad y de pase. Pau Cubarsí y Jorrel Hato son los que mejor encajan en FC 26." },
-        { "slot": "Organizador retrasado", "note": "85+ de pase con Pase tenso. Christian Eriksen gratis es la solución de bajo presupuesto." },
-        { "slot": "Falso 9", "note": "Regate y pase por encima de la definición: un media punta reconvertido supera a un rematador puro." }
+        {
+          "slot": "Centrales exteriores",
+          "note": "78+ de velocidad y de pase. Pau Cubarsí y Jorrel Hato son los que mejor encajan en FC 26."
+        },
+        {
+          "slot": "Organizador retrasado",
+          "note": "85+ de pase con Pase tenso. Christian Eriksen gratis es la solución de bajo presupuesto."
+        },
+        {
+          "slot": "Falso 9",
+          "note": "Regate y pase por encima de la definición: un media punta reconvertido supera a un rematador puro."
+        }
       ]
     },
     "fc26-alonso-3421": {
       "name": "3-4-2-1 del Leverkusen",
       "summary": "La estructura de la temporada invicta. Defensa de tres paciente, carriles que dan toda la amplitud y dos interiores libres que atacan el espacio a ambos lados del delantero referencia en cada recuperación.",
-      "tags": ["Equilibrado", "Carrileros", "Transiciones", "Defensa de tres"],
+      "tags": [
+        "Equilibrado",
+        "Carrileros",
+        "Transiciones",
+        "Defensa de tres"
+      ],
       "keyInstructions": [
         "Amplitud ofensiva 70: los carrileros son la única fuente de amplitud del sistema.",
         "Un pivote defensivo y un organizador retrasado. Dos del mismo rol rompen la estructura.",
         "Los dos media puntas como llegadores para atacar por delante del delantero referencia en transición.",
         "Planteamiento equilibrado con altura 54: contragolpear, no presionar."
       ],
-      "strengths": ["La mejor estructura de transición del juego", "Pocas instrucciones que gestionar", "Altura a balón parado gracias a la defensa de tres"],
-      "weaknesses": ["Carrileros aislados en 2 contra 1", "Requiere un delantero fuerte de cabeza", "Pierde la batalla del balón ante un equipo de posesión"],
+      "strengths": [
+        "La mejor estructura de transición del juego",
+        "Pocas instrucciones que gestionar",
+        "Altura a balón parado gracias a la defensa de tres"
+      ],
+      "weaknesses": [
+        "Carrileros aislados en 2 contra 1",
+        "Requiere un delantero fuerte de cabeza",
+        "Pierde la batalla del balón ante un equipo de posesión"
+      ],
       "recommendedProfiles": [
-        { "slot": "Carrileros", "note": "85+ de velocidad y aguante. La posición más exigente físicamente de cualquier sistema." },
-        { "slot": "Media puntas", "note": "Kenan Yıldız y Ethan Nwaneri: regate más definición de verdad." },
-        { "slot": "Delantero referencia", "note": "185 cm o más con Juego aéreo o Remate de cabeza. Chido Obi crece directamente hacia este rol." }
+        {
+          "slot": "Carrileros",
+          "note": "85+ de velocidad y aguante. La posición más exigente físicamente de cualquier sistema."
+        },
+        {
+          "slot": "Media puntas",
+          "note": "Kenan Yıldız y Ethan Nwaneri: regate más definición de verdad."
+        },
+        {
+          "slot": "Delantero referencia",
+          "note": "185 cm o más con Juego aéreo o Remate de cabeza. Chido Obi crece directamente hacia este rol."
+        }
       ]
     },
     "fc26-conte-352": {
       "name": "3-5-2 nerazzurro",
       "summary": "Verticalidad de scudetto. Cinco por el centro para ganar todos los segundos balones, carrileros que estiran el campo por las dos bandas y dos delanteros que solo atacan en pareja.",
-      "tags": ["Directo", "Carrileros", "Dos delanteros", "Centro compacto"],
+      "tags": [
+        "Directo",
+        "Carrileros",
+        "Dos delanteros",
+        "Centro compacto"
+      ],
       "keyInstructions": [
         "Amplitud ofensiva 74 y defensiva 44: anchos con balón, estrechos en cuanto lo pierdes.",
         "Los dos delanteros tienen que ser una pareja, no dos iguales: uno cae y el otro ataca la espalda.",
         "Salida al contragolpe. El pivote organizador busca el pasillo en cuanto se recupera.",
         "Cinco en el área en los centros: los carrileros la ponen y los interiores llegan de segunda línea."
       ],
-      "strengths": ["Gana la batalla del segundo balón", "Desborda a una defensa de cuatro con cinco atacantes", "Excelente a balón parado lateral"],
-      "weaknesses": ["El aguante de los carrileros es todo el sistema", "Las bandas quedan vacías cuando suben", "Sufre contra otra defensa de tres que le iguale"],
+      "strengths": [
+        "Gana la batalla del segundo balón",
+        "Desborda a una defensa de cuatro con cinco atacantes",
+        "Excelente a balón parado lateral"
+      ],
+      "weaknesses": [
+        "El aguante de los carrileros es todo el sistema",
+        "Las bandas quedan vacías cuando suben",
+        "Sufre contra otra defensa de tres que le iguale"
+      ],
       "recommendedProfiles": [
-        { "slot": "Carrileros", "note": "88+ de aguante innegociable. Ten dos por banda para una temporada de 50 partidos." },
-        { "slot": "Pivote", "note": "80+ de pase y 78+ de defensa: exactamente el perfil de Ayyoub Bouaddi." },
-        { "slot": "Pareja de delanteros", "note": "Uno referencia y otro al espacio. Dos rematadores puros atascan el sistema." }
+        {
+          "slot": "Carrileros",
+          "note": "88+ de aguante innegociable. Ten dos por banda para una temporada de 50 partidos."
+        },
+        {
+          "slot": "Pivote",
+          "note": "80+ de pase y 78+ de defensa: exactamente el perfil de Ayyoub Bouaddi."
+        },
+        {
+          "slot": "Pareja de delanteros",
+          "note": "Uno referencia y otro al espacio. Dos rematadores puros atascan el sistema."
+        }
       ]
     },
     "fc26-mourinho-4231": {
       "name": "4-2-3-1 del triplete",
       "summary": "Disciplina en bloque medio y transiciones letales. Dos mediocentros tapando por delante de la defensa, jugadores de banda que siguen a los laterales hasta su propia área y una salida directa al delantero en cuanto cambia la posesión.",
-      "tags": ["Bloque medio", "Contragolpe", "Doble pivote", "Extremos defensivos"],
+      "tags": [
+        "Bloque medio",
+        "Contragolpe",
+        "Doble pivote",
+        "Extremos defensivos"
+      ],
       "keyInstructions": [
         "Planteamiento de repliegue con altura 38: invita a la presión y sal en tres pases.",
         "El interior izquierdo en enfoque defensivo dobla sobre el mejor extremo rival.",
         "Solo tres jugadores se suman al contragolpe: media punta, atacante derecho y delantero.",
         "El doble pivote nunca presiona a la vez. Uno sale y el otro cubre, siempre."
       ],
-      "strengths": ["Anula a rivales superiores", "Concede muy pocas ocasiones", "Ideal para una primera temporada como equipo modesto"],
-      "weaknesses": ["Pasivo ante un bloque bajo", "Necesita un delantero de 90 de velocidad para que sirva", "Los extremos tienen que defender, lo que limita a quién puedes fichar"],
+      "strengths": [
+        "Anula a rivales superiores",
+        "Concede muy pocas ocasiones",
+        "Ideal para una primera temporada como equipo modesto"
+      ],
+      "weaknesses": [
+        "Pasivo ante un bloque bajo",
+        "Necesita un delantero de 90 de velocidad para que sirva",
+        "Los extremos tienen que defender, lo que limita a quién puedes fichar"
+      ],
       "recommendedProfiles": [
-        { "slot": "Delantero", "note": "Velocidad por encima de definición. Mathys Tel y Endrick encajan por una fracción del precio de un delantero de élite." },
-        { "slot": "Pivote defensivo", "note": "Estilos Interceptación o Anticipación y 78+ de defensa." },
-        { "slot": "Interior izquierdo", "note": "La posición más ingrata del juego: 85+ de aguante y 70+ de defensa, el regate es opcional." }
+        {
+          "slot": "Delantero",
+          "note": "Velocidad por encima de definición. Mathys Tel y Endrick encajan por una fracción del precio de un delantero de élite."
+        },
+        {
+          "slot": "Pivote defensivo",
+          "note": "Estilos Interceptación o Anticipación y 78+ de defensa."
+        },
+        {
+          "slot": "Interior izquierdo",
+          "note": "La posición más ingrata del juego: 85+ de aguante y 70+ de defensa, el regate es opcional."
+        }
       ]
     }
   },
   "scouting": {
     "regions": {
-      "south-america": { "name": "Sudamérica", "bias": "Extremos, media puntas y delanteros técnicos", "note": "Los techos más altos de FC 26 y también la mayor irregularidad. O la combinas con un ojeador de 5★ de criterio o no merece la pena." },
-      "western-europe": { "name": "Europa Occidental", "bias": "Equilibrada en todas las posiciones", "note": "La asignación fiable. Centrocampistas de 80+ de potencial de forma constante y sin fricción de permisos." },
-      "uk-ireland": { "name": "Reino Unido e Irlanda", "bias": "Centrocampistas físicos, laterales y porteros", "note": "Obligatoria en una partida inglesa por las cuotas de canteranos. Techos más bajos, suelos mucho más altos." },
-      "eastern-europe": { "name": "Europa del Este", "bias": "Centrales y delanteros referencia", "note": "Las fichas más baratas de toda la cantera de FC 26." },
-      "scandinavia": { "name": "Escandinavia", "bias": "Delanteros altos y centrales", "note": "Las camadas más altas del juego: ideal si juegas un 3-4-2-1 con delantero referencia." },
-      "africa": { "name": "África", "bias": "Extremos rapidísimos y centrocampistas box to box", "note": "La mejor velocidad pura en la cantera. En Inglaterra el límite son los permisos de trabajo, no el talento." },
-      "asia": { "name": "Asia", "bias": "Centrocampistas técnicos y jugadores de banda", "note": "Los techos más bajos pero la red más barata: una cuarta asignación razonable." },
-      "north-america": { "name": "Norteamérica y Centroamérica", "bias": "Porteros y laterales atléticos", "note": "La fuente más fiable de porteros de alto potencial en la cantera." }
+      "south-america": {
+        "name": "Sudamérica",
+        "bias": "Extremos, media puntas y delanteros técnicos",
+        "note": "Los techos más altos de FC 26 y también la mayor irregularidad. O la combinas con un ojeador de 5★ de criterio o no merece la pena."
+      },
+      "western-europe": {
+        "name": "Europa Occidental",
+        "bias": "Equilibrada en todas las posiciones",
+        "note": "La asignación fiable. Centrocampistas de 80+ de potencial de forma constante y sin fricción de permisos."
+      },
+      "uk-ireland": {
+        "name": "Reino Unido e Irlanda",
+        "bias": "Centrocampistas físicos, laterales y porteros",
+        "note": "Obligatoria en una partida inglesa por las cuotas de canteranos. Techos más bajos, suelos mucho más altos."
+      },
+      "eastern-europe": {
+        "name": "Europa del Este",
+        "bias": "Centrales y delanteros referencia",
+        "note": "Las fichas más baratas de toda la cantera de FC 26."
+      },
+      "scandinavia": {
+        "name": "Escandinavia",
+        "bias": "Delanteros altos y centrales",
+        "note": "Las camadas más altas del juego: ideal si juegas un 3-4-2-1 con delantero referencia."
+      },
+      "africa": {
+        "name": "África",
+        "bias": "Extremos rapidísimos y centrocampistas box to box",
+        "note": "La mejor velocidad pura en la cantera. En Inglaterra el límite son los permisos de trabajo, no el talento."
+      },
+      "asia": {
+        "name": "Asia",
+        "bias": "Centrocampistas técnicos y jugadores de banda",
+        "note": "Los techos más bajos pero la red más barata: una cuarta asignación razonable."
+      },
+      "north-america": {
+        "name": "Norteamérica y Centroamérica",
+        "bias": "Porteros y laterales atléticos",
+        "note": "La fuente más fiable de porteros de alto potencial en la cantera."
+      }
     },
     "scouts": {
-      "fc26-scout-1": { "specialty": "Delanteros" },
-      "fc26-scout-2": { "specialty": "Centrocampistas" },
-      "fc26-scout-3": { "specialty": "Defensas" },
-      "fc26-scout-4": { "specialty": "Equilibrado" },
-      "fc26-scout-5": { "specialty": "Extremos" },
-      "fc26-scout-6": { "specialty": "Equilibrado" },
-      "fc26-scout-7": { "specialty": "Porteros" }
+      "fc26-scout-1": {
+        "specialty": "Delanteros"
+      },
+      "fc26-scout-2": {
+        "specialty": "Centrocampistas"
+      },
+      "fc26-scout-3": {
+        "specialty": "Defensas"
+      },
+      "fc26-scout-4": {
+        "specialty": "Equilibrado"
+      },
+      "fc26-scout-5": {
+        "specialty": "Extremos"
+      },
+      "fc26-scout-6": {
+        "specialty": "Equilibrado"
+      },
+      "fc26-scout-7": {
+        "specialty": "Porteros"
+      }
     },
     "regens": {
-      "fc26-regen-kroos": { "surfacesAt": "Canteras de la Bundesliga", "note": "Mediocentro alemán nacido el 4 de enero. Los regens pasadores llegan ya con un pase de élite: fíjate en el informe, no en la media." },
-      "fc26-regen-busquets": { "surfacesAt": "Canteras de LaLiga", "note": "Pivote español de 189 cm nacido el 16 de julio: una combinación de altura y posición poco habitual, y por eso fácil de filtrar." },
-      "fc26-regen-alba": { "surfacesAt": "Canteras de LaLiga y de la MLS", "note": "Lateral izquierdo español zurdo de 170 cm nacido el 21 de marzo. Los laterales izquierdos de alto potencial son el tipo de regen más escaso del juego." },
-      "fc26-regen-giroud": { "surfacesAt": "Canteras de la Ligue 1 y la Ligue 2", "note": "Delantero francés de 193 cm nacido el 30 de septiembre. El mejor regen de delantero referencia para un 4-4-2 o un 3-4-2-1." },
-      "fc26-regen-cavani": { "surfacesAt": "Canteras uruguayas y argentinas", "note": "Comparte cumpleaños con el regen de Di María: distínguelos por nacionalidad y posición." },
-      "fc26-regen-silva": { "surfacesAt": "Canteras del Brasileirão", "note": "Central brasileño nacido el 22 de septiembre. La cantera del Fluminense es el origen más habitual." },
-      "fc26-regen-dimaria": { "surfacesAt": "Canteras argentinas", "note": "Extremo derecho argentino zurdo nacido el 14 de febrero: los 180 cm lo separan del regen de Messi." },
-      "fc26-regen-neuer": { "surfacesAt": "Canteras de la 2. Bundesliga", "note": "Los porteros regen empiezan muy bajos y crecen tarde. No vendas a un meta de 57 de media y 88 de potencial con 17 años." },
-      "fc26-regen-modric": { "surfacesAt": "Canteras de la liga croata", "note": "Mediocentro croata bajito nacido el 9 de septiembre. Mira primero en la cantera del Dinamo de Zagreb." },
-      "fc26-regen-messi": { "surfacesAt": "Cantera argentina o de la MLS", "note": "El regen con el techo más alto de FC 26. Revisa todos los extremos derechos argentinos nacidos el 24 de junio durante las tres camadas siguientes a su retirada." },
-      "fc26-regen-ronaldo": { "surfacesAt": "Canteras portuguesas", "note": "Delantero portugués de 187 cm nacido el 5 de febrero, normalmente una temporada después de retirarse." }
+      "fc26-regen-kroos": {
+        "surfacesAt": "Canteras de la Bundesliga",
+        "note": "Mediocentro alemán nacido el 4 de enero. Los regens pasadores llegan ya con un pase de élite: fíjate en el informe, no en la media."
+      },
+      "fc26-regen-busquets": {
+        "surfacesAt": "Canteras de LaLiga",
+        "note": "Pivote español de 189 cm nacido el 16 de julio: una combinación de altura y posición poco habitual, y por eso fácil de filtrar."
+      },
+      "fc26-regen-alba": {
+        "surfacesAt": "Canteras de LaLiga y de la MLS",
+        "note": "Lateral izquierdo español zurdo de 170 cm nacido el 21 de marzo. Los laterales izquierdos de alto potencial son el tipo de regen más escaso del juego."
+      },
+      "fc26-regen-giroud": {
+        "surfacesAt": "Canteras de la Ligue 1 y la Ligue 2",
+        "note": "Delantero francés de 193 cm nacido el 30 de septiembre. El mejor regen de delantero referencia para un 4-4-2 o un 3-4-2-1."
+      },
+      "fc26-regen-cavani": {
+        "surfacesAt": "Canteras uruguayas y argentinas",
+        "note": "Comparte cumpleaños con el regen de Di María: distínguelos por nacionalidad y posición."
+      },
+      "fc26-regen-silva": {
+        "surfacesAt": "Canteras del Brasileirão",
+        "note": "Central brasileño nacido el 22 de septiembre. La cantera del Fluminense es el origen más habitual."
+      },
+      "fc26-regen-dimaria": {
+        "surfacesAt": "Canteras argentinas",
+        "note": "Extremo derecho argentino zurdo nacido el 14 de febrero: los 180 cm lo separan del regen de Messi."
+      },
+      "fc26-regen-neuer": {
+        "surfacesAt": "Canteras de la 2. Bundesliga",
+        "note": "Los porteros regen empiezan muy bajos y crecen tarde. No vendas a un meta de 57 de media y 88 de potencial con 17 años."
+      },
+      "fc26-regen-modric": {
+        "surfacesAt": "Canteras de la liga croata",
+        "note": "Mediocentro croata bajito nacido el 9 de septiembre. Mira primero en la cantera del Dinamo de Zagreb."
+      },
+      "fc26-regen-messi": {
+        "surfacesAt": "Cantera argentina o de la MLS",
+        "note": "El regen con el techo más alto de FC 26. Revisa todos los extremos derechos argentinos nacidos el 24 de junio durante las tres camadas siguientes a su retirada."
+      },
+      "fc26-regen-ronaldo": {
+        "surfacesAt": "Canteras portuguesas",
+        "note": "Delantero portugués de 187 cm nacido el 5 de febrero, normalmente una temporada después de retirarse."
+      }
     }
   }
 }

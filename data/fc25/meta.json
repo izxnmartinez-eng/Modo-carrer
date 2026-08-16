@@ -7,5 +7,6 @@
   "preContractDate": "2025-01-01",
   "potentialCap": 94,
   "note": "The FC IQ / Player Roles debut. Kept for legacy saves and for comparing growth across titles.",
-  "accent": "cyan"
+  "accent": "cyan",
+  "dataSource": "sample"
 }

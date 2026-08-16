@@ -12,6 +12,8 @@ export const pt = {
     tagline: "Só Modo Carreira",
     disclaimer:
       "Conjunto de dados de exemplo para demonstração. Overalls, valores e códigos são ilustrativos e não foram extraídos do jogo.",
+    disclaimerReal:
+      "Os dados de jogadores do FC 26 vêm de um conjunto de dados público da comunidade ({source}). Os tipos de evolução são deduzidos, não oficiais.",
   },
 
   nav: {
@@ -168,6 +170,8 @@ export const pt = {
     mobileFiltersDescription:
       "Refine a base de jogadores por idade, overall, potencial, custo e situação contratual.",
     showPlayers: "Ver {count} jogadores",
+    showMore: "Ver mais",
+    showingCount: "Mostrando {shown} de {total}",
   },
 
   filters: {

@@ -8,6 +8,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { CircleHelp, Menu, ShieldHalf, X } from "lucide-react";
 import { useI18n } from "@/i18n/use-i18n";
 import { cn } from "@/lib/format";
+import { useDataset } from "@/lib/use-dataset";
 import { useOnboardingStore } from "@/store/onboarding";
 import { NAV_ITEMS } from "./nav";
 import { GlobalSearch } from "./global-search";
@@ -72,6 +73,22 @@ function TourButton() {
   );
 }
 
+/**
+ * Provenance note for the active version. Real and invented data must never be
+ * described the same way, so the text follows `version.dataSource`.
+ */
+function DataNote({ className }: { className?: string }) {
+  const { d, fmt } = useI18n();
+  const { version } = useDataset();
+
+  const text =
+    version.dataSource === "real"
+      ? fmt(d.brand.disclaimerReal, { source: version.sourceLabel ?? "" })
+      : d.brand.disclaimer;
+
+  return <p className={cn("text-[11px] leading-relaxed text-zinc-500", className)}>{text}</p>;
+}
+
 function Brand({ compact = false }: { compact?: boolean }) {
   const { d } = useI18n();
 
@@ -111,7 +128,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
         <div className="mt-auto flex flex-col gap-3">
           <TourButton />
           <div className="rounded-lg border border-line bg-surface/60 p-3">
-            <p className="text-[11px] leading-relaxed text-zinc-500">{d.brand.disclaimer}</p>
+            <DataNote />
           </div>
         </div>
       </aside>
@@ -146,7 +163,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
                   <NavList onNavigate={() => setDrawerOpen(false)} />
                   <div className="mt-auto flex flex-col gap-3 pt-4">
                     <TourButton />
-                    <p className="text-[11px] leading-relaxed text-zinc-500">{d.brand.disclaimer}</p>
+                    <DataNote />
                   </div>
                 </Dialog.Content>
               </Dialog.Portal>

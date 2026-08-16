@@ -7,5 +7,6 @@
   "preContractDate": "2027-01-01",
   "potentialCap": 95,
   "note": "Latest engine. Role-based tactics, wider potential spread on academy intakes.",
-  "accent": "lime"
+  "accent": "lime",
+  "dataSource": "sample"
 }

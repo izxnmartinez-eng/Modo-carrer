@@ -31,7 +31,7 @@ export function PlayerCard({
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.18 }}
-      className="panel group flex flex-col gap-3 p-4 transition hover:border-accent/40"
+      className="panel group flex min-w-0 flex-col gap-3 p-4 transition hover:border-accent/40"
     >
       <div className="flex items-start justify-between gap-3">
         <button type="button" onClick={onOpen} className="focus-ring min-w-0 rounded-md text-left">
@@ -60,25 +60,18 @@ export function PlayerCard({
         </span>
       </div>
 
+      {/* Two facts, not four. Clause and contract live in the scout report —
+          keeping them here forced the card wider than a 390px phone, because
+          "260 K €/sem" carries a non-breaking space and cannot wrap. */}
       <dl className="grid grid-cols-2 gap-x-3 gap-y-1.5 text-xs">
-        <div className="flex justify-between gap-2">
-          <dt className="text-zinc-500">{d.table.value}</dt>
-          <dd className="font-mono text-zinc-200">{f.money(player.value)}</dd>
+        <div className="flex min-w-0 items-baseline justify-between gap-2">
+          <dt className="shrink-0 text-zinc-500">{d.table.value}</dt>
+          <dd className="min-w-0 truncate font-mono tabular-nums text-zinc-200">{f.money(player.value)}</dd>
         </div>
-        <div className="flex justify-between gap-2">
-          <dt className="text-zinc-500">{d.table.wage}</dt>
-          <dd className="font-mono text-zinc-200">{player.isFreeAgent ? "—" : f.wage(player.contract.wage)}</dd>
-        </div>
-        <div className="flex justify-between gap-2">
-          <dt className="text-zinc-500">{d.table.clause}</dt>
-          <dd className="font-mono text-zinc-200">
-            {player.contract.releaseClause ? f.money(player.contract.releaseClause) : d.common.none}
-          </dd>
-        </div>
-        <div className="flex justify-between gap-2">
-          <dt className="text-zinc-500">{d.table.contract}</dt>
-          <dd className="font-mono text-zinc-200">
-            {player.isFreeAgent ? "—" : f.contractEnd(player.contract.expiresYear, player.contract.expiresMonth)}
+        <div className="flex min-w-0 items-baseline justify-between gap-2">
+          <dt className="shrink-0 text-zinc-500">{d.table.wage}</dt>
+          <dd className="min-w-0 truncate font-mono tabular-nums text-zinc-200">
+            {player.isFreeAgent ? "—" : f.wage(player.contract.wage)}
           </dd>
         </div>
       </dl>
