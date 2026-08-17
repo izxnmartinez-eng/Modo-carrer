@@ -44,6 +44,15 @@ export interface GameVersion {
   dataSource: "real" | "sample";
   /** Human-readable provenance, shown with the real-data disclaimer. */
   sourceLabel?: string;
+  /**
+   * True while EA has not published this title's ratings yet.
+   *
+   * It is a stronger claim than `dataSource: "sample"`: the numbers are not
+   * merely placeholders, they *cannot* be real yet, and they are replaced the
+   * day the official ratings ship. The banner says exactly that, because a
+   * visitor who mistakes these for real ratings would plan a save around them.
+   */
+  ratingsPending?: boolean;
   /** Tailwind-friendly accent token key, see `globals.css`. */
   accent: "lime" | "gold" | "cyan";
 }

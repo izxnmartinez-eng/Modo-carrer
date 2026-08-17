@@ -6,7 +6,7 @@
   "careerStartDate": "2024-08-01",
   "preContractDate": "2025-01-01",
   "potentialCap": 94,
-  "note": "The FC IQ / Player Roles debut. Kept for legacy saves and for comparing growth across titles.",
+  "note": "The FC IQ / Player Roles debut. Test data for now — the real database is being imported.",
   "accent": "cyan",
   "dataSource": "sample"
 }

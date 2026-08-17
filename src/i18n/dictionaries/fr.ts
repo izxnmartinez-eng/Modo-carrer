@@ -13,7 +13,19 @@ export const fr = {
     disclaimer:
       "Jeu de données d'exemple à but de démonstration. Les notes, valeurs et codes sont illustratifs et non extraits du jeu.",
     disclaimerReal:
-      "Les données FC 26 proviennent d’un jeu de données communautaire public ({source}). Les types de progression sont déduits, pas officiels.",
+      "Les données {version} proviennent d’un jeu de données communautaire public ({source}). Les types de progression sont déduits, pas officiels.",
+  },
+
+  dataNotice: {
+    pendingTitle: "Les notes de {version} ne sont pas encore sorties",
+    pendingBody:
+      "EA n’a pas encore publié les notes officielles de {version} : cette version fonctionne donc avec des données de test pour que les outils restent utilisables. Le jour où EA publiera les notes, cette base de données sera mise à jour avec les vraies statistiques.",
+    sampleTitle: "{version} : données de test",
+    sampleBody:
+      "Cette version tourne encore avec des joueurs d’exemple, le temps d’importer la vraie base de données. Ces chiffres ne proviennent pas du jeu.",
+    realBadge: "Données réelles",
+    sampleBadge: "Données de test",
+    pendingBadge: "Données réelles à la sortie",
   },
 
   nav: {
@@ -479,7 +491,7 @@ export const fr = {
       },
       settings: {
         title: "Ton jeu, ta langue",
-        body: "Bascule entre FC 27, FC 26 et FC 25 en haut du menu et toute l'appli recharge ce jeu de données ; le sélecteur de langue est juste en dessous. À savoir : les données sont des exemples écrits pour ce projet, pas extraites du jeu.",
+        body: "Bascule entre FC 27, FC 26 et FC 25 en haut du menu et toute l'appli recharge ce jeu de données ; le sélecteur de langue est juste en dessous. Point important : FC 26 utilise de vraies données de joueurs issues d'un jeu de données communautaire public, tandis que FC 25 et FC 27 tournent encore avec des données de test. Les vraies notes de FC 27 seront ajoutées le jour où EA les publiera.",
       },
     },
   },

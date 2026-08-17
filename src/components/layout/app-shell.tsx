@@ -14,6 +14,7 @@ import { NAV_ITEMS } from "./nav";
 import { GlobalSearch } from "./global-search";
 import { LanguageSwitcher } from "./language-switcher";
 import { BottomNav } from "./bottom-nav";
+import { DataBanner } from "./data-banner";
 import { VersionPill, VersionSwitcher } from "./version-switcher";
 
 function NavList({ onNavigate }: { onNavigate?: () => void }) {
@@ -83,7 +84,7 @@ function DataNote({ className }: { className?: string }) {
 
   const text =
     version.dataSource === "real"
-      ? fmt(d.brand.disclaimerReal, { source: version.sourceLabel ?? "" })
+      ? fmt(d.brand.disclaimerReal, { version: version.shortLabel, source: version.sourceLabel ?? "" })
       : d.brand.disclaimer;
 
   return <p className={cn("text-[11px] leading-relaxed text-zinc-500", className)}>{text}</p>;
@@ -182,6 +183,9 @@ export function AppShell({ children }: { children: React.ReactNode }) {
         </header>
 
         <main className="min-w-0 flex-1 px-4 pb-24 pt-6 sm:px-6 lg:pb-6">
+          {/* Outside the page transition: the data warning must not flicker
+              away and back on every navigation. */}
+          <DataBanner className="mb-5" />
           <AnimatePresence mode="wait" initial={false}>
             <motion.div
               key={pathname}

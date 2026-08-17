@@ -13,7 +13,19 @@ export const pt = {
     disclaimer:
       "Conjunto de dados de exemplo para demonstração. Overalls, valores e códigos são ilustrativos e não foram extraídos do jogo.",
     disclaimerReal:
-      "Os dados de jogadores do FC 26 vêm de um conjunto de dados público da comunidade ({source}). Os tipos de evolução são deduzidos, não oficiais.",
+      "Os dados de jogadores do {version} vêm de um conjunto de dados público da comunidade ({source}). Os tipos de evolução são deduzidos, não oficiais.",
+  },
+
+  dataNotice: {
+    pendingTitle: "Os overalls do {version} ainda não saíram",
+    pendingBody:
+      "A EA ainda não publicou os overalls oficiais do {version}, por isso esta versão funciona com dados de teste para as ferramentas continuarem utilizáveis. No mesmo dia em que a EA publicar os overalls, esta base de dados será atualizada com as estatísticas reais.",
+    sampleTitle: "{version}: dados de teste",
+    sampleBody:
+      "Esta versão ainda funciona com jogadores de exemplo enquanto a base de dados real é importada. Estes números não vêm do jogo.",
+    realBadge: "Dados reais",
+    sampleBadge: "Dados de teste",
+    pendingBadge: "Dados reais no lançamento",
   },
 
   nav: {
@@ -479,7 +491,7 @@ export const pt = {
       },
       settings: {
         title: "Seu jogo, seu idioma",
-        body: "Troque entre FC 27, FC 26 e FC 25 no topo do menu e o app todo recarrega aquele conjunto de dados; o seletor de idioma fica logo abaixo. Um aviso: os dados são de exemplo, escritos para este projeto, e não extraídos do jogo.",
+        body: "Troque entre FC 27, FC 26 e FC 25 no topo do menu e o app todo recarrega aquele conjunto de dados; o seletor de idioma fica logo abaixo. Um aviso importante: o FC 26 usa dados reais de jogadores de um conjunto público da comunidade, enquanto FC 25 e FC 27 ainda funcionam com dados de teste. Os overalls reais do FC 27 entram no mesmo dia em que a EA os publicar.",
       },
     },
   },

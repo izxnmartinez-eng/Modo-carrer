@@ -8,6 +8,7 @@ import { VERSIONS } from "@/lib/data";
 import { cn } from "@/lib/format";
 import { useToastStore } from "@/store/toast";
 import { useVersionStore } from "@/store/version";
+import { DataBadge } from "./data-banner";
 
 /**
  * Persistent game-version selector.
@@ -77,9 +78,10 @@ export function VersionSwitcher({ className }: { className?: string }) {
                 <Check className="size-3" aria-hidden />
               </span>
               <span className="min-w-0">
-                <span className="flex items-baseline gap-2">
+                <span className="flex flex-wrap items-baseline gap-x-2 gap-y-1">
                   <span className="font-semibold text-zinc-100">{v.label}</span>
                   <span className="text-[11px] text-zinc-500">{v.season}</span>
+                  <DataBadge dataSource={v.dataSource} ratingsPending={v.ratingsPending} />
                 </span>
                 <span className="mt-0.5 block text-xs leading-relaxed text-zinc-400">{v.note}</span>
               </span>

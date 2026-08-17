@@ -13,7 +13,19 @@ export const it = {
     disclaimer:
       "Dataset di esempio a scopo dimostrativo. Valutazioni, valori e codici sono illustrativi e non estratti dal gioco.",
     disclaimerReal:
-      "I dati dei giocatori di FC 26 provengono da un dataset pubblico della community ({source}). I tipi di crescita sono dedotti, non ufficiali.",
+      "I dati dei giocatori di {version} provengono da un dataset pubblico della community ({source}). I tipi di crescita sono dedotti, non ufficiali.",
+  },
+
+  dataNotice: {
+    pendingTitle: "Le valutazioni di {version} non sono ancora uscite",
+    pendingBody:
+      "EA non ha ancora pubblicato le valutazioni ufficiali di {version}, quindi questa versione funziona con dati di prova per mantenere utilizzabili gli strumenti. Il giorno in cui EA pubblicherà le valutazioni, questo database verrà aggiornato con le statistiche reali.",
+    sampleTitle: "{version}: dati di prova",
+    sampleBody:
+      "Questa versione usa ancora giocatori di esempio mentre il database reale viene importato. Questi numeri non provengono dal gioco.",
+    realBadge: "Dati reali",
+    sampleBadge: "Dati di prova",
+    pendingBadge: "Dati reali all’uscita",
   },
 
   nav: {
@@ -479,7 +491,7 @@ export const it = {
       },
       settings: {
         title: "Il tuo gioco, la tua lingua",
-        body: "Passa tra FC 27, FC 26 e FC 25 in cima al menu e tutta l'app ricarica quel dataset; il selettore della lingua sta subito sotto. Una precisazione: i dati sono di esempio, scritti per questo progetto e non estratti dal gioco.",
+        body: "Passa tra FC 27, FC 26 e FC 25 in cima al menu e tutta l'app ricarica quel dataset; il selettore della lingua sta subito sotto. Una precisazione importante: FC 26 usa dati reali dei giocatori presi da un dataset pubblico della community, mentre FC 25 e FC 27 funzionano ancora con dati di prova. Le valutazioni reali di FC 27 verranno aggiunte il giorno stesso in cui EA le pubblicherà.",
       },
     },
   },

@@ -20,7 +20,19 @@ export const en = {
     disclaimer:
       "Sample dataset for demonstration. Ratings, values and share codes are illustrative, not scraped from the game.",
     disclaimerReal:
-      "FC 26 player data comes from a public community dataset ({source}). Growth types are inferred, not official.",
+      "{version} player data comes from a public community dataset ({source}). Growth types are inferred, not official.",
+  },
+
+  dataNotice: {
+    pendingTitle: "{version} ratings are not out yet",
+    pendingBody:
+      "EA has not published the official {version} ratings, so this version runs on test data to keep the tools usable. The day EA publishes the ratings, this database is updated with the real stats.",
+    sampleTitle: "{version}: test data",
+    sampleBody:
+      "This version is still running on sample players while the real database is imported. These numbers do not come from the game.",
+    realBadge: "Real data",
+    sampleBadge: "Test data",
+    pendingBadge: "Real data at launch",
   },
 
   nav: {
@@ -483,7 +495,7 @@ export const en = {
       },
       settings: {
         title: "Your game, your language",
-        body: "Switch between FC 27, FC 26 and FC 25 at the top of the menu and the whole app reloads that dataset; the language selector sits right below it. One thing to know: the data is illustrative sample data written for this project, not scraped from the game.",
+        body: "Switch between FC 27, FC 26 and FC 25 at the top of the menu and the whole app reloads that dataset; the language selector sits right below it. One thing to know: FC 26 runs on real player data from a public community dataset, while FC 25 and FC 27 are still on test data. FC 27's real ratings are added the day EA publishes them.",
       },
     },
   },

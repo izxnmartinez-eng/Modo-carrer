@@ -6,7 +6,8 @@
   "careerStartDate": "2026-08-01",
   "preContractDate": "2027-01-01",
   "potentialCap": 95,
-  "note": "Latest engine. Role-based tactics, wider potential spread on academy intakes.",
+  "note": "Test data. EA has not published the official ratings yet — they are added the day it launches.",
   "accent": "lime",
-  "dataSource": "sample"
+  "dataSource": "sample",
+  "ratingsPending": true
 }
