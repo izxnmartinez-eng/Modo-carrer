@@ -213,6 +213,7 @@ export const es = {
   },
 
   drawer: {
+    fullProfile: "Ficha completa",
     overall: "Media",
     potential: "Potencial",
     growth: "Crecimiento",

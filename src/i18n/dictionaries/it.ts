@@ -213,6 +213,7 @@ export const it = {
   },
 
   drawer: {
+    fullProfile: "Scheda completa",
     overall: "Valutazione",
     potential: "Potenziale",
     growth: "Crescita",

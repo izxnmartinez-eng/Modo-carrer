@@ -93,7 +93,14 @@ export const VERSION_ORDER: GameVersionId[] = ["fc27", "fc26", "fc25"];
 
 export const VERSIONS: GameVersion[] = VERSION_ORDER.map((id) => DATASETS[id].version);
 
-export const DEFAULT_VERSION: GameVersionId = "fc27";
+/**
+ * What a first-time visitor sees.
+ *
+ * FC 26 rather than the newest title: FC 27's ratings do not exist yet, and
+ * landing someone — especially someone arriving from a search result — on
+ * placeholder players would be the worst first impression the app can make.
+ */
+export const DEFAULT_VERSION: GameVersionId = "fc26";
 
 export function isGameVersionId(value: unknown): value is GameVersionId {
   return typeof value === "string" && VERSION_ORDER.includes(value as GameVersionId);

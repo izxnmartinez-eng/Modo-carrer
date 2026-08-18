@@ -1,13 +1,15 @@
 "use client";
 
+import Link from "next/link";
 import * as Dialog from "@radix-ui/react-dialog";
-import { GitCompareArrows, Link2, UserPlus, X } from "lucide-react";
+import { ExternalLink, GitCompareArrows, Link2, UserPlus, X } from "lucide-react";
 import { GrowthChart } from "@/components/charts/growth-chart";
 import { RadarChart } from "@/components/charts/radar-chart";
 import { Rating } from "@/components/ui/primitives";
 import { PlayerBadges } from "./player-badges";
 import { useI18n } from "@/i18n/use-i18n";
 import { hasCardStats, radarStats } from "@/lib/derive";
+import { isIndexedVersion, playerPath } from "@/lib/seo";
 import { cn, growthTone, signed } from "@/lib/format";
 import { nextSeasonOverall, projectGrowth } from "@/lib/growth";
 import { copyWithToast } from "@/store/toast";
@@ -100,6 +102,18 @@ export function PlayerDrawer({
               </div>
 
               <PlayerBadges player={player} />
+
+              {/* The drawer is app state, not an address. This is the page that
+                  can be linked to, shared and indexed. */}
+              {isIndexedVersion(versionId) && (
+                <Link
+                  href={playerPath(versionId, player)}
+                  className="focus-ring -mt-1 inline-flex w-fit items-center gap-1.5 rounded text-xs font-medium text-accent hover:underline"
+                >
+                  {d.drawer.fullProfile}
+                  <ExternalLink className="size-3" aria-hidden />
+                </Link>
+              )}
 
               <section className="panel p-4">
                 <div className="mb-3 flex items-baseline justify-between gap-2">

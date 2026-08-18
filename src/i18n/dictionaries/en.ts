@@ -219,6 +219,7 @@ export const en = {
   },
 
   drawer: {
+    fullProfile: "Full profile page",
     overall: "Overall",
     potential: "Potential",
     growth: "Growth",
