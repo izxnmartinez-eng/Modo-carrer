@@ -352,6 +352,8 @@ export const de = {
     noMatches: "Kein Spieler passt zu dieser Suche.",
     removeAria: "{name} aus dem Vergleich entfernen",
     radarTitle: "Attribut-Radar",
+    noStats:
+      "Der öffentliche Datensatz für diese Spielversion enthält Wertungen, Marktwerte und Verträge, aber keine Einzelattribute — es gibt also kein Radar zu zeichnen. Wertungen, Wachstum und Kosten werden unten trotzdem verglichen.",
     keeperNote:
       "Torhüter und Feldspieler nutzen unterschiedliche Kartenwerte und können sich daher kein Radar teilen. Vergleiche Torhüter mit Torhütern.",
     growthTitle: "Wachstumskurven",

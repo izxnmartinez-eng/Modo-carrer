@@ -7,7 +7,7 @@ import { RadarChart } from "@/components/charts/radar-chart";
 import { Rating } from "@/components/ui/primitives";
 import { PlayerBadges } from "./player-badges";
 import { useI18n } from "@/i18n/use-i18n";
-import { radarStats } from "@/lib/derive";
+import { hasCardStats, radarStats } from "@/lib/derive";
 import { cn, growthTone, signed } from "@/lib/format";
 import { nextSeasonOverall, projectGrowth } from "@/lib/growth";
 import { copyWithToast } from "@/store/toast";
@@ -53,8 +53,12 @@ export function PlayerDrawer({
                 <div className="min-w-0">
                   <Dialog.Title className="truncate text-lg font-bold text-zinc-50">{player.name}</Dialog.Title>
                   <Dialog.Description className="truncate text-xs text-zinc-500">
-                    {player.club ?? d.common.freeAgent}
-                    {player.league ? ` · ${player.league}` : ""} · {player.nation}
+                    {/* A few players in the public datasets have no nationality
+                        at all; joining rather than concatenating keeps the row
+                        from ending in a stray separator. */}
+                    {[player.club ?? d.common.freeAgent, player.league, player.nation]
+                      .filter(Boolean)
+                      .join(" · ")}
                   </Dialog.Description>
                 </div>
                 <Dialog.Close className="focus-ring rounded-lg p-1.5 text-zinc-500 hover:text-zinc-200" aria-label={d.common.close}>
@@ -124,6 +128,7 @@ export function PlayerDrawer({
                 </p>
               </section>
 
+              {hasCardStats(player) && (
               <section className="panel flex flex-col items-center p-4">
                 <h3 className="mb-2 self-start text-sm font-semibold text-zinc-200">{d.drawer.attributes}</h3>
                 <RadarChart
@@ -146,6 +151,7 @@ export function PlayerDrawer({
                   ))}
                 </dl>
               </section>
+              )}
 
               <section className="panel p-4">
                 <h3 className="mb-2 text-sm font-semibold text-zinc-200">{d.drawer.contractCost}</h3>

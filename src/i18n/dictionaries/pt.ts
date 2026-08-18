@@ -352,6 +352,8 @@ export const pt = {
     noMatches: "Nenhum jogador corresponde a essa busca.",
     removeAria: "Remover {name} da comparação",
     radarTitle: "Radar de atributos",
+    noStats:
+      "O conjunto de dados público desta versão do jogo publica overalls, valores e contratos, mas não os atributos individuais, então não há radar para desenhar. Overall, evolução e custo continuam comparados abaixo.",
     keeperNote:
       "Goleiros e jogadores de linha usam estatísticas diferentes, então não podem dividir o mesmo radar. Compare goleiros com goleiros.",
     growthTitle: "Curvas de evolução",

@@ -6,7 +6,7 @@ import { GrowthChart } from "@/components/charts/growth-chart";
 import { RadarChart } from "@/components/charts/radar-chart";
 import { EmptyState, PageHeader, Rating } from "@/components/ui/primitives";
 import { useI18n, type I18n } from "@/i18n/use-i18n";
-import { radarStats } from "@/lib/derive";
+import { hasCardStats, radarStats } from "@/lib/derive";
 import { cn, growthTone, signed } from "@/lib/format";
 import { projectGrowth } from "@/lib/growth";
 import { scoreRecord } from "@/lib/fuzzy";
@@ -149,6 +149,8 @@ export function CompareView() {
   const axesSource = selected[0];
   const sameStatSet =
     selected.length > 0 && selected.every((p) => (p.position === "GK") === (axesSource?.position === "GK"));
+  // Some versions' source data has no attributes at all; see `hasCardStats`.
+  const statsAvailable = selected.length > 0 && selected.every(hasCardStats);
 
   return (
     <>
@@ -212,7 +214,7 @@ export function CompareView() {
           <div className="grid gap-5 lg:grid-cols-2">
             <section className="panel flex flex-col items-center p-4">
               <h2 className="mb-2 self-start text-sm font-semibold text-zinc-200">{d.compare.radarTitle}</h2>
-              {sameStatSet && axesSource ? (
+              {sameStatSet && statsAvailable && axesSource ? (
                 <RadarChart
                   axes={radarStats(axesSource).map((s) => s.short)}
                   series={selected.map((player, index) => ({
@@ -224,7 +226,9 @@ export function CompareView() {
                   size={300}
                 />
               ) : (
-                <p className="py-10 text-center text-xs text-zinc-500">{d.compare.keeperNote}</p>
+                <p className="py-10 text-center text-xs text-zinc-500">
+                  {statsAvailable ? d.compare.keeperNote : d.compare.noStats}
+                </p>
               )}
             </section>
 

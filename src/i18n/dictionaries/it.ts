@@ -352,6 +352,8 @@ export const it = {
     noMatches: "Nessun giocatore corrisponde a questa ricerca.",
     removeAria: "Rimuovi {name} dal confronto",
     radarTitle: "Radar degli attributi",
+    noStats:
+      "Il dataset pubblico di questa versione del gioco pubblica valutazioni, valori e contratti, ma non i singoli attributi, quindi non c'è alcun radar da disegnare. Valutazioni, crescita e costo si confrontano comunque qui sotto.",
     keeperNote:
       "Portieri e giocatori di movimento usano statistiche diverse, quindi non possono condividere lo stesso radar. Confronta i portieri tra loro.",
     growthTitle: "Curve di crescita",

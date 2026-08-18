@@ -5,8 +5,9 @@
   "season": "2024/25",
   "careerStartDate": "2024-08-01",
   "preContractDate": "2025-01-01",
-  "potentialCap": 94,
-  "note": "The FC IQ / Player Roles debut. Test data for now — the real database is being imported.",
+  "potentialCap": 95,
+  "note": "Real player data. The FC IQ / Player Roles debut, kept for legacy saves.",
   "accent": "cyan",
-  "dataSource": "sample"
+  "dataSource": "real",
+  "sourceLabel": "SoFIFA-derived community dataset · 3 Jun 2025"
 }

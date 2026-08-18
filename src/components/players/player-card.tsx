@@ -37,7 +37,7 @@ export function PlayerCard({
         <button type="button" onClick={onOpen} className="focus-ring min-w-0 rounded-md text-left">
           <p className="truncate font-semibold text-zinc-50 group-hover:text-accent">{player.name}</p>
           <p className="truncate text-xs text-zinc-500">
-            {player.club ?? d.common.freeAgent} · {player.nation}
+            {[player.club ?? d.common.freeAgent, player.nation].filter(Boolean).join(" · ")}
           </p>
         </button>
         <div className="flex shrink-0 items-center gap-1">

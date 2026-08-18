@@ -358,6 +358,8 @@ export const en = {
     noMatches: "No players match that search.",
     removeAria: "Remove {name} from the comparison",
     radarTitle: "Attribute radar",
+    noStats:
+      "The public dataset for this game version publishes ratings, values and contracts, but not individual attributes, so there is no radar to draw. Ratings, growth and cost still compare below.",
     keeperNote:
       "Goalkeepers and outfield players use different card stats, so they can't share one radar. Compare keepers against keepers.",
     growthTitle: "Growth curves",

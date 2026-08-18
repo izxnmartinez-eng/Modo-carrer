@@ -130,6 +130,18 @@ const KEEPER_LABELS: { key: keyof KeeperStats; short: string; label: string }[] 
   { key: "positioning", short: "POS", label: "Positioning" },
 ];
 
+/**
+ * Whether this player has card stats at all.
+ *
+ * Not every public dataset publishes attributes — the FC 25 scrape ships
+ * ratings, money and contracts but leaves the attribute block empty. A radar
+ * drawn from six zeroes looks like a broken chart rather than missing data, so
+ * callers check this first and say so instead.
+ */
+export function hasCardStats(player: Player): boolean {
+  return radarStats(player).some((stat) => stat.value > 0);
+}
+
 /** The six card stats for a player, using keeper semantics when appropriate. */
 export function radarStats(player: Player): RadarStat[] {
   if (player.position === "GK" && player.goalkeeping) {

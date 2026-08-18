@@ -352,6 +352,8 @@ export const es = {
     noMatches: "Ningún jugador coincide con esa búsqueda.",
     removeAria: "Quitar a {name} de la comparación",
     radarTitle: "Radar de atributos",
+    noStats:
+      "El conjunto de datos público de esta versión del juego publica medias, valores y contratos, pero no los atributos individuales, así que no hay radar que dibujar. Las medias, el crecimiento y el coste sí se comparan abajo.",
     keeperNote:
       "Los porteros y los jugadores de campo usan estadísticas distintas, así que no pueden compartir un mismo radar. Compara porteros con porteros.",
     growthTitle: "Curvas de crecimiento",

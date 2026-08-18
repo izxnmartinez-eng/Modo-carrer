@@ -352,6 +352,8 @@ export const fr = {
     noMatches: "Aucun joueur ne correspond à cette recherche.",
     removeAria: "Retirer {name} de la comparaison",
     radarTitle: "Radar d'attributs",
+    noStats:
+      "Le jeu de données public de cette version publie les notes, les valeurs et les contrats, mais pas les attributs individuels : il n'y a donc pas de radar à tracer. Les notes, la progression et le coût restent comparés ci-dessous.",
     keeperNote:
       "Les gardiens et les joueurs de champ n'utilisent pas les mêmes statistiques et ne peuvent donc pas partager un radar. Compare les gardiens entre eux.",
     growthTitle: "Courbes de progression",

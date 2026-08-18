@@ -129,6 +129,44 @@ export function WonderkidsView() {
     });
   };
 
+  /**
+   * Quick filters that can never match in this version are not offered.
+   *
+   * The FC 25 source lists a club for every player, so "free agents" would be
+   * a button that always returns an empty list. Asking the real filter is
+   * cheaper than duplicating its rules here.
+   */
+  const availablePresets = useMemo(() => {
+    const keys = ["bargains", "hiddenGems", "freeAgents", "expiring"] as const;
+    return new Set(
+      keys.filter(
+        (key) =>
+          queryPlayers(players, {
+            filters: { ...DEFAULT_FILTERS, [key]: true },
+            query: "",
+            sortKey: "potential",
+            sortDir: "desc",
+          }).length > 0,
+      ),
+    );
+  }, [players]);
+
+  // Switching version can withdraw a quick filter that was switched on. Clear
+  // it, so the list is never narrowed by a control that is no longer on screen.
+  useEffect(() => {
+    setFilters((prev) => {
+      const next = { ...prev };
+      let changed = false;
+      for (const key of ["bargains", "hiddenGems", "freeAgents", "expiring"] as const) {
+        if (next[key] && !availablePresets.has(key)) {
+          next[key] = false;
+          changed = true;
+        }
+      }
+      return changed ? next : prev;
+    });
+  }, [availablePresets]);
+
   const presets = [
     {
       key: "bargains" as const,
@@ -154,7 +192,7 @@ export function WonderkidsView() {
       label: d.players.presets.expiring,
       hint: d.players.presets.expiringHint,
     },
-  ];
+  ].filter((preset) => availablePresets.has(preset.key));
 
   const filterPanel = (hideTitle: boolean) => (
     <FilterPanel filters={filters} onChange={setFilters} expiryYears={expiryYears} hideTitle={hideTitle} />
