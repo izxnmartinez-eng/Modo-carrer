@@ -16,7 +16,7 @@ export const dynamicParams = false;
 
 export function generateStaticParams() {
   return INDEXED_VERSIONS.flatMap((version) =>
-    listsFor(version).map((list) => ({ version, list: list.copy.en.slug })),
+    listsFor(version).map((list) => ({ version, list: list.copy.es.slug })),
   );
 }
 
@@ -26,15 +26,15 @@ export async function generateMetadata({
   params: Promise<{ version: string; list: string }>;
 }): Promise<Metadata> {
   const { version: id, list: slug } = await params;
-  const list = findListBySlug("en", slug);
+  const list = findListBySlug("es", slug);
   if (!isIndexedVersion(id) || !list) return {};
   const short = getVersion(id).shortLabel;
 
   return {
-    title: t(list.copy.en.title, { version: short }),
-    description: t(list.copy.en.description, { version: short }),
+    title: t(list.copy.es.title, { version: short }),
+    description: t(list.copy.es.description, { version: short }),
     alternates: {
-      canonical: listPath("en", id, list),
+      canonical: listPath("es", id, list),
       languages: languageAlternates({ en: listPath("en", id, list), es: listPath("es", id, list) }),
     },
   };
@@ -42,9 +42,7 @@ export async function generateMetadata({
 
 export default async function Page({ params }: { params: Promise<{ version: string; list: string }> }) {
   const { version: id, list: slug } = await params;
-  const list = findListBySlug("en", slug);
-  // A list with no players in this version is not published, so its URL is a
-  // 404 rather than an empty table.
+  const list = findListBySlug("es", slug);
   if (!isIndexedVersion(id) || !list || !listsFor(id).some((entry) => entry.id === list.id)) notFound();
-  return <ListView locale="en" versionId={id} list={list} />;
+  return <ListView locale="es" versionId={id} list={list} />;
 }

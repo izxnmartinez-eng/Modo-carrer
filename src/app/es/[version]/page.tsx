@@ -14,14 +14,14 @@ export async function generateMetadata({ params }: { params: Promise<{ version: 
   const { version: id } = await params;
   if (!isIndexedVersion(id)) return {};
   const version = getVersion(id);
-  const s = SEO_STRINGS.en;
+  const s = SEO_STRINGS.es;
   const vars = { short: version.shortLabel, count: getPlayers(id).length };
 
   return {
     title: t(s.hubMetaTitle, vars),
     description: t(s.hubMetaDescription, vars),
     alternates: {
-      canonical: versionPath("en", id),
+      canonical: versionPath("es", id),
       languages: languageAlternates({ en: versionPath("en", id), es: versionPath("es", id) }),
     },
   };
@@ -30,5 +30,5 @@ export async function generateMetadata({ params }: { params: Promise<{ version: 
 export default async function Page({ params }: { params: Promise<{ version: string }> }) {
   const { version: id } = await params;
   if (!isIndexedVersion(id)) notFound();
-  return <VersionHub locale="en" versionId={id} />;
+  return <VersionHub locale="es" versionId={id} />;
 }

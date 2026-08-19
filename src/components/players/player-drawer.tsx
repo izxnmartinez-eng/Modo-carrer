@@ -9,7 +9,7 @@ import { Rating } from "@/components/ui/primitives";
 import { PlayerBadges } from "./player-badges";
 import { useI18n } from "@/i18n/use-i18n";
 import { hasCardStats, radarStats } from "@/lib/derive";
-import { isIndexedVersion, playerPath } from "@/lib/seo";
+import { isIndexedVersion, playerPath, seoLocaleFor } from "@/lib/seo";
 import { cn, growthTone, signed } from "@/lib/format";
 import { nextSeasonOverall, projectGrowth } from "@/lib/growth";
 import { copyWithToast } from "@/store/toast";
@@ -41,7 +41,7 @@ export function PlayerDrawer({
   inSquad: boolean;
   inCompare: boolean;
 }) {
-  const { d, f, fmt } = useI18n();
+  const { d, f, fmt, locale } = useI18n();
   const open = player !== null;
 
   return (
@@ -107,7 +107,7 @@ export function PlayerDrawer({
                   can be linked to, shared and indexed. */}
               {isIndexedVersion(versionId) && (
                 <Link
-                  href={playerPath(versionId, player)}
+                  href={playerPath(seoLocaleFor(locale), versionId, player)}
                   className="focus-ring -mt-1 inline-flex w-fit items-center gap-1.5 rounded text-xs font-medium text-accent hover:underline"
                 >
                   {d.drawer.fullProfile}

@@ -1,6 +1,8 @@
 import Link from "next/link";
+import { SEO_STRINGS, t } from "./strings";
+import { money, playerPath, signedNumber, SITE_URL, wage, type SeoLocale } from "@/lib/seo";
+import { nationName } from "@/lib/nations";
 import type { DerivedPlayer, GameVersion, GameVersionId } from "@/lib/types";
-import { money, playerPath, signedNumber, SITE_URL, wage } from "@/lib/seo";
 
 /**
  * Shared pieces of the server-rendered pages.
@@ -45,19 +47,27 @@ export function Breadcrumbs({ trail }: { trail: { name: string; href: string }[]
 }
 
 /** Provenance line. Every indexed page states where its numbers come from. */
-export function SourceNote({ version }: { version: GameVersion }) {
+export function SourceNote({ version, locale }: { version: GameVersion; locale: SeoLocale }) {
   return (
     <p className="mt-8 border-t border-line pt-4 text-xs leading-relaxed text-zinc-500">
-      {version.shortLabel} player data comes from a public community dataset
-      {version.sourceLabel ? ` (${version.sourceLabel})` : ""}. Growth curves are this site&apos;s own projection from
-      age and remaining potential, not values read out of the game. Career Hub is a fan project and is not affiliated
-      with EA Sports.
+      {t(SEO_STRINGS[locale].sourceNote, {
+        short: version.shortLabel,
+        source: version.sourceLabel ? ` (${version.sourceLabel})` : "",
+      })}
     </p>
   );
 }
 
 /** Rows of a player table, used by every list page. */
-export function PlayerRows({ versionId, players }: { versionId: GameVersionId; players: DerivedPlayer[] }) {
+export function PlayerRows({
+  versionId,
+  players,
+  locale,
+}: {
+  versionId: GameVersionId;
+  players: DerivedPlayer[];
+  locale: SeoLocale;
+}) {
   return (
     <>
       {players.map((player, index) => (
@@ -65,13 +75,13 @@ export function PlayerRows({ versionId, players }: { versionId: GameVersionId; p
           <td className="px-3 py-2 text-right font-mono text-xs text-zinc-600">{index + 1}</td>
           <td className="px-3 py-2">
             <Link
-              href={playerPath(versionId, player)}
+              href={playerPath(locale, versionId, player)}
               className="focus-ring rounded font-medium text-zinc-100 hover:text-accent"
             >
               {player.name}
             </Link>
             <span className="block text-xs text-zinc-500">
-              {[player.club, player.nation].filter(Boolean).join(" · ")}
+              {[player.club, nationName(player.nation, locale)].filter(Boolean).join(" · ")}
             </span>
           </td>
           <td className="px-3 py-2 text-center text-xs text-zinc-400">{player.position}</td>
@@ -81,9 +91,11 @@ export function PlayerRows({ versionId, players }: { versionId: GameVersionId; p
           <td className="px-3 py-2 text-center font-mono text-xs tabular-nums text-zinc-300">
             {signedNumber(player.growth)}
           </td>
-          <td className="px-3 py-2 text-right font-mono text-xs tabular-nums text-zinc-300">{money(player.value)}</td>
+          <td className="px-3 py-2 text-right font-mono text-xs tabular-nums text-zinc-300">
+            {money(player.value, locale)}
+          </td>
           <td className="hidden px-3 py-2 text-right font-mono text-xs tabular-nums text-zinc-400 sm:table-cell">
-            {player.isFreeAgent ? "—" : wage(player.contract.wage)}
+            {player.isFreeAgent ? "—" : wage(player.contract.wage, locale)}
           </td>
         </tr>
       ))}
@@ -91,19 +103,20 @@ export function PlayerRows({ versionId, players }: { versionId: GameVersionId; p
   );
 }
 
-export function PlayerTableHead() {
+export function PlayerTableHead({ locale }: { locale: SeoLocale }) {
+  const head = SEO_STRINGS[locale].table;
   return (
     <thead>
       <tr className="border-b border-line text-[11px] uppercase tracking-wider text-zinc-500">
-        <th scope="col" className="px-3 py-2 text-right font-semibold">#</th>
-        <th scope="col" className="px-3 py-2 text-left font-semibold">Player</th>
-        <th scope="col" className="px-3 py-2 text-center font-semibold">Pos</th>
-        <th scope="col" className="px-3 py-2 text-center font-semibold">Age</th>
-        <th scope="col" className="px-3 py-2 text-center font-semibold">OVR</th>
-        <th scope="col" className="px-3 py-2 text-center font-semibold">POT</th>
-        <th scope="col" className="px-3 py-2 text-center font-semibold">Growth</th>
-        <th scope="col" className="px-3 py-2 text-right font-semibold">Value</th>
-        <th scope="col" className="hidden px-3 py-2 text-right font-semibold sm:table-cell">Wage</th>
+        <th scope="col" className="px-3 py-2 text-right font-semibold">{head.rank}</th>
+        <th scope="col" className="px-3 py-2 text-left font-semibold">{head.player}</th>
+        <th scope="col" className="px-3 py-2 text-center font-semibold">{head.position}</th>
+        <th scope="col" className="px-3 py-2 text-center font-semibold">{head.age}</th>
+        <th scope="col" className="px-3 py-2 text-center font-semibold">{head.overall}</th>
+        <th scope="col" className="px-3 py-2 text-center font-semibold">{head.potential}</th>
+        <th scope="col" className="px-3 py-2 text-center font-semibold">{head.growth}</th>
+        <th scope="col" className="px-3 py-2 text-right font-semibold">{head.value}</th>
+        <th scope="col" className="hidden px-3 py-2 text-right font-semibold sm:table-cell">{head.wage}</th>
       </tr>
     </thead>
   );

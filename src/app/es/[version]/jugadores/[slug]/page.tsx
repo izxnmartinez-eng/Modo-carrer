@@ -32,10 +32,10 @@ export async function generateMetadata({
   const short = getVersion(id).shortLabel;
 
   return {
-    title: playerMetaTitle(player, short, "en"),
-    description: playerSummary(player, short, "en"),
+    title: playerMetaTitle(player, short, "es"),
+    description: playerSummary(player, short, "es"),
     alternates: {
-      canonical: playerPath("en", id, player),
+      canonical: playerPath("es", id, player),
       languages: languageAlternates({
         en: playerPath("en", id, player),
         es: playerPath("es", id, player),
@@ -49,5 +49,5 @@ export default async function Page({ params }: { params: Promise<{ version: stri
   if (!isIndexedVersion(id)) notFound();
   const player = findPlayerBySlug(id, slug);
   if (!player) notFound();
-  return <PlayerProfile locale="en" versionId={id} player={player} />;
+  return <PlayerProfile locale="es" versionId={id} player={player} />;
 }
