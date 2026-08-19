@@ -13,6 +13,9 @@ export const metadata: Metadata = {
   description:
     "Wonderkids, release clauses, real manager tactical codes, squad planning and youth academy maths for EA SPORTS FC Career Mode. No Ultimate Team.",
   alternates: { canonical: "/" },
+  // Search Console ownership. The .vercel.app DNS belongs to Vercel, so the
+  // meta-tag method is the only one available to this deployment.
+  verification: { google: "WT5jyBnhiNf12pVRrkDThfwFQr3QCtriz5WT3RWXByg" },
   openGraph: {
     type: "website",
     siteName: "Career Hub",
