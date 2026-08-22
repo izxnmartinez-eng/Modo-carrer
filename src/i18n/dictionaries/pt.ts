@@ -499,6 +499,13 @@ export const pt = {
     },
   },
 
+  notFound: {
+    title: "Esta página não existe",
+    body: "O link pode ser antigo, ou o jogador pode não estar na base de dados dessa versão do jogo. O FC 27 ainda não tem fichas: os seus overalls ainda não saíram.",
+    home: "Voltar à base de dados",
+    browse: "Ver as listas",
+  },
+
   toast: {
     copyFailedTitle: "Não foi possível copiar para a área de transferência",
     copyFailedDescription:

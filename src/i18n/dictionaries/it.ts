@@ -499,6 +499,13 @@ export const it = {
     },
   },
 
+  notFound: {
+    title: "Questa pagina non esiste",
+    body: "Il link potrebbe essere vecchio, oppure il giocatore non è nel database di quella versione del gioco. FC 27 non ha ancora schede: le sue valutazioni non sono uscite.",
+    home: "Torna al database",
+    browse: "Vedi le liste",
+  },
+
   toast: {
     copyFailedTitle: "Impossibile copiare negli appunti",
     copyFailedDescription:

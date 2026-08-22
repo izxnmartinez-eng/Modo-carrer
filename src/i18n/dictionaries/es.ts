@@ -499,6 +499,13 @@ export const es = {
     },
   },
 
+  notFound: {
+    title: "Esta página no existe",
+    body: "El enlace puede ser antiguo, o el jugador puede no estar en la base de datos de esa versión del juego. FC 27 todavía no tiene fichas: sus medias aún no han salido.",
+    home: "Volver a la base de datos",
+    browse: "Ver las listas",
+  },
+
   toast: {
     copyFailedTitle: "No se ha podido copiar al portapapeles",
     copyFailedDescription:

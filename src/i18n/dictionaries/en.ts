@@ -503,6 +503,13 @@ export const en = {
     },
   },
 
+  notFound: {
+    title: "This page doesn't exist",
+    body: "The link may be old, or the player may not be in this game version's database. FC 27 has no player pages yet — its ratings are not out.",
+    home: "Back to the database",
+    browse: "Browse the lists",
+  },
+
   toast: {
     copyFailedTitle: "Couldn't copy to clipboard",
     copyFailedDescription: "Your browser blocked clipboard access — select the code and copy it manually.",

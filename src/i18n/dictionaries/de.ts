@@ -499,6 +499,13 @@ export const de = {
     },
   },
 
+  notFound: {
+    title: "Diese Seite gibt es nicht",
+    body: "Der Link ist womöglich alt, oder der Spieler steht nicht in der Datenbank dieser Spielversion. FC 27 hat noch keine Spielerseiten — seine Wertungen sind nicht erschienen.",
+    home: "Zurück zur Datenbank",
+    browse: "Zu den Listen",
+  },
+
   toast: {
     copyFailedTitle: "Kopieren in die Zwischenablage fehlgeschlagen",
     copyFailedDescription:

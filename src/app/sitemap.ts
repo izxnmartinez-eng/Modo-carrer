@@ -33,5 +33,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ]),
   );
 
-  return [...appScreens, ...contentPages];
+  // Prose pages: low change frequency, but they are what a visitor deciding
+  // whether to trust the numbers goes looking for.
+  const infoPages = [
+    "/about",
+    "/faq",
+    "/privacy",
+    "/es",
+    "/es/sobre-la-web",
+    "/es/preguntas-frecuentes",
+    "/es/privacidad",
+  ].map((path) => ({ url: `${SITE_URL}${path}`, changeFrequency: "yearly" as const, priority: 0.4 }));
+
+  return [...appScreens, ...infoPages, ...contentPages];
 }

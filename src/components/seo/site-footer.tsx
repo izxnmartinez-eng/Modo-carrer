@@ -42,7 +42,22 @@ export function SiteFooter() {
           }),
         )}
       </div>
-      <p className="mt-6 text-xs text-zinc-600">
+      <nav className="mt-6 flex flex-wrap gap-x-4 gap-y-2 text-xs" aria-label="About this site">
+        {[
+          { href: "/about", label: "About" },
+          { href: "/faq", label: "FAQ" },
+          { href: "/privacy", label: "Privacy" },
+          { href: "/es/sobre-la-web", label: "Sobre la web" },
+          { href: "/es/preguntas-frecuentes", label: "Preguntas frecuentes" },
+          { href: "/es/privacidad", label: "Privacidad" },
+        ].map((entry) => (
+          <Link key={entry.href} href={entry.href} className="focus-ring rounded text-zinc-400 transition hover:text-accent">
+            {entry.label}
+          </Link>
+        ))}
+      </nav>
+
+      <p className="mt-4 text-xs text-zinc-600">
         Career Hub — a free EA Sports FC Career Mode database. Not affiliated with EA Sports.
       </p>
     </footer>

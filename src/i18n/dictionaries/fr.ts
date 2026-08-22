@@ -499,6 +499,13 @@ export const fr = {
     },
   },
 
+  notFound: {
+    title: "Cette page n'existe pas",
+    body: "Le lien est peut-être ancien, ou le joueur n'est pas dans la base de données de cette version du jeu. FC 27 n'a pas encore de fiches : ses notes ne sont pas sorties.",
+    home: "Retour à la base de données",
+    browse: "Voir les listes",
+  },
+
   toast: {
     copyFailedTitle: "Impossible de copier dans le presse-papiers",
     copyFailedDescription:
